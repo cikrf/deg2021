@@ -1,0 +1,9 @@
+@import '../../../assets/styles/mixin.scss';
+
+:host {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding: var(--md-size) var(--lg-size);
+  align-items: center;
+}

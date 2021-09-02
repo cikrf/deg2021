@@ -1,0 +1,35 @@
+<ng-container
+  *ngIf="{
+    lastClickOnDisabled: lastClickOnDisabled$ | async,
+    instructionType: instructionType$ | async,
+    maxCardHeight: maxCardHeight$ | async,
+    setActiveInstruction: setActiveInstruction$ | async
+  } as observables"
+>
+  <div
+    *ngIf="form$ | async as form"
+    [formGroup]="form"
+    class="cards-wrap"
+  >
+
+    <ng-container
+      *ngFor="let answer of form.answers; let index = index; trackBy: trackById"
+    >
+      <app-scroll-instruction
+        #instruction
+        [type]="observables.instructionType"
+        [class.hidden]="observables.lastClickOnDisabled !== index"
+      ></app-scroll-instruction>
+
+      <app-answer-card
+        [currentHeight]="observables.maxCardHeight"
+        [answer]="answer"
+        [maxMarks]="maxMarks"
+        [formControlName]="answer.id"
+        (onDisabledClick)="clickedByDisabled(index, instruction)"
+      ></app-answer-card>
+
+    </ng-container>
+  </div>
+
+</ng-container>

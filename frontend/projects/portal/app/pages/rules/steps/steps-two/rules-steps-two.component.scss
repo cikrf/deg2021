@@ -1,0 +1,6 @@
+@import 'shared/ui-kit/assets/styles/mixins';
+
+.rules-step-two {
+  @include text-normal();
+  color: var(--summer-night-color);
+}

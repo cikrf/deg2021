@@ -1,0 +1,20 @@
+syntax = "proto3";
+package wavesenterprise;
+
+option java_multiple_files = true;
+option java_package = "com.wavesenterprise.transaction.protobuf";
+option csharp_namespace = "WavesEnterprise";
+option go_package = "wavesenterprise.com/weproto";
+
+import "managed/create_contract_transaction.proto";
+import "managed/call_contract_transaction.proto";
+import "managed/update_contract_transaction.proto";
+
+message ExecutableTransaction {
+    int32 version = 1;
+    oneof transaction {
+        CreateContractTransaction create_contract_transaction = 1000;
+        CallContractTransaction call_contract_transaction = 1001;
+        UpdateContractTransaction update_contract_transaction = 1002;
+    }
+}

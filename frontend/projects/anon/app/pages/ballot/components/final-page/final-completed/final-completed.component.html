@@ -1,0 +1,19 @@
+<ui-layout-new [showSupport]="false">
+  <!-- Header -->
+  <ng-container layout-header>
+    <ui-layout-header type="anon">
+      <div subheader>
+        <div class="final-page__page-header">
+          <app-steps></app-steps>
+          <app-ballots-left></app-ballots-left>
+        </div>
+      </div>
+    </ui-layout-header>
+  </ng-container>
+
+  <app-final-page
+    *ngIf="ballot$ | async as ballot"
+    [receipt]="ballot.receipt"
+  ></app-final-page>
+
+</ui-layout-new>

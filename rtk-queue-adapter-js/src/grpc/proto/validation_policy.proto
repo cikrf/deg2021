@@ -1,0 +1,24 @@
+syntax = "proto3";
+package wavesenterprise;
+
+option java_multiple_files = true;
+option java_package = "com.wavesenterprise.transaction.protobuf";
+option csharp_namespace = "WavesEnterprise";
+option go_package = "wavesenterprise.com/weproto";
+
+
+message ValidationPolicy {
+  message Any {}
+
+  message Majority {}
+
+  message MajorityWithOneOf {
+    repeated bytes addresses = 1;
+  }
+
+  oneof type {
+    Any any = 10;
+    Majority majority = 11;
+    MajorityWithOneOf majority_with_one_of = 12;
+  }
+}

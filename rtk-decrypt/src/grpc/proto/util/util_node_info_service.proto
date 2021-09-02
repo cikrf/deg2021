@@ -1,0 +1,40 @@
+syntax = "proto3";
+package wavesenterprise;
+
+option java_multiple_files = true;
+option java_package = "com.wavesenterprise.protobuf.service.util";
+option csharp_namespace = "WavesEnterprise";
+option go_package = "wavesenterprise.com/weproto";
+
+import "google/protobuf/duration.proto";
+import "google/protobuf/empty.proto";
+import "constants.proto";
+
+service NodeInfoService {
+  rpc NodeConfig (google.protobuf.Empty) returns (NodeConfigResponse);
+}
+
+message NodeConfigResponse {
+  string version = 1;
+  CryptoType crypto_type = 2;
+  int32 chain_id = 3;
+  ConsensusType consensus = 4;
+  map<string, int64> minimum_fee = 5;
+  map<string, int64> additional_fee = 6;
+  int32 max_transactions_in_micro_block = 7;
+  google.protobuf.Duration min_micro_block_age = 8;
+  google.protobuf.Duration micro_block_interval = 9;
+  oneof block_timing {
+    PoaRoundInfo poa_round_info = 101;
+    PosRoundInfo pos_round_info = 102;
+  }
+}
+
+message PoaRoundInfo {
+  google.protobuf.Duration round_duration = 1;
+  google.protobuf.Duration sync_duration = 2;
+}
+
+message PosRoundInfo {
+  google.protobuf.Duration average_block_delay = 1;
+}

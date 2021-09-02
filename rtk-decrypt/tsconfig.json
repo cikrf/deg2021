@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "strictPropertyInitialization": false,
+    "declaration": true,
+    "target": "es2020",
+    "lib": ["es2019"],
+    "moduleResolution": "node",
+    "strict": true,
+    "noImplicitReturns": true,
+    "noUnusedParameters": true,
+    "removeComments": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "noUnusedLocals": true,
+    "resolveJsonModule": true,
+    "outDir": "dist",
+    "baseUrl": ".",
+    "allowSyntheticDefaultImports": true,
+  },
+  "typeAcquisition": {
+    "include": ["jest"]
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/compiled",
+    "reports",
+  ]
+}

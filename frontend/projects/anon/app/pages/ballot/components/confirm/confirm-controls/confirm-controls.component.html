@@ -1,0 +1,23 @@
+<div
+  *ngIf="{loading: loading$ | async} as observable"
+  class="confirm__control"
+>
+  <!-- Активная кнопка -->
+  <ui-button
+    class="confirm__button"
+    [uiButton]="confirmButtonType"
+    [disabled]="isDisabled()"
+    [label]="activeButtonText"
+    [loading]="observable.loading"
+    (click)="isSkip ? goBack() : vote()"
+  ></ui-button>
+
+  <!-- Возврат -->
+  <ui-button
+    class="confirm__button"
+    [uiButton]="backButtonType"
+    [disabled]="observable.loading"
+    [label]="backButtonText"
+    (click)="isSkip ? skip() : goBack()"
+  ></ui-button>
+</div>

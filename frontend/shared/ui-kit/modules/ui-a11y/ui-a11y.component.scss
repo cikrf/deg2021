@@ -1,0 +1,121 @@
+@import "mixin";
+
+button,
+:host ::ng-deep button {
+  box-shadow: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: inherit;
+  background: none #fff !important;
+  color: #000 !important;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #efefef !important;
+  }
+
+  &.active {
+    background-color: #000 !important;
+    color: #fff !important;
+  }
+}
+
+button:not(.button-link),
+:host ::ng-deep button:not(.button-link) {
+  border: 1px solid #66727f;
+  border-radius: 8px;
+  height: 40px;
+  line-height: 32px !important;
+}
+
+.button-link {
+  border: 0;
+  font-size: 16px !important;
+
+  &.__active {
+    background-color: #000 !important;
+    color: #fff !important;
+  }
+}
+
+.panel-switcher {
+  box-shadow: none;
+  border: 0 !important;
+  border-radius: 0 !important;
+  width: 24px !important;
+  height: 24px !important;
+  padding: 0;
+  //background: none transparent !important;
+}
+
+.button-group {
+  display: flex;
+  align-items: center;
+
+  .button {
+    flex: 0 0 auto;
+    min-width: 140px;
+    padding: 4px 28px;
+
+    & + .button {
+      margin-left: 24px;
+    }
+  }
+}
+
+.spacer {
+  border-left: 1px solid #66727f;
+  flex: 0 0 auto;
+  width: 0;
+  margin: 0 5%;
+  padding: 0;
+}
+
+.control-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-left: auto;
+  padding-left: 5%;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px !important;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  margin: 0 0 32px;
+  color: #000 !important;
+  font-size: 24px;
+  font-weight: normal;
+
+  img {
+    margin-right: 0.5em;
+    max-width: 100%;
+  }
+}
+
+.wrapper {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05), 0 10px 60px rgba(0, 0, 0, 0.1);
+  z-index: 1000000000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  align-items: stretch;
+  min-width: 1000px;
+  width: 100%;
+  padding: 24px;
+  background-color: #fff !important;
+  color: #000 !important;
+
+  @media screen and (min-width: 1200px) {
+    display: flex;
+  }
+}

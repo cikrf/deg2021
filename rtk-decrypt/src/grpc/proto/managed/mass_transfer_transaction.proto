@@ -1,0 +1,22 @@
+syntax = "proto3";
+package wavesenterprise;
+
+option java_multiple_files = true;
+option java_package = "com.wavesenterprise.transaction.protobuf.transfer";
+option csharp_namespace = "WavesEnterprise";
+option go_package = "wavesenterprise.com/weproto";
+
+import "google/protobuf/wrappers.proto";
+import "transfer.proto";
+
+message MassTransferTransaction {
+  bytes id = 1;
+  bytes sender_public_key = 2;
+  google.protobuf.BytesValue asset_id = 3;
+  repeated Transfer transfers = 4;
+  int64 timestamp = 5;
+  int64 fee = 6;
+  bytes attachment = 7;
+  google.protobuf.BytesValue fee_asset_id = 8;
+  repeated bytes proofs = 9;
+}

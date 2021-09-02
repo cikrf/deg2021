@@ -1,0 +1,12 @@
+syntax = "proto3";
+package wavesenterprise;
+
+import "google/protobuf/descriptor.proto";
+
+extend google.protobuf.MessageOptions {
+  string contract_api_version = 51234;
+}
+
+message CurrentContractApiVersion {
+  option (contract_api_version) = "1.2";
+}

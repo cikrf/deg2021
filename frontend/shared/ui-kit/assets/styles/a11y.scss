@@ -1,0 +1,29 @@
+@import "mixin";
+
+html {
+  &.__fz50 {
+    font-size: 70.25%;
+  }
+
+  &.__fz100 {
+    font-size: 82%;
+  }
+
+  &.__grayScale {
+    ui-a11y ~ * {
+      &,
+      ui-layout,
+      ui-layout-new {
+        filter: grayscale(100%);
+      }
+    }
+  }
+}
+
+#TopAccessibilityPanel {
+  display: none;
+
+  @media screen and (min-width: 1200px) {
+    display: inline-flex;
+  }
+}

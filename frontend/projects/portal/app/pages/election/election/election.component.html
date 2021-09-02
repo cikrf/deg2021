@@ -1,0 +1,26 @@
+<ng-container *ngIf="{
+  isShowBallot: isShowBallot$ | async
+} as observables">
+  <ui-voting-card
+    [title]="electionList.name"
+    timerLabel="до окончания голосования"
+    [startDate]="electionList.startDateTime"
+    [endDate]="electionList.endDateTime"
+  >
+  </ui-voting-card>
+
+  <div [class.voting__ballot_hidden]="!observables.isShowBallot" class="voting__ballot">
+    <ng-content></ng-content>
+  </div>
+
+  <div
+    *ngIf="false && hasVotings()"
+    class="g-buttons-group"
+  >
+    <ui-button
+      uiButton="outline"
+      [label]="(observables.isShowBallot ? 'Скрыть' : 'Показать') + 'бюллетени' + electionList.votings.length"
+      (click)="toggleBallot()"
+    ></ui-button>
+  </div>
+</ng-container>

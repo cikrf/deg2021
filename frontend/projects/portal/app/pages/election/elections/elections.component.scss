@@ -1,0 +1,67 @@
+@import '~shared/ui-kit/assets/styles/mixin';
+
+:host {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include maxContentWidth();
+  padding-bottom: var(--md-size);
+
+  @include tablet-and-above() {
+    padding-bottom: var(--xxlg-size);
+  }
+
+  .card-wrap {
+    margin: 0 0 var(--xlg-size);
+    padding: 0;
+
+    @include tablet-and-above() {
+      margin-bottom: var(--l-mega-size);
+    }
+
+    & > li {
+      display: block;
+      list-style: none;
+
+      & + li {
+        margin-top: var(--lg-size);
+      }
+    }
+  }
+
+  .noelection-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__line {
+      width: var(--lg-size);
+      height: 3px;
+      background-color: var(--giallo-brillante-color);
+      margin-bottom: var(--semi-md-size);
+    }
+
+    &__description {
+      @include text-normal();
+      color: var(--summer-night-color);
+
+      a {
+        text-decoration: none;
+        color: var(--gosblue-color);
+      }
+    }
+  }
+
+  .start-time {
+    &__label {
+      @include text-normal();
+      color: var(--summer-night-color);
+    }
+
+    &__value {
+      margin-top: var(--sm-size);
+      @include h4();
+    }
+  }
+}

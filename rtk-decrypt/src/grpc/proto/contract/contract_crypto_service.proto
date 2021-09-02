@@ -1,0 +1,55 @@
+syntax = "proto3";
+package wavesenterprise;
+
+option java_multiple_files = true;
+option java_package = "com.wavesenterprise.protobuf.service.contract";
+option csharp_namespace = "WavesEnterprise";
+option go_package = "wavesenterprise.com/weproto";
+
+import "google/protobuf/wrappers.proto";
+import "constants.proto";
+
+service CryptoService {
+
+  rpc EncryptSeparate (EncryptDataRequest) returns (EncryptSeparateResponse);
+
+  rpc EncryptCommon (EncryptDataRequest) returns (EncryptedForManyResponse);
+
+  rpc Decrypt (DecryptDataRequest) returns (DecryptDataResponse);
+}
+
+message EncryptDataRequest {
+  string sender = 1;
+  google.protobuf.StringValue password = 2;
+  bytes encryption_data = 3;
+  repeated string recipients_public_keys = 4;
+  CryptoAlgo crypto_algo = 5;
+}
+
+message EncryptedSingleResponse {
+  bytes encrypted_data = 1;
+  string public_key = 2;
+  string wrapped_key = 3;
+}
+
+message EncryptSeparateResponse {
+  repeated EncryptedSingleResponse responses = 1;
+}
+
+message EncryptedForManyResponse {
+  bytes encrypted_data = 1;
+  map<string, string> recipient_to_wrapped_structure = 2;
+}
+
+message DecryptDataRequest {
+  string recipient = 1;
+  google.protobuf.StringValue password = 2;
+  bytes encrypted_data = 3;
+  string wrapped_key = 4;
+  string sender_public_key = 5;
+  CryptoAlgo crypto_algo = 6;
+}
+
+message DecryptDataResponse {
+  bytes decrypted_data = 1;
+}

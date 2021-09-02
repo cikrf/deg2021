@@ -1,0 +1,12 @@
+syntax = "proto3";
+package wavesenterprise;
+
+option java_multiple_files = true;
+option java_package = "com.wavesenterprise.transaction.protobuf";
+option csharp_namespace = "WavesEnterprise";
+option go_package = "wavesenterprise.com/weproto";
+
+message ContractApiVersion {
+  int32 major_version = 1;
+  int32 minor_version = 2;
+}

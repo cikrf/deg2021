@@ -1,0 +1,94 @@
+@import '~shared/ui-kit/assets/styles/mixin';
+
+:host {
+  display: block;
+  @include maxContentWidth(true);
+}
+
+.sms-auth {
+  display: flex;
+  flex-direction: column;
+
+  &__code-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: var(--md-size);
+
+    @include tablet-and-above() {
+      margin-top: var(--lg-size);
+    }
+  }
+
+  &__input {
+    --input-letter-spacing: .2em;
+
+    appearance: none;
+    width: 146px;
+    padding: var(--md-size) calc(var(--md-size) - var(--input-letter-spacing)) var(--md-size) var(--md-size);
+    border-radius: 6px;
+    outline: none;
+    border: var(--border-input);
+    text-align: center;
+    margin: var(--md-size) var(--md-size) 0 0;
+    @include text-sms-code();
+    color: var(--summer-night-color);
+    letter-spacing: var(--input-letter-spacing);
+    height: 72px;
+    font-family: inherit;
+
+    &::placeholder {
+      color: var(--preloader-icon-color);
+    }
+
+    &:focus {
+      box-shadow: var(--shadow-card-helper);
+    }
+
+    &_disabled {
+      background-color: var(--placeholder-color);
+      border: none;
+    }
+
+    &_error {
+      background-color: var(--placeholder-color);
+      border-color: var(--placeholder-color);
+      color: var(--tela-rossa-color) !important;
+      box-shadow: none !important;
+    }
+  }
+
+  &__timer {
+    padding-top: var(--md-size);
+    @include text-hint();
+    color: var(--text-secondary-color);
+  }
+
+  &__phone {
+    width: 100%;
+    @include heading-h5();
+    display: flex;
+    margin-bottom: var(--sm-size);
+  }
+
+  &__error-text {
+    @include text-hint();
+    color: var(--tela-rossa-color);
+    text-align: left;
+    margin-top: var(--md-size);
+    margin-bottom: 0;
+
+    &_normal {
+      color: var(--helper-color);
+    }
+  }
+
+  ui-button {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  p {
+    margin-top: 0;
+  }
+}

@@ -1,0 +1,20 @@
+<app-confirm-list *ngIf="!isError" [answers]="answers"></app-confirm-list>
+
+<div class="confirm__label">
+  <div class="plain-text-normal mb-md">Ваш выбор:</div>
+
+  <div *ngFor="let question of questions" class="confirm__short">
+    <div class="confirm__short-name">
+      {{ question.fullText }}
+    </div>
+
+    <div class="confirm__short-text" *ngFor="let answer of checkedAnswersMap.get(question.id)">
+      {{ answer.text }}
+    </div>
+  </div>
+
+  <app-confirm-controls
+    [error]="isError"
+    (onReceipt)="onReceipt$.next($event)"
+  ></app-confirm-controls>
+</div>

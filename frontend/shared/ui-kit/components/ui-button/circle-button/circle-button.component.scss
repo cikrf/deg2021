@@ -1,0 +1,18 @@
+:host {
+  position: relative;
+  width: var(--mega-size);
+  height: var(--mega-size);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &._primary {
+    background-color: var(--active-item-color);
+  }
+
+  &._secondary {
+    background-color: var(--white-color);
+  }
+}

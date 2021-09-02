@@ -1,0 +1,24 @@
+@mixin card-base {
+  background: var(--white-color);
+  border-radius: 12px;
+}
+
+@mixin card-lavel-0 {
+  @include card-base();
+  box-shadow: var(--shadow-level-0);
+}
+
+@mixin card-lavel-1 {
+  @include card-base();
+  box-shadow: var(--shadow-level-1);
+}
+
+@mixin card-lavel-2 {
+  @include card-base();
+  box-shadow: var(--shadow-level-2);
+}
+
+@mixin card-lavel-3 {
+  @include card-base();
+  box-shadow: var(--shadow-level-3);
+}

@@ -1,0 +1,91 @@
+<ng-container
+  *ngIf="{
+    stage: stage$ | async,
+    loading: loading$ | async
+  } as observables"
+>
+
+  <div class="support">
+    <h1 class="support__title">Служба поддержки</h1>
+
+    <ng-container [ngSwitch]="observables.stage">
+
+      <ng-container *ngSwitchCase="stageEnum.NEW_REPORT">
+        <p class="support__subtitle">Отправьте информацию об&nbsp;ошибке и&nbsp;контактные данные. Это
+          понадобится службе поддержки, чтобы связаться с&nbsp;Вами и&nbsp;помочь.</p>
+
+        <form class="support__form" [formGroup]="form">
+
+          <div class="mb-md">
+            <app-support-input
+              [autofocus]="true"
+              [label]="'ФИО'"
+              [placeholder]="'ФИО'"
+              [formControl]="form.controls.fullName"
+            ></app-support-input>
+          </div>
+
+          <div class="mb-md">
+            <app-support-input
+              label="Телефон"
+              [maxLength]="16"
+              placeholder="+7(900)00***01"
+              [formControl]="form.controls.phoneNumber"
+            ></app-support-input>
+          </div>
+
+          <div class="mb-md">
+            <app-support-input
+              label="Браузер и система"
+              [formControl]="form.controls.browser"
+            ></app-support-input>
+          </div>
+
+          <div class="mb-md">
+            <app-support-input
+              label="Опишите возникшую проблему"
+              placeholder="Опишите проблему или скопируйте текст ошибки из браузера"
+              [type]="inputTypeEnum.Textarea"
+              [formControl]="form.controls.errorDescription"
+            ></app-support-input>
+          </div>
+
+        </form>
+
+        <div class="action-block">
+          <ui-button
+            [disabled]="form.invalid"
+            [label]="'Отправить'"
+            [loading]="observables.loading"
+            (click)="buildReportMessage()"
+          ></ui-button>
+
+          <ui-button
+            uiButton="outline"
+            [label]="'Назад'"
+            (click)="goToBack()"
+          ></ui-button>
+        </div>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="stageEnum.CONFIRMATION">
+        <!-- todo remove me -->
+      </ng-container>
+
+      <ng-container *ngSwitchCase="stageEnum.REPORT_SENDED">
+        <div class="support__success">
+          <img class="support__success-img" src="assets/icons/ellipse-blue.svg" alt="check">
+          <div class="support__success-text">
+            Сообщение успешно отправлено, служба поддержки скоро с Вами свяжется.
+          </div>
+          <div class="support__success-button">
+            <ui-button [routerLink]="[appRoutingEnum.Election]">Вернуться</ui-button>
+          </div>
+        </div>
+      </ng-container>
+
+    </ng-container>
+
+  </div>
+
+</ng-container>

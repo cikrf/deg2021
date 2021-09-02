@@ -1,0 +1,10 @@
+<!-- Todo: implement Sm Mobile and made new svg -->
+
+<!-- Mobile -->
+<img *ngIf="isMobileOnly$ | async" src="assets/icons/mobile-preloader.svg" alt="">
+
+<!-- Tablet -->
+<img *ngIf="isTabletOnly$ | async" src="assets/icons/tablet-preloader.svg" alt="">
+
+<!-- Desktop -->
+<img *ngIf="isDesktop$ | async" src="assets/icons/wide-preloader.svg" alt="">

@@ -1,0 +1,93 @@
+@import 'shared/ui-kit/assets/styles/mixin.scss';
+
+:host {
+  display: block;
+
+  margin-top: var(--high-mega-size);
+
+  @include tablet-and-above {
+    margin-top: var(--xxlg-size);
+  }
+}
+
+.checkbox-helper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__text-wrap {
+    animation: instruction-wrap .25s ease-in;
+    width: 100%;
+
+    & > :nth-child(1n) {
+      animation: instruction .25s ease-in;
+    }
+
+    @include tablet-and-above {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-button {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      margin-bottom: var(--mega-size);
+
+      @include tablet-and-above {
+        margin-bottom: var(--xlg-size);
+      }
+
+      ui-button {
+        width: 100%;
+
+        @include tablet-and-above {
+          width: auto;
+        }
+      }
+    }
+
+    &-title {
+      @include cap-h5();
+      margin-bottom: var(--semi-md-size);
+      color: var(--text-primary);
+      text-align: center;
+
+      @include tablet-and-above {
+        @include cap-h4();
+      }
+    }
+
+    &-text {
+      @include text-normal();
+      color: var(--summer-night-color);
+      text-align: center;
+
+      @include tablet-and-above {
+        text-align: center;
+      }
+    }
+  }
+}
+
+@keyframes instruction-wrap {
+  0% {
+    max-height: 0px;
+  }
+  100% {
+    max-height: 100px;
+  }
+}
+
+
+@keyframes instruction {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

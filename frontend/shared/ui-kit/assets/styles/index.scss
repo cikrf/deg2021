@@ -1,0 +1,65 @@
+@import './mixin';
+@import './variables';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  background-color: var(--white-color);
+  margin: 0;
+  font-family: Lato, Arial, sans-serif, -apple-system;
+  color: var(--text-primary-color);
+  letter-spacing: .012em;
+}
+
+@include mobile-and-below {
+  html, body {
+    min-height: initial;
+    height: 100%;
+  }
+}
+
+@import './class-helpers';
+@import './fonts';
+@import './a11y';
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: var(--gosblue-color);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+// NOTE: для отладки + для навигации по Tab
+//a,
+//button {
+//  outline: none;
+//
+//  &:focus {
+//    outline: 2px solid #d71ef7;
+//    outline-offset: 2px;
+//  }
+//}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+package wavesenterprise;
+
+option java_multiple_files = true;
+option java_package = "com.wavesenterprise.protobuf.service.messagebroker";
+option csharp_namespace = "WavesEnterprise";
+option go_package = "wavesenterprise.com/weproto";
+
+import "messagebroker/messagebroker_blockchain_event.proto";
+import "messagebroker/messagebroker_subscribe_on_request.proto";
+
+service BlockchainEventsService {
+  rpc SubscribeOn (SubscribeOnRequest) returns (stream BlockchainEvent) {}
+}

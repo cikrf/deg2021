@@ -1,0 +1,10 @@
+@import '../../../assets/styles/mixin.scss';
+
+:host {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: 0 var(--lg-size);
+  background-color: var(--input-color);
+}

@@ -1,0 +1,18 @@
+{
+  "name": "keytool-ui",
+  "productName": "keytool-ui",
+  "version": "1.0.4",
+  "main": "./main.prod.js",
+  "scripts": {
+    "electron-rebuild": "node -r ../.erb/scripts/BabelRegister.js ../.erb/scripts/ElectronRebuild.js",
+    "postinstall": "yarn electron-rebuild"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@types/elliptic": "^6.4.13",
+    "@types/secp256k1": "^4.0.3",
+    "graphene-pk11": "^2.2.3",
+    "secp256k1": "^4.0.2"
+  },
+  "devDependencies": {}
+}

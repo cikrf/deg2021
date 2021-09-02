@@ -1,0 +1,19 @@
+@import '../../mixins/typography.scss';
+
+.plain-text {
+  &-normal {
+    @include text-normal();
+  }
+
+  &-stroked {
+    @include text-stroked();
+  }
+
+  &-hint {
+    @include text-hint();
+  }
+
+  &-hint-strong {
+    @include text-hint-strong();
+  }
+}

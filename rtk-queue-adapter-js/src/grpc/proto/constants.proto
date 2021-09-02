@@ -1,0 +1,26 @@
+syntax = "proto3";
+package wavesenterprise;
+
+option java_package = "com.wavesenterprise.protobuf.constants";
+option csharp_namespace = "WavesEnterprise";
+option go_package = "wavesenterprise.com/weproto";
+
+enum CryptoAlgo {
+  UNKNOWN_CRYPTO_ALGO = 0;
+  GOST_28147 = 1;
+  GOST_3412_2015_K = 2;
+  AES = 3;
+}
+
+enum CryptoType {
+  UNKNOWN_CRYPTO_TYPE = 0;
+  GOST = 1;
+  CURVE_25519 = 2;
+}
+
+enum ConsensusType {
+  UNKNOWN_CONSENSUS_TYPE = 0;
+  POA = 1;
+  POS = 2;
+  CFT = 3;
+}

@@ -1,0 +1,22 @@
+version: '3.0'
+
+services:
+  db:
+    image: postgres:12
+    restart: 'no'
+    # logging:
+    #   driver: none
+    environment:
+      POSTGRES_DB: decrypt_db0
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_USER: postgres
+      POSTGRES_HOST: 127.0.0.1
+    volumes:
+      - ./docker/pg:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 2s
+      timeout: 5s
+      retries: 30

@@ -1,0 +1,13 @@
+<div class="error-page">
+  <ui-unavailable
+    [title]="errorMap[code]"
+    isAnon
+    showSupport
+    href='/'
+    description="Попробуйте чуть позже"
+    iconName="error-block"
+    isContent
+  >
+    <div *ngIf="context?.status !== 0">Код ошибки: {{ context?.status }}</div>
+  </ui-unavailable>
+</div>

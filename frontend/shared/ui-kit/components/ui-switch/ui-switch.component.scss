@@ -1,0 +1,74 @@
+@import '../../assets/styles/mixin.scss';
+
+$max-width-switch: 71px;
+$active-left-position: 34px;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  &._active {
+    .ui-switch {
+      background-color: var(--active-item-color);
+
+      ui-icon {
+        transform: translateX($active-left-position);
+      }
+    }
+  }
+
+  &._disabled {
+    .ui-switch {
+      background-color: var(--button-disabled-color);
+      border: none;
+      box-shadow: none;
+    }
+  }
+
+  &._horizontal {
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+    width: inherit;
+
+    .ui-switch {
+      margin-right: var(--md-size);
+
+      &__label {
+        @include heading-h5();
+        color: var(--text-normal-color);
+      }
+    }
+  }
+
+  .ui-switch {
+    position: relative;
+    background-color: var(--white-color);
+    border: var(--xxs-size) solid var(--active-item-color);
+    box-sizing: border-box;
+    box-shadow: var(--shadow-control);
+    max-width: $max-width-switch;
+    min-width: $max-width-switch;
+    max-height: var(--semi-xxlg-size);
+    display: flex;
+    border-radius: var(--semi-xxlg-size);
+    align-items: center;
+    cursor: pointer;
+    transition: background-color .1s ease-in;
+    padding: var(--xs-size) 0;
+
+    ui-icon {
+      left: var(--xs-size);
+      transition: transform .3s ease-in;
+    }
+
+    &__label {
+      @include text-hint-strong();
+      max-width: fit-content;
+      min-width: $max-width-switch;
+      text-align: right;
+      color: var(--summer-night-color);
+    }
+  }
+}

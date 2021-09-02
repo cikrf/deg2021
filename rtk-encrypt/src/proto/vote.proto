@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+message RangeProof {
+  bytes A = 1;
+  bytes B = 2;
+  repeated bytes As = 3;
+  repeated bytes Bs = 4;
+  repeated bytes c = 5;
+  repeated bytes r = 6;
+}
+
+message Question {
+  repeated RangeProof options = 1;
+  RangeProof sum = 2;
+}
+
+message Bulletin {
+  repeated Question questions = 1;
+}

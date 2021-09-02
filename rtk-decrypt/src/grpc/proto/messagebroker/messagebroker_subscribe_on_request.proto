@@ -1,0 +1,46 @@
+syntax = "proto3";
+package wavesenterprise;
+
+option java_package = "com.wavesenterprise.protobuf.service.messagebroker";
+option csharp_namespace = "WavesEnterprise";
+option go_package = "wavesenterprise.com/weproto";
+
+import "google/protobuf/wrappers.proto";
+
+message SubscribeOnRequest {
+  oneof start_from {
+    GenesisBlock genesis_block = 101;
+    BlockSignature block_signature = 102;
+    CurrentEvent current_event = 103;
+  }
+  repeated EventsFilter events_filters = 1;
+}
+
+message GenesisBlock {}
+
+message BlockSignature {
+  google.protobuf.BytesValue last_block_signature = 1;
+}
+
+message CurrentEvent {}
+
+message EventsFilter {
+  message FilterIn {}
+  message FilterOut {}
+  oneof filter_type {
+    FilterIn filter_in = 1;
+    FilterOut filter_out = 2;
+  }
+  oneof events_filter {
+    TxTypeFilter tx_type_filter = 101;
+    ContractIdFilter contract_id_filter = 102;
+  }
+}
+
+message TxTypeFilter {
+  repeated int32 tx_types = 1;
+}
+
+message ContractIdFilter {
+  repeated bytes contract_ids = 1;
+}

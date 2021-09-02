@@ -1,0 +1,59 @@
+<ui-layout-new
+  [showSupport]="false"
+>
+  <!-- Header -->
+  <ng-container
+    layout-header
+  >
+    <ui-layout-header type="anon">
+      <div subheader>
+        <div class="final-page__page-header">
+        </div>
+      </div>
+    </ui-layout-header>
+  </ng-container>
+
+  <div class="final-page">
+    <ng-container>
+      <ui-icon
+        class="final-page__icon final-page__icon_skipped"
+        name="stuff-cross"
+        size="120"
+      >
+      </ui-icon>
+      <ng-container *ngIf="error && errors[error]; else commonError">
+        <div class="final-page__title">
+          {{ errors[error].title }}
+        </div>
+        <div
+          *ngIf="showDesc"
+          class="final-page__description"
+        >
+          {{ errors[error].desc }}
+        </div>
+      </ng-container>
+
+    </ng-container>
+
+    <div class="final-page__actions">
+      <ui-button
+        class="final-page__button"
+        type="primary"
+        (click)="back()"
+      >
+        {{ (error && errors[error]?.btn) || 'На главную' }}
+      </ui-button>
+    </div>
+  </div>
+
+</ui-layout-new>
+
+
+<ng-template #commonError>
+  <div class="final-page__title">
+    Что-то пошло не так
+  </div>
+  <div class="final-page__description">
+    Обратитесь в службу поддержки
+  </div>
+</ng-template>

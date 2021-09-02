@@ -1,0 +1,8 @@
+node_modules
+src
+example
+.idea
+webpack
+.gitignore
+package-lock.json
+tsconfig.json

@@ -1,0 +1,36 @@
+@import "../../mixin.scss";
+
+.g {
+  &-text {
+    &-center {
+      text-align: center;
+    }
+    &-left {
+      text-align: left;
+    }
+  }
+
+  &-cursor {
+    &-p {
+      cursor: pointer;
+    }
+  }
+
+  &-link {
+    @include text-normal();
+    cursor: pointer;
+    color: var(--gosblue-color);
+  }
+
+  &-visibility-hidden {
+    @include visually-hidden();
+  }
+
+  &-visibility-hidden-focusable {
+    @include visually-hidden-focusable();
+  }
+}
+
+.nowrap {
+  white-space: nowrap;
+}

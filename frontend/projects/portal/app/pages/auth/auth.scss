@@ -1,0 +1,15 @@
+@import '~shared/ui-kit/assets/styles/mixin';
+
+:host {
+  display: block;
+  @include maxContentWidth(true);
+
+  .waiting {
+    &__line {
+      width: var(--lg-size);
+      height: 3px;
+      margin: var(--sm-size-reverse) auto var(--semi-md-size);
+      background-color: var(--giallo-brillante-color);
+    }
+  }
+}

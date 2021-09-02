@@ -1,0 +1,14 @@
+<ui-a11y></ui-a11y>
+
+<div class="ui-a11y-panel">
+  <ui-button
+    id="TopAccessibilityPanel"
+    [uiButton]="'link'"
+    [label]="'Версия сайта для слабовидящих'"
+    (click)="openEyePanel()"
+  ></ui-button>
+</div>
+
+<router-outlet></router-outlet>
+
+<ui-media></ui-media>

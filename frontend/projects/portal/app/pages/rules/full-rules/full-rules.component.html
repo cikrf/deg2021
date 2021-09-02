@@ -1,0 +1,42 @@
+<ng-container *ngIf="rules">
+  <ul class="full-rules">
+
+    <ng-container *ngFor="let rule of rules">
+      <li class="full-rules__container">
+  
+        <!-- Заголовок правила -->
+        <h3 class="full-rules__container-title">{{ rule.title }}</h3>
+
+        <!-- Контент -->
+        <ng-container *ngFor="let content of rule.content || []">
+          <p class="full-rules__container-text" [innerHTML]="content"></p>
+        </ng-container>
+
+        <!-- Важное для внимания уведомление -->
+        <ng-container *ngIf="rule.notice">
+          <div class="full-rules__helper">
+            <span class="full-rules__helper-line"></span>
+            <p class="full-rules__helper-text">{{ rule.notice }}</p>
+          </div>
+        </ng-container>
+
+        <!-- Дополнительная информация в виде списка -->
+        <ng-container *ngIf="rule?.list?.length > 0">
+          <ol>
+            <li *ngFor="let item of rule.list">
+              <h4 class="full-rules__container-subtitle">{{ item.title }}</h4>
+              <p class="full-rules__container-text" [innerHTML]="item.content"></p>
+
+              <div *ngIf="item.notice" class="full-rules__helper">
+                <div class="full-rules__helper-line"></div>
+                <p class="full-rules__helper-text">{{ item.notice }}</p>
+              </div>
+            </li>
+          </ol>
+        </ng-container>
+    
+      </li>
+    </ng-container>
+    
+  </ul>
+</ng-container>

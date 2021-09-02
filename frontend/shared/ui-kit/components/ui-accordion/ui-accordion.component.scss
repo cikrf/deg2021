@@ -1,0 +1,44 @@
+@import 'ui-kit/assets/styles/mixin';
+
+:host {
+  border-radius: var(--semi-md-size);
+  border: var(--border-card-active);
+  display: block;
+  padding: var(--md-size);
+
+  @include tablet-and-above() {
+    padding: var(--md-size) var(--lg-size);
+  }
+
+  &.ui-accordion {
+    // Light theme
+    &--light {
+      border: 0;
+      padding: 0;
+    }
+
+    // Has description area
+    &--with-description {
+      color: var(--text-secondary-color);
+    }
+
+    &--opened {
+      .ui-button-icon {
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  & > ui-button {
+    &, &::ng-deep > button {
+      justify-content: flex-start;
+      width: auto;
+    }
+  }
+}
+
+.ui-accordion {
+  &__description {
+    padding: var(--md-size) 0 0 var(--lg-size);
+  }
+}

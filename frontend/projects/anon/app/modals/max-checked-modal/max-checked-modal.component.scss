@@ -1,0 +1,31 @@
+@import '../../../../../shared/ui-kit/assets/styles/mixin.scss';
+
+:host {
+  display: block;
+
+  .max-checked {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 100%;
+
+    &__title {
+      @include heading-h3();
+      margin-bottom: var(--md-size);
+
+      @include mobile-sm-only() {
+        @include heading-h4();
+        text-align: center;
+      }
+    }
+
+    &__text-helper {
+      @include text-normal();
+
+      @include mobile-sm-only() {
+        text-align: center;
+      }
+    }
+  }
+}

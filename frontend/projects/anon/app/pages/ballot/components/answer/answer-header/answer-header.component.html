@@ -1,0 +1,47 @@
+<header
+  class="answer-header"
+  *ngIf="{
+    checked: checked$ | async,
+    answerCount: answersCount$ | async,
+    invalid: invalid$ | async,
+    maxMarks: maxMarks$ | async
+  } as observable"
+>
+  <div
+    class="answer-header__label"
+    [class.header__label_unavailable]="rejectionReason"
+  >
+    <h3 *ngIf="unavailable">Кандидат исключен</h3>
+    <ui-checkbox
+      type="votebox"
+      [class.ui-checkbox--unavailable]="unavailable"
+      [unavailable]="unavailable"
+      [formControl]="control"
+      (onDisabledClick)="onDisabledClick();clickOnDisabledCheckbox();"
+    >
+      <span
+        *ngIf="isDisableControl()"
+        class="ui-checkbox-label ui-checkbox-label--unavailable"
+        role="button"
+        aria-label="Подсказка"
+        (click)="onDisabledClick();clickOnQuestion();"
+      >
+        <img src="assets/icons/question.svg" alt="" aria-hidden="true">
+      </span>
+    </ui-checkbox>
+  </div>
+
+  <div
+    *ngIf="control?.dirty || control?.value"
+    class="answer-header__action"
+  >
+    <div
+      *ngIf="observable.maxMarks > 1"
+      class="answer-header__candidates"
+      [class.text-tela-rossa]="observable.invalid"
+    >
+      {{ observable.answerCount === 1 ? 'Выбран' : 'Выбраны' }} {{ observable.answerCount || 0 }}
+      из {{ observable.maxMarks }} возможных кандидатов
+    </div>
+  </div>
+</header>

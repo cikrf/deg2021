@@ -1,0 +1,40 @@
+<div class="error__wrapper"
+     *ngIf="sectionAndCode$ | async as sectionAndCode"
+>
+
+  <ng-container [ngSwitch]="sectionAndCode[0]">
+    <ng-container *ngSwitchCase="'CHECKUP'">
+      <ui-unavailable
+        hideRepeat
+        hideMain
+        iconName="stuff-warning"
+        red
+        [isContent]="true"
+      >
+        <p>К&nbsp;сожалению, Ваш браузер не&nbsp;удовлетворяет требованиям для корректной работы портала
+          голосования <a href="https://vybory.gov.ru/">vybory.gov.ru</a>. Пожалуйста, смените браузер или
+          устройство.</p>
+      </ui-unavailable>
+      <ui-unavailable-browser></ui-unavailable-browser>
+    </ng-container>
+
+    <ng-container *ngSwitchDefault>
+      <ng-container [ngTemplateOutlet]="all"></ng-container>
+    </ng-container>
+  </ng-container>
+</div>
+
+<ng-template #all>
+  <ui-unavailable
+    hideRepeat
+    [hideMain]="hideMain$ | async"
+    [red]="enableRedMode$ | async"
+    [href]="AppRoutingEnum.Election"
+    iconName="error-block"
+    [title]="title$ | async | toString"
+    [description]="text$ | async | toString"
+    showSupport
+  ></ui-unavailable>
+</ng-template>
+
+

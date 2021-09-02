@@ -1,0 +1,17 @@
+<div
+  *ngIf="endTime && currentTime"
+  class="timer"
+>
+  <div
+    class="timer__title"
+    [class.timer__title--danger]="oneMinuteLeft"
+  >
+    Голосование продлится
+  </div>
+  <div
+    class="timer__content"
+    [class.timer__content--danger]="oneMinuteLeft"
+  >
+    {{ oneMinuteLeft ? 'меньше минуты' : (endTime | uiTimeInterval: currentTime : 'long') }}
+  </div>
+</div>

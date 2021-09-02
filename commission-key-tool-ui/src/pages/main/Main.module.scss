@@ -1,0 +1,47 @@
+.mainBlocks {
+  display: flex;
+  gap: 32px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.blocksContent {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.blocksText {
+  margin-bottom: 32px;
+  line-height: 1.2em;
+  width: 300px;
+}
+
+.collapseBlock {
+  width: 332px;
+  position: absolute;
+  right: 32px;
+  top: 32px;
+  border: 1px solid #DDDBDA;
+  border-radius: 4px;
+  overflow: hidden;
+
+  & > div:not(:last-child) {
+    border-bottom: 1px solid #DDDBDA;
+  }
+}
+
+.collapseBlockContent {
+  line-height: 1.2em;
+  text-align: center;
+}
+
+.collapseBlockOffset {
+  margin-bottom: 32px;
+}
+
+@media (max-width: 1600px) {
+  .mainBlocks {
+    margin-right: calc(400px - (100% - 1000px) / 2);
+  }
+}

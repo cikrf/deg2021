@@ -1,0 +1,13 @@
+{
+  "/api": {
+    "target": "http://anon.dev.deg2021.infra.loc/",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/sprites/*": {
+    "target": "http://anon.dev.deg2021.infra.loc/sprites/",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {"^/sprites" : ""}
+  }
+}

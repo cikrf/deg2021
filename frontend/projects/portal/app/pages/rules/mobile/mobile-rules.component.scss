@@ -1,0 +1,18 @@
+@import 'shared/ui-kit/assets/styles/mixins';
+
+.mobile-rules {
+  app-mobile-rules-header {
+    display: block;
+    margin-bottom: var(--xlg-size);
+  }
+
+  &__section {
+    display: block;
+    margin-bottom: var(--x-mega-size);
+  }
+
+  &__next-step-button {
+    display: flex;
+    justify-content: center;
+  }
+}

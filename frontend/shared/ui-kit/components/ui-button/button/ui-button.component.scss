@@ -1,0 +1,277 @@
+@import '../../../assets/styles/mixin.scss';
+
+:host {
+  display: inline-flex;
+  justify-content: center;
+  width: 100%;
+
+  @include tablet-and-above() {
+    width: auto;
+  }
+}
+
+.ui-button {
+  box-shadow: none;
+  border: var(--border-size-button) solid var(--gosblue-color);
+  border-radius: var(--base-size);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: bottom;
+  width: 100%;
+  margin: 0;
+  padding: 1.6rem .8rem;
+  background-color: var(--gosblue-color);
+  color: var(--white-color);
+  font-size: 1.6rem;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  text-decoration: none;
+  appearance: none;
+
+  @include tablet-and-above() {
+    width: auto;
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  &:hover {
+    border-color: var(--active-item-color);
+    background-color: var(--active-item-color);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 var(--xs-size) var(--blue-focus);
+    animation: button-focus-primary .2s;
+    outline: none;
+  }
+
+  &:focus,
+  &:active {
+    border-color: var(--button-hit-color);
+    background-color: var(--button-hit-color);
+  }
+
+  &-success {
+    border-color: var(--pino-verde-color);
+    background-color: var(--pino-verde-color);
+    color: var(--pino-verde-color);
+
+    &:hover {
+      border-color: var(--green-sea-color);
+
+      &:not(.ui-button-outline),
+      &:not(.ui-button-link) {
+        background-color: var(--green-sea-color);
+      }
+    }
+
+    &:focus,
+    &:active {
+      border-color: var(--pino-verde-color);
+      background-color: var(--nephritis-color);
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 var(--xs-size) var(--green-light-color);
+      animation: button-focus-success .2s;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      &.ui-button-outline {
+        background-color: var(--green-light-color);
+      }
+    }
+
+    &:not(.ui-button-link),
+    &:not(.ui-button-outline) {
+      color: var(--white-color);
+    }
+  }
+
+  &-error {
+    border-color: var(--tela-rossa-color);
+    background-color: var(--tela-rossa-color);
+    color: var(--tela-rossa-color);
+
+    &:hover {
+      border-color: var(--tela-rossa-color);
+      background-color: var(--error-highlight-color);
+    }
+
+    &:focus,
+    &:active {
+      border-color: var(--tela-rossa-color);
+      background-color: var(--error-highlight-color);
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 var(--xs-size) var(--red-light-color);
+      animation: button-focus-error .2s;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      &.ui-button-outline {
+        background-color: var(--red-light-color);
+      }
+    }
+
+    &:not(.ui-button-outline),
+    &:not(.ui-button-link) {
+      color: var(--white-color);
+    }
+  }
+
+  &[disabled],
+  &[disabled]:hover,
+  &[disabled]:active {
+    border-color: var(--button-disabled-color) !important;
+    background-color: var(--button-disabled-color) !important;
+    color: var(--telegrey-scuro-color) !important;
+    cursor: auto;
+
+    &.ui-button-link {
+      background-color: transparent !important;
+    }
+  }
+
+  &-outline {
+    background-color: transparent;
+    color: var(--gosblue-color);
+
+    &:hover,
+    &:focus,
+    &:active {
+      &:not(.ui-button-success),
+      &:not(.ui-button-error) {
+        background-color: var(--input-color);
+      }
+    }
+
+    &.ui-button-success {
+      color: var(--pino-verde-color);
+    }
+
+    &.ui-button-error {
+      color: var(--tela-rossa-color);
+    }
+  }
+
+  &-link {
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+    background-color: transparent !important;
+    color: var(--gosblue-color);
+    font-size: inherit;
+    line-height: inherit;
+
+    &:hover,
+    &:focus {
+      .ui-button-label {
+        border-bottom-color: inherit;
+      }
+    }
+
+    .ui-button-label {
+      border-bottom: var(--border-size-base) solid transparent;
+      padding-bottom: .1rem;
+    }
+
+    &.ui-button-success {
+      color: var(--pino-verde-color);
+    }
+
+    &.ui-button-error {
+      color: var(--tela-rossa-color);
+    }
+  }
+
+  &-preloader {
+    z-index: 10;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -12px;
+    margin-left: -12px;
+    animation: loading 3s linear infinite;
+  }
+
+  &-preloader-ring {
+    animation: dash 1.75s ease-in-out infinite
+  }
+}
+
+.ui-button-icon,
+.ui-button-label {
+  display: inline-block !important;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.ui-button-loading {
+  position: relative;
+
+  & > :not(.ui-button-preloader) {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 100;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 50, 100;
+    stroke-dashoffset: -35;
+  }
+
+  100% {
+    stroke-dasharray: 50, 100;
+    stroke-dashoffset: -80;
+  }
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes button-focus-primary {
+  from {
+    box-shadow: 0 0 0 var(--base-size) var(--blue-focus);
+  }
+  to {
+    box-shadow: 0 0 0 var(--xs-size) var(--blue-focus);
+  }
+}
+
+@keyframes button-focus-success {
+  from {
+    box-shadow: 0 0 0 var(--base-size) var(--green-light-color);
+  }
+  to {
+    box-shadow: 0 0 0 var(--xs-size) var(--green-light-color);
+  }
+}
+
+@keyframes button-focus-error {
+  from {
+    box-shadow: 0 0 0 var(--base-size) var(--red-light-color);
+  }
+  to {
+    box-shadow: 0 0 0 var(--xs-size) var(--red-light-color);
+  }
+}

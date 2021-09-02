@@ -1,0 +1,11 @@
+<!-- Стандартный список с ответами -->
+<app-confirm-list *ngIf="!isError && !isSkip" [answers]="answers"></app-confirm-list>
+
+<!-- Действия -->
+<div class="confirm__label">
+  <app-confirm-controls
+    [error]="isError"
+    [skip]="isSkip"
+    (onReceipt)="onReceipt$.next($event)"
+  ></app-confirm-controls>
+</div>

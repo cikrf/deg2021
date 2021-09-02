@@ -1,0 +1,137 @@
+.mainBlocks {
+  display: flex;
+  gap: 32px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.blocksContent {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-width: 360px;
+}
+
+.field {
+  margin-bottom: 32px;
+}
+
+.label {
+  line-height: 1.3em;
+  font-size: 13px;
+  color: #404040;
+  margin-bottom: 8px;
+}
+
+.input {
+  width: 116px;
+  margin: 0 auto;
+}
+
+.error {
+  font-size: 13px;
+  color: #C23934;
+  line-height: 1.3em;
+  margin-top: 8px;
+}
+
+.keysSummaryContent {
+  margin-bottom: 32px;
+  width: 640px;
+  text-align: left;
+}
+
+.keysSummarySection {
+  &:not(:last-child) {
+    margin-bottom: 32px;
+  }
+}
+
+.keysSummarySectionTitle {
+  font-weight: bold;
+  line-height: 1.5em;
+  letter-spacing: 0.0012em;
+  margin-bottom: 32px;
+}
+
+.commisionKeysField {
+  &:not(:last-child) {
+    margin-bottom: 16px;
+  }
+}
+
+.commisionKeysFieldTitle {
+  color: #808080;
+  font-size: 13px;
+  line-height: 1.5em;
+  letter-spacing: 0.0012em;
+  border-bottom: 1px solid #DDDBDA;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+}
+
+.commisionKeysFieldValue {
+  line-height: 1.5em;
+  letter-spacing: 0.0012em;
+}
+
+.sharedKeyField {
+  display: flex;
+  gap: 4px;
+}
+
+.writeSharesContent {
+  width: 660px;
+  padding-right: 24px;
+}
+
+.writeSharesPublic {
+  margin-bottom: 40px;
+}
+
+.stepContent {
+  margin-top: 32px;
+}
+
+.stepTitle {
+  display: flex;
+  align-items: center;
+}
+
+.stepSubtitle {
+  color: #808080;
+  font-size: 13px;
+  letter-spacing: 0.0012em;
+  font-weight: normal;
+  margin-top: 8px;
+}
+
+.stepDoneTitle {
+  margin-left: 16px;
+  color: #808080;
+  font-weight: normal;
+}
+
+.stepInput {
+  width: 116px;
+  margin-bottom: 16px;
+  margin-top: 8px;
+}
+
+.stepButtons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.lastStepError {
+  font-size: 13px;
+  color: #C23934;
+  line-height: 1.3em;
+  margin-top: 8px;
+}
+
+.successContent {
+  margin: 32px 0;
+}

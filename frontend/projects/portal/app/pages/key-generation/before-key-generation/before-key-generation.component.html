@@ -1,0 +1,26 @@
+<div class="sms-auth-card">
+
+  <ui-icon
+    name="notice-accept"
+    class="icon-confirm-completed-color"
+    [size]="80"
+  >
+  </ui-icon>
+
+  <h2 class="sms-auth-card__header">
+    Теперь Вы можете принять участие<br>в&nbsp;дистанционном электронном голосовании
+  </h2>
+
+  <div class="sms-auth-card__text">
+    <p>На&nbsp;следующем шаге будет запущена процедура анонимизации для обеспечения тайны голосования:</p>
+    <p>для Вас будет создан персональный код шифрования,<br>который позволит сохранить результаты Вашего
+      голосования анонимными</p>
+  </div>
+
+  <ui-button
+    [autofocus]="true"
+    [label]="'Продолжить'"
+    (onClick)="gotoProcess()"
+  ></ui-button>
+
+</div>

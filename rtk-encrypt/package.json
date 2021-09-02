@@ -1,0 +1,74 @@
+{
+  "name": "@wavesenterprise/rtk-encrypt",
+  "version": "1.2.2",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "prebuild": "npm run compile-proto",
+    "build": "tsc",
+    "build:webpack": "webpack --config webpack/webpack.config.js --mode=production --progress",
+    "postbuild111": "cp package.json dist/ && cp README.md dist/ ",
+    "compile-proto": "pbjs -t static-module -o src/proto/vote.js --no-comments --no-create --no-beautify --no-delimited src/proto/vote.proto",
+    "tsc": "npx tsc --noEmit",
+    "lint": "eslint -c \"./eslint/common.eslintrc.js\" --no-ignore \"**/**.ts*\"",
+    "test": "jest --verbose --useStderr",
+    "analyze": "webpack --config webpack/webpack.config.js --mode=production --profile --json > stats.json && webpack-bundle-analyzer ./stats.json ./dist"
+  },
+  "sideEffects": false,
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@types/bn.js": "^4.11.6",
+    "@types/elliptic": "^6.4.12",
+    "@types/jest": "^26.0.19",
+    "@wavesenterprise/eslint-config": "^0.1.0",
+    "axios": "^0.21.1",
+    "buffer": "^6.0.3",
+    "clean-webpack-plugin": "^3.0.0",
+    "eslint": "^7.16.0",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.4.4",
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3",
+    "webpack": "^5.11.1",
+    "webpack-bundle-analyzer": "^4.3.0",
+    "webpack-cli": "^4.3.0"
+  },
+  "dependencies": {
+    "@wavesenterprise/crypto-gost-js": "^2.1.0-RC1",
+    "@wavesenterprise/rtk-encrypt": "^1.2.0-RC4",
+    "bn.js": "^5.1.3",
+    "elliptic": "^6.5.4",
+    "hash.js": "^1.1.7",
+    "protobufjs": "^6.10.2"
+  },
+  "jest": {
+    "testTimeout": 3000000,
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "test",
+    "testRegex": ".spec.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node",
+    "coverageThreshold": {
+      "global": {
+        "branches": 50,
+        "functions": 50,
+        "lines": 50
+      }
+    },
+    "coverageReporters": [
+      "text",
+      "html"
+    ]
+  }
+}

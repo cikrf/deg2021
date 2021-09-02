@@ -1,0 +1,20 @@
+@import "mixin";
+
+:host(.is-modal_active) {
+  ui-layout {
+    display: none;
+  }
+}
+
+.ui-a11y-panel {
+  display: flex;
+  justify-content: flex-end;
+  height: var(--anon-header-height);
+  padding-left: var(--xlg-size);
+  padding-right: var(--x-mega-size);
+
+  @include mobile-only {
+    padding-left: var(--lg-size);
+    padding-right: var(--md-size);
+  }
+}

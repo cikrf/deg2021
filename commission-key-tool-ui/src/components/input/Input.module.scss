@@ -1,0 +1,45 @@
+.container {
+  position: relative;
+}
+
+.input {
+  outline: none;
+  border: 1px solid #DDDBDA;
+  box-sizing: border-box;
+  padding: 0 12px;
+  height: 32px;
+  border-radius: 4px;
+  background-color: #fff;
+  width: 100%;
+  transition: border-color .3s ease;
+  font-family: inherit;
+
+  &::placeholder {
+    font-family: inherit;
+  }
+
+  &:focus {
+    border-color: #4192D9;
+    box-shadow: 0 0 4px 1px rgba(0, 144, 255, 0.75);
+  }
+
+  &.error {
+    border-color: #D94641;
+
+    &:focus {
+      box-shadow: 0 0 4px 1px rgba(217, 70, 65, .75);
+    }
+  }
+}
+
+.errorIcon {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+}
+
+.label {
+  font-size: 13px;
+  color: #404040;
+  margin-bottom: 8px;
+}

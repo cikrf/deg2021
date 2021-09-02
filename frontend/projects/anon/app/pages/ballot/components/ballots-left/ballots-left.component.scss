@@ -1,0 +1,15 @@
+@import 'ui-kit/assets/styles/mixin';
+
+.left {
+  text-align: center;
+
+  &__title {
+    @include cap-h4();
+    color: var(--text-primary-color);
+    margin-bottom: var(--xs-size);
+
+    @include tablet-and-above {
+      @include cap-h3();
+    }
+  }
+}

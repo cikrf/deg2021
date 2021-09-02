@@ -1,0 +1,65 @@
+syntax = "proto3";
+package wavesenterprise;
+
+option java_package = "com.wavesenterprise.transaction.protobuf";
+option csharp_namespace = "WavesEnterprise";
+option go_package = "wavesenterprise.com/weproto";
+
+import "genesis/genesis_transaction.proto";
+import "genesis/genesis_permit_transaction.proto";
+import "genesis/genesis_register_node_transaction.proto";
+import "managed/register_node_transaction.proto";
+import "managed/create_alias_transaction.proto";
+import "managed/issue_transaction.proto";
+import "managed/reissue_transaction.proto";
+import "managed/burn_transaction.proto";
+import "managed/lease_transaction.proto";
+import "managed/lease_cancel_transaction.proto";
+import "managed/sponsor_fee_transaction.proto";
+import "managed/set_asset_script_transaction.proto";
+import "managed/data_transaction.proto";
+import "managed/transfer_transaction.proto";
+import "managed/mass_transfer_transaction.proto";
+import "managed/permit_transaction.proto";
+import "managed/create_policy_transaction.proto";
+import "managed/update_policy_transaction.proto";
+import "managed/policy_data_hash_transaction.proto";
+import "managed/create_contract_transaction.proto";
+import "managed/call_contract_transaction.proto";
+import "managed/executed_contract_transaction.proto";
+import "managed/disable_contract_transaction.proto";
+import "managed/update_contract_transaction.proto";
+import "managed/set_script_transaction.proto";
+import "managed/atomic_transaction.proto";
+
+message Transaction {
+  int32 version = 1;
+  oneof transaction {
+    GenesisTransaction genesis_transaction = 1000;
+    GenesisPermitTransaction genesis_permit_transaction = 1001;
+    GenesisRegisterNodeTransaction genesis_register_node_transaction = 1002;
+    RegisterNodeTransaction register_node_transaction = 1003;
+    CreateAliasTransaction create_alias_transaction = 1004;
+    IssueTransaction issue_transaction = 1005;
+    ReissueTransaction reissue_transaction = 1006;
+    BurnTransaction burn_transaction = 1007;
+    LeaseTransaction lease_transaction = 1008;
+    LeaseCancelTransaction lease_cancel_transaction = 1009;
+    SponsorFeeTransaction sponsor_fee_transaction = 1010;
+    SetAssetScriptTransaction set_asset_script_transaction = 1011;
+    DataTransaction data_transaction = 1012;
+    TransferTransaction transfer_transaction = 1013;
+    MassTransferTransaction mass_transfer_transaction = 1014;
+    PermitTransaction permit_transaction = 1015;
+    CreatePolicyTransaction create_policy_transaction = 1016;
+    UpdatePolicyTransaction update_policy_transaction = 1017;
+    PolicyDataHashTransaction policy_data_hash_transaction = 1018;
+    CreateContractTransaction create_contract_transaction = 1019;
+    CallContractTransaction call_contract_transaction = 1020;
+    ExecutedContractTransaction executed_contract_transaction = 1021;
+    DisableContractTransaction disable_contract_transaction = 1022;
+    UpdateContractTransaction update_contract_transaction = 1023;
+    SetScriptTransaction set_script_transaction = 1024;
+    AtomicTransaction atomic_transaction = 1025;
+  }
+}

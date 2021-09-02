@@ -1,0 +1,10 @@
+@import 'shared/ui-kit/assets/styles/mixins';
+
+.rules-step-three {
+  @include text-normal();
+  color: var(--summer-night-color);
+
+  &__paragraph {
+    margin-bottom: var(--md-size);
+  }
+}

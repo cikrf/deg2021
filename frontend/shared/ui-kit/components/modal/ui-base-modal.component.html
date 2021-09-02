@@ -1,0 +1,13 @@
+<div (click)="close()" class="ui-modal__shadow"></div>
+
+<div class="ui-modal">
+  <ui-icon
+    *ngIf="!closeOnlyByUser"
+    name="base-close"
+    (click)="close()"
+    class="ui-modal__close"></ui-icon>
+
+  <div class="ui-modal__content">
+    <ng-content></ng-content>
+  </div>
+</div>

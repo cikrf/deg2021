@@ -1,0 +1,7 @@
+<div
+  class="avatar"
+  *uiPreloader="loading$ | async; height size; width size"
+  [style]="imageStyle"
+>
+</div>
+<img [src]="src" (load)="updateBackgroundImageUrl()" hidden />

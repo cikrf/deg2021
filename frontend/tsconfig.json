@@ -1,0 +1,70 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noFallthroughCasesInSwitch": true,
+    "strictNullChecks": true,
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "module": "es2020",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es5",
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true,
+    "paths": {
+      "@models/*": [
+        "shared/models/*"
+      ],
+      "@modules/*": [
+        "shared/modules/*"
+      ],
+      "@utils/*": [
+        "shared/utils/*"
+      ],
+      "@services/*": [
+        "shared/services/*"
+      ],
+      "@helpers/*": [
+        "shared/helpers/*"
+      ],
+      "@ui/*": [
+        "shared/ui-kit/*"
+      ],
+      "@enums/*": [
+        "shared/enums/*"
+      ],
+      "@interfaces/*": [
+        "shared/interfaces/*"
+      ],
+      "@shared/rxjs/*": [
+        "shared/rxjs/*"
+      ],
+      "@shared/helpers/*": [
+        "shared/helpers/*"
+      ],
+      "@state/*": [
+        "projects/anon/app/state/*"
+      ],
+      "@shared/interceptor/*": [
+        "shared/interceptor/*"
+      ]
+    }
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true,
+    "enableIvy": true
+  }
+}

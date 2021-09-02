@@ -1,0 +1,95 @@
+@import '../../assets/styles/mixin';
+@import '../../assets/styles/variables/breakpoint';
+
+$max-width-text-info: 469px;
+
+:host {
+  background: var(--footer-gray);
+  height: var(--footer-height);
+  padding: var(--lg-size);
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  z-index: var(--layer-highest);
+  box-sizing: border-box;
+
+  @include tablet-and-above {
+    padding: var(--xlg-size) var(--lg-size);
+  }
+
+  @include mobile-and-below {
+    flex-wrap: wrap;
+
+    .footer {
+      &__label {
+        order: 3;
+      }
+
+      &__logo-cik {
+        order: 1;
+      }
+
+      &__logo-msk {
+        order: 2;
+      }
+
+    }
+  }
+
+  @media (min-width: $tablet-min) {
+    padding: var(--xlg-size) var(--lg-size);
+  }
+
+  @media (min-width: $desktop-lg) {
+    padding: var(--xlg-size) var(--lg-size);
+  }
+
+  .footer {
+    &__logo-cik {
+      display: flex;
+      justify-content: flex-end;
+      margin-right: var(--xlg-size);
+      min-width: 54.25px;
+      height: 70px;
+    }
+
+    &__label {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: var(--sm-size);
+      text-align: center;
+      color: var(--helper-color);
+      @include text-normal();
+
+      @media (min-width: $tablet-max) {
+        max-width: $max-width-text-info;
+      }
+    }
+
+    &__logo-msk {
+      margin-left: var(--xlg-size);
+      min-width: 68.13px;
+      height: 70px;
+
+      @include tablet-and-above {
+        margin-left: var(--xlg-size);
+      }
+    }
+
+    &__support {
+      margin-top: var(--md-size);
+      @include text-normal();
+      cursor: pointer;
+      color: var(--gosblue-color);
+
+      @include tablet-and-above {
+        margin-top: var(--sm-size);
+      }
+    }
+  }
+
+}
+

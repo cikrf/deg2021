@@ -1,0 +1,22 @@
+<ui-unavailable
+  [hideDescription]="true"
+  [hideMain]="true"
+  [hideRepeat]="true"
+  [title]="'Вы уверены, что хотите выйти?'"
+  [isContent]="true"
+>
+  <div class="g-buttons-group">
+    <ui-button
+      uiButton="outline"
+      [autofocus]="true"
+      [label]="'Нет'"
+      (click)="goBack()"
+    ></ui-button>
+    <ui-button
+      [label]="'Да'"
+      (click)="logout()"
+    ></ui-button>
+  </div>
+</ui-unavailable>
+
+<ng-template #logoutRef>123</ng-template>

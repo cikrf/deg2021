@@ -1,0 +1,45 @@
+@import '../../assets/styles/mixin.scss';
+
+:host {
+  display: block;
+  text-align: center;
+
+  &:not(:last-child),
+  & > :not(:last-child) {
+    margin-bottom: var(--lg-size);
+  }
+
+  &:not(:last-child) {
+    @include desktop-and-above() {
+      margin-bottom: var(--xlg-size);
+    }
+  }
+}
+
+.browserlist {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+
+  @include desktop-and-above() {
+    flex-direction: row;
+  }
+
+  &-item {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 0 var(--md-size);
+
+    &:not(:last-child) {
+      margin-bottom: var(--lg-size);
+
+      @include desktop-and-above() {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

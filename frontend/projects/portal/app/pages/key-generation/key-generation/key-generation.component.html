@@ -1,0 +1,37 @@
+<ng-container *ngIf="{
+  loading: loading$ | async,
+  isError: isError$ | async,
+  isGeneration: isGeneration$ | async
+} as observables">
+  <div class="key-generation">
+    <ng-template #loadingTemplate>
+      <div class="key-generation__header">
+        <svg class="key-generation__icon key-generation__icon--spinner" width="64" height="64"
+             viewBox="0 0 81 81" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <title>Загрузка</title>
+          <path
+            d="M40.5002 78.3948C61.4289 78.3948 78.3949 61.4287 78.3949 40.5C78.3949 19.5713 61.4289 2.60529 40.5002 2.60529C19.5715 2.60529 2.60547 19.5713 2.60547 40.5C2.60547 61.4287 19.5715 78.3948 40.5002 78.3948Z"
+            stroke="#0D4CD3" stroke-opacity="0.5" stroke-width="2"/>
+          <path d="M78.3947 40.5C78.3947 19.5737 61.4263 2.60529 40.5 2.60529" stroke="#0D4CD3"
+                stroke-width="2"/>
+        </svg>
+        <h2 class="key-generation__title">
+          {{ observables.isGeneration ? 'Генерация' : 'Восстановление доступа к бюллетеням'}}...
+        </h2>
+      </div>
+      <div class="key-generation__content">
+        <p class="key-generation__text">Пожалуйста, дождитесь завершения. Ничего делать не нужно.</p>
+      </div>
+    </ng-template>
+    <ng-container *ngIf="!observables.loading; else loadingTemplate">
+      <app-key-generation-error
+        *ngIf="observables.isError; else success"
+      ></app-key-generation-error>
+      <ng-template #success>
+        <app-key-generation-success
+          [transferData]="transferDataSubject$ | async"
+        ></app-key-generation-success>
+      </ng-template>
+    </ng-container>
+  </div>
+</ng-container>

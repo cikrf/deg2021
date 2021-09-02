@@ -1,0 +1,21 @@
+syntax = "proto3";
+package wavesenterprise;
+
+option java_multiple_files = true;
+option java_package = "com.wavesenterprise.transaction.protobuf.acl";
+option csharp_namespace = "WavesEnterprise";
+option go_package = "wavesenterprise.com/weproto";
+
+import "permission_op.proto";
+import "atomic_badge.proto";
+
+message PermitTransaction {
+  bytes id = 1;
+  bytes sender_public_key = 2;
+  bytes target = 3;
+  int64 timestamp = 4;
+  int64 fee = 5;
+  PermissionOp permission_op = 6;
+  AtomicBadge atomic_badge = 7;
+  repeated bytes proofs = 8;
+}

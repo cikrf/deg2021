@@ -1,0 +1,49 @@
+<div class="key-generation__header">
+  <ui-icon
+    name="notice-warning"
+    [size]="64"
+    class="key-generation__icon"
+  ></ui-icon>
+  <span class="key-generation__title">
+    Голосование недоступно на этом устройстве
+  </span>
+</div>
+<div class="key-generation__content">
+  <span class="key-generation__sub-title">
+    Нам очень жаль, но вы не сможете проголосовать на этом телефоне или компьютере.
+  </span>
+  <span class="key-generation__text">
+    Возможно, это произошло, если вы уже начинали процесс голосования на другом устройстве. Теперь участие в голосовании возможно только с него.
+  </span>
+  <ui-button
+    [uiButton]="'outline'"
+    (click)="navigateToRootPage()"
+    class="key-generation__action"
+  >
+    Вернуться
+  </ui-button>
+  <ui-button
+    [uiButton]="'link'"
+    class="key-generation__action_mobile"
+    (click)="togglePossibleReasons()"
+  >
+    Еще возможные причины
+  </ui-button>
+</div>
+
+<div class="key-generation__possible-reasons"
+     [class.displayed]="showPossibleReasons$ | async">
+  <div class="key-generation__header-secondary">
+    <span class="key-generation__title">
+      Возможные причины
+    </span>
+  </div>
+  <div class="key-generation__content-secondary">
+    <span class="key-generation__text">
+      Если персональный код шифрования был получен на этом устройстве, попробуйте зайти в тот же интернет-браузер, которым вы пользовались в тот раз.
+    </span>
+    <span class="key-generation__text">
+      Если персональный код шифрования был получен в этом браузере и на этом устройстве, такое могло произойти если версия Вашего браузера изменилась в процессе обновления интернет-браузера или операционной системы телефона или компьютера.
+    </span>
+  </div>
+</div>

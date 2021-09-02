@@ -1,0 +1,21 @@
+syntax = "proto3";
+package wavesenterprise.grpc;
+
+option java_package = "com.wavesenterprise.protobuf.service.transaction";
+option csharp_namespace = "WavesEnterprise";
+option go_package = "wavesenterprise.com/weproto";
+
+import "google/protobuf/empty.proto";
+import "managed/transaction.proto";
+import "util/util_transaction_service.proto";
+
+service TransactionPublicService {
+  rpc Broadcast (Transaction) returns (Transaction);
+  rpc UtxInfo (google.protobuf.Empty) returns (stream UtxSize);
+  rpc TransactionInfo (TransactionInfoRequest) returns (TransactionInfoResponse);
+}
+
+message UtxSize {
+  int32 size = 1;
+  int64 size_in_bytes = 2;
+}

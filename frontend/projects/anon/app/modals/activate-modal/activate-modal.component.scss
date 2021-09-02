@@ -1,0 +1,59 @@
+@import '../../../../../shared/ui-kit/assets/styles/mixin.scss';
+
+:host {
+  display: block;
+
+  .activate-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 100%;
+
+    &__icon {
+      margin-bottom: var(--md-size);
+
+      &-mobile {
+        margin-bottom: var(--md-size);
+        display: none;
+      }
+
+      @include tablet-and-below {
+        display: none;
+
+        &-mobile {
+          display: block;
+        }
+      }
+    }
+
+    &__title {
+      @include heading-h3();
+      margin-bottom: var(--md-size);
+
+      @include mobile-sm-only() {
+        @include heading-h4();
+        text-align: center;
+      }
+    }
+
+    &__text-helper {
+      @include heading-h4();
+      margin-bottom: var(--md-size);
+
+      @include mobile-sm-only() {
+        @include text-normal();
+        text-align: center;
+      }
+    }
+
+    &__sub-text {
+      @include text-normal();
+      color: var(--helper-color);
+
+      @include mobile-sm-only() {
+        text-align: center;
+      }
+    }
+  }
+}

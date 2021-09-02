@@ -1,0 +1,157 @@
+@each $classSize, $size in $sizes {
+  .grid-gap-#{$classSize} {
+    gap: $size;
+  }
+}
+
+.grid {
+  display: flex;
+
+  &-direction {
+    &-column {
+      flex-direction: column;
+    }
+
+    &-column-reverse {
+      flex-direction: column-reverse;
+    }
+
+    &-row {
+      flex-direction: row;
+    }
+
+    &-row-reverse {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &-align {
+    &-center {
+      align-items: center;
+    }
+
+    &-start {
+      align-items: flex-start;
+    }
+
+    &-end {
+      align-items: flex-end;
+    }
+  }
+
+  &-justify {
+    &-center {
+      justify-content: center;
+      text-align: center;
+    }
+
+    &-start {
+      justify-content: flex-start;
+      text-align: left;
+    }
+
+    &-end {
+      justify-content: flex-end;
+      text-align: right;
+    }
+
+    &-space-between {
+      justify-content: space-between;
+    }
+  }
+}
+
+.col {
+  flex: 1;
+}
+
+.col-1 {
+  flex: 0 0 8.333333%;
+  max-width: 8.333333%;
+}
+
+.col-2 {
+  flex: 0 0 16.666667%;
+  max-width: 16.666667%;
+}
+
+.col-3 {
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+
+.col-4 {
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
+}
+
+.col-5 {
+  flex: 0 0 41.666667%;
+  max-width: 41.666667%;
+}
+
+.col-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.col-7 {
+  flex: 0 0 58.333333%;
+  max-width: 58.333333%;
+}
+
+.col-8 {
+  flex: 0 0 66.666667%;
+  max-width: 66.666667%;
+}
+
+.col-9 {
+  flex: 0 0 75%;
+  max-width: 75%;
+}
+
+.col-10 {
+  flex: 0 0 83.333333%;
+  max-width: 83.333333%;
+}
+
+.col-11 {
+  flex: 0 0 91.666667%;
+  max-width: 91.666667%;
+}
+
+.col-12 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.g-buttons-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @include tablet-and-above {
+    flex-direction: row;
+  }
+
+  & > * {
+    &,
+    .ui-button {
+      width: 100%;
+
+      @include tablet-and-above {
+        width: auto;
+      }
+    }
+
+    &:not(:first-child) {
+      margin-top: var(--md-size);
+
+      @include tablet-and-above {
+        margin-top: 0;
+        margin-left: var(--md-size);
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+<div class="mobile-rules">
+
+  <!-- Сабтайтл и навигация -->
+  <app-mobile-rules-header [currentStep]="activeStep$.value"
+                           (changedStep)="changeStep($event)"></app-mobile-rules-header>
+
+  <ng-container [ngSwitch]="activeStep$.value">
+
+    <ng-container *ngSwitchCase="steps.stepOne">
+      <div class="mobile-rules__section">
+        <app-rules-step-one></app-rules-step-one>
+      </div>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="steps.stepTwo">
+      <div class="mobile-rules__section">
+        <app-rules-step-two></app-rules-step-two>
+      </div>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="steps.stepThree">
+      <div class="mobile-rules__section">
+        <app-rules-step-three></app-rules-step-three>
+      </div>
+    </ng-container>
+
+    <div *ngIf="activeStep$.value !== steps.stepFour" class="mobile-rules__next-step-button">
+      <ui-button [uiButton]="'outline'" (click)="nextStep()">Продолжить</ui-button>
+    </div>
+
+    <ng-container *ngSwitchDefault>
+      <app-rules-confirm-form mobile></app-rules-confirm-form>
+    </ng-container>
+
+  </ng-container>
+
+</div>

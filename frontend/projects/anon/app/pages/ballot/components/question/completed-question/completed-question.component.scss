@@ -1,0 +1,32 @@
+@import 'ui-kit/assets/styles/mixin';
+
+.completed-question {
+  display: block;
+  width: 100%;
+
+  &__title {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--lg-size);
+
+    &-text {
+      @include cap-h5();
+      margin-left: var(--lg-size);
+      color: var(--summer-night-color);
+
+      @include tablet-and-above {
+        @include cap-h4();
+      }
+    }
+  }
+
+  &__accordion {
+    ui-accordion {
+      margin-bottom: var(--md-size);
+    }
+
+    :last-child {
+      margin-bottom: 0;
+    }
+  }
+}

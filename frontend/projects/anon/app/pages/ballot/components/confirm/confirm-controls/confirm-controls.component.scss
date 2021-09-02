@@ -1,0 +1,82 @@
+@import '../../../../../../../../shared/ui-kit/assets/styles/mixin.scss';
+
+:host {
+  display: block;
+  margin-bottom: var(--xlg-size);
+
+  .confirm {
+    &__control {
+      display: flex;
+      flex-direction: column;
+
+      & > :not(:last-child) {
+        margin-bottom: var(--md-size);
+      }
+
+      @include tablet-and-above {
+        flex-direction: row-reverse;
+        justify-content: center;
+        padding: var(--md-size) 0;
+
+        & > :not(:last-child) {
+          margin-bottom: 0;
+          margin-left: var(--md-size);
+        }
+      }
+    }
+
+    &__button {
+      width: 100%;
+      height: unset;
+
+      @include tablet-and-above {
+        width: unset;
+        box-sizing: content-box;
+      }
+    }
+  }
+
+  @include tablet-and-above {
+    margin-bottom: var(--lg-size);
+  }
+}
+
+.error-title {
+  @include heading-h6();
+  color: var(--tela-rossa-color);
+  margin-bottom: var(--sm-size);
+
+  @include tablet-and-above {
+    @include heading-h5();
+  }
+}
+
+.error-text {
+  @include text-normal();
+  color: var(--tela-rossa-color);
+  margin-bottom: var(--md-size);
+
+  @include tablet-and-above {
+    margin-bottom: var(--lg-size);
+  }
+}
+
+.error-confirm {
+  display: flex;
+  align-items: center;
+
+  div {
+    margin-left: var(--sm-size);
+    @include text-normal();
+  }
+}
+
+// TODO: добавить это как настройку ui-kit компонента
+ui-checkbox {
+  box-shadow: var(--shadow-error) !important;
+  border: var(--border-error) !important;
+
+  &._checked {
+    background: var(--tela-rossa-color);
+  }
+}

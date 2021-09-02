@@ -1,0 +1,34 @@
+@mixin text-normal {
+  font-size: 1.6rem;
+}
+
+@mixin text-bold {
+  @include text-normal();
+  font-weight: bold;
+}
+
+@mixin text-stroked {
+  @include text-normal();
+  text-decoration-line: line-through;
+}
+
+@mixin text-hint {
+  font-size: 1.4rem;
+}
+
+@mixin text-subheader {
+  font-size: 1.4rem;
+  letter-spacing: 0.11em;
+}
+
+@mixin text-hint-strong {
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+
+@mixin text-sms-code {
+  font-weight: bold;
+  font-size: 2.4rem;
+  line-height: 160%;
+  letter-spacing: 0.5em;
+}

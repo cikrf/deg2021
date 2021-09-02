@@ -1,0 +1,75 @@
+@import 'shared/ui-kit/assets/styles/mixin.scss';
+
+:host {
+  display: block;
+  @include maxContentWidth();
+
+  .support {
+
+    &__title {
+      @include cap-h3();
+      text-align: center;
+      margin-bottom: var(--lg-size);
+    }
+
+    &__subtitle {
+      @include text-normal();
+      margin-bottom: var(--md-size);
+    }
+
+    &__form {
+      margin-bottom: var(--md-size);
+    }
+
+    &__success {
+      text-align: center;
+      margin-bottom: var(--md-size);
+
+      &-img {
+        width: 80px;
+        height: 80px;
+      }
+
+      &-text {
+        @include text-normal();
+        margin-bottom: var(--md-size);
+      }
+
+      &-button {
+        width: 100%;
+
+        @include tablet-and-above() {
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
+
+    ui-button {
+      width: 100%;
+
+      @include tablet-and-above() {
+        width: auto;
+      }
+    }
+  }
+
+  .action-block {
+    width: 100%;
+
+    :first-child {
+      margin-bottom: var(--md-size);
+    }
+
+    @include tablet-and-above() {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: center;
+
+      :first-child {
+        margin-bottom: 0;
+        margin-left: var(--xlg-size);
+      }
+    }
+  }
+}

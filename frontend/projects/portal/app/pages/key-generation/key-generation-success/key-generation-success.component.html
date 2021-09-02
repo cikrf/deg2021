@@ -1,0 +1,36 @@
+<div class="key-generation__header">
+  <ui-icon
+    class="key-generation__icon"
+    name="notice-accept"
+    [size]="64"
+  ></ui-icon>
+  <p class="key-generation__title">
+    Все готово для начала голосования
+  </p>
+</div>
+<div class="key-generation__content">
+  <p class="key-generation__text">
+    Сейчас Вы&nbsp;будете перенаправлены в&nbsp;анонимную зону для голосования. Ваш голос будет передан в&nbsp;систему
+    в&nbsp;зашифрованном виде без привязки к&nbsp;конкретному пользователю.
+  </p>
+  <form
+    target="_blank"
+    [method]="transferData[transferDataIndexes.method]"
+    [action]="transferData[transferDataIndexes.action]"
+  >
+    <ui-button
+      class="key-generation__action"
+      type="submit"
+      [autofocus]="true"
+      [disabled]="buttonDisabledSubject$ | async"
+      [label]="'Продолжить'"
+    ></ui-button>
+    <input
+      *ngIf="transferData[transferDataIndexes.method] === 'post'"
+      type="hidden"
+      [name]="transferKey"
+      [value]="transferData[transferDataIndexes.payload]"
+    />
+  </form>
+
+</div>

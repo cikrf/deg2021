@@ -1,0 +1,23 @@
+<ui-button
+  uiButton="link"
+  [ariaExpanded]="opened"
+  [ariaControls]="ariaId"
+  (onClick)="opened = !opened"
+>
+  <ui-icon
+    *ngIf="iconVisible"
+    class="ui-button-icon"
+    name="keyboard-arrow-right"
+    [size]="type === 'light' ? 24 : 40"
+  ></ui-icon>
+  <span class="ui-button-label">{{title}}</span>
+</ui-button>
+
+<div
+  #description
+  [attr.id]="ariaId"
+  [style.display]="opened ? 'block' : 'none'"
+  class="ui-accordion__description"
+>
+  <ng-content></ng-content>
+</div>

@@ -1,0 +1,72 @@
+<ng-container *ngIf="spinner else iconTemplate">
+  <svg class="mb-xlg spinner" width="80" height="80" viewBox="0 0 81 81" fill="none"
+       xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M40.5002 78.3948C61.4289 78.3948 78.3949 61.4287 78.3949 40.5C78.3949 19.5713 61.4289 2.60529 40.5002 2.60529C19.5715 2.60529 2.60547 19.5713 2.60547 40.5C2.60547 61.4287 19.5715 78.3948 40.5002 78.3948Z"
+      stroke="#0D4CD3" stroke-opacity="0.5" stroke-width="2"/>
+    <path d="M78.3947 40.5C78.3947 19.5737 61.4263 2.60529 40.5 2.60529" stroke="#0D4CD3" stroke-width="2"/>
+  </svg>
+</ng-container>
+
+<ng-template #iconTemplate>
+  <ui-icon
+    [name]="iconName"
+    [size]="80"
+    [class.ui-unavailable__logo_red]="red"
+    class="ui-unavailable__logo"></ui-icon>
+</ng-template>
+
+<h2
+  *ngIf="title"
+  class="ui-unavailable__title"
+>{{ title }}</h2>
+
+<div class="ui-unavailable__container">
+  <div
+    *ngIf="!hideDescription"
+    [innerHtml]="description"
+    class="ui-unavailable__description"></div>
+
+  <div
+    *ngIf="isContent"
+    class="ui-unavailable__content"
+    [class.ui-unavailable__content--with-spinner]="spinner"
+  >
+    <ng-content></ng-content>
+  </div>
+
+  <p
+    *ngIf="showSupport && isAnon"
+    class="ui-unavailable__content"
+  >
+    Если ошибка повторяется, сообщите этот код в&nbsp;техническую поддержку
+    по&nbsp;телефону <span class="no-wrap">8-800-200-36-20</span>
+  </p>
+
+  <div
+    *ngIf="!isAnon || !hideMain || !hideRepeat"
+    class="g-buttons-group"
+  >
+    <ui-button
+      *ngIf="showSupport && !isAnon"
+      uiButton="outline"
+      [link]="supportHref"
+      [isLink]="true"
+      [label]="'Служба поддержки'"
+    ></ui-button>
+
+    <ui-button
+      *ngIf="!hideMain"
+      [href]="href || '/'"
+      [isLink]="true"
+      label="На главную"
+    ></ui-button>
+
+    <ui-button
+      *ngIf="!showSupport && !hideRepeat"
+      uiButton="link"
+      [label]="'Повторить'"
+      (click)="reloadPage()"
+    ></ui-button>
+  </div>
+</div>

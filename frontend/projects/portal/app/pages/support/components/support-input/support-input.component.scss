@@ -1,0 +1,83 @@
+@import '../../../../../../../shared/ui-kit/assets/styles/mixin.scss';
+
+:host {
+  width: 100%;
+  box-sizing: border-box;
+
+  .support-input {
+    &__label {
+      margin-bottom: var(--xs-size);
+      @include text-hint();
+    }
+
+    &__wrapper {
+      border-radius: var(--xs-size);
+      background-color: var(--input-color);
+
+      input,
+      textarea {
+        width: 100%;
+        padding: var(--semi-md-size) var(--md-size);
+        outline: none;
+        border: 0;
+        background-color: inherit;
+        @include text-normal();
+        resize: none;
+        color: var(--text-normal-color);
+        
+        &::placeholder {
+          color: var(--telegrey-scuro-color);
+        }
+      }
+
+      input {
+        height: var(--high-mega-size);
+      }
+    }
+
+    .sms-input {
+      width: 146px;
+      padding: var(--md-size);
+      border-radius: 6px;
+      outline: none;
+      border: var(--border-input);
+      text-align: center;
+      margin-right: var(--md-size);
+      @include text-sms-code();
+      color: var(--summer-night-color);
+      letter-spacing: 0.2em;
+      height: 72px;
+  
+      &:focus {
+        box-shadow: var(--shadow-card-helper);
+      }
+  
+      &_disabled {
+        background-color: var(--placeholder-color);
+        border: none;
+      }
+
+      &_error {
+        background-color: var(--placeholder-color);
+        border-color: var(--placeholder-color);
+        color: var(--tela-rossa-color);
+      }
+    }
+
+    ._input-value {
+      background-color: var(--white-color);
+      padding: 0;
+    }
+  }
+
+  &._disabled {
+    .support-input {
+      &__wrapper {
+
+        input, textarea {
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+}

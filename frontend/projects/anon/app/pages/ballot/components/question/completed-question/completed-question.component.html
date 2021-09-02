@@ -1,0 +1,39 @@
+<div class="completed-question">
+
+  <div class="completed-question__title">
+    <div class="completed-question__title-icon">
+      <ui-icon
+        name="base-success"
+        [size]="iconSize | async"
+        class="icon-success-color"
+      >
+      </ui-icon>
+    </div>
+
+    <div class="completed-question__title-text">
+      Вы проголосовали
+    </div>
+  </div>
+
+  <div class="completed-question__accordion">
+    <ui-accordion
+      title="Почему я не могу переголосовать?"
+    >
+      <div class="mb-md">
+        В соответствии с порядком дистанционного электронного голосования, утвержденным ЦИК России,
+        Вы можете изменить свой выбор в любой момент до окончания времени голосования, но только до того, как отправите бюллетень с подтвержденным выбором в систему ДЭГ.
+      </div>
+
+      <div>
+        Если вы сделали выбор и подтвердили его отправку - бюллетень в зашифрованном виде отправляется в систему, после чего изменение выбора или повторное волеизъявление невозможны.
+      </div>
+    </ui-accordion>
+
+    <ui-accordion
+      title="Почему я не вижу за кого голосовал?"
+    >
+      Сервис не хранит данные которые были бы связанны между вами и вашим выбором, такова тайна голосования и принцип анонимности...
+    </ui-accordion>
+  </div>
+
+</div>

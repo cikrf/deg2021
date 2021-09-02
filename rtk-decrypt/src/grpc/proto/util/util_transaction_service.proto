@@ -1,0 +1,18 @@
+syntax = "proto3";
+package wavesenterprise;
+
+option java_multiple_files = true;
+option java_package = "com.wavesenterprise.protobuf.service.util";
+option csharp_namespace = "WavesEnterprise";
+option go_package = "wavesenterprise.com/weproto";
+
+import "managed/transaction.proto";
+
+message TransactionInfoRequest {
+  string tx_id = 1;
+}
+
+message TransactionInfoResponse {
+  int32 height = 1;
+  Transaction transaction = 2;
+}

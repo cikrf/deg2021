@@ -1,0 +1,24 @@
+syntax = "proto3";
+package wavesenterprise;
+
+option java_multiple_files = true;
+option java_package = "com.wavesenterprise.protobuf.service.contract";
+option csharp_namespace = "WavesEnterprise";
+option go_package = "wavesenterprise.com/weproto";
+
+import "managed/transaction.proto";
+import "util/util_transaction_service.proto";
+
+service TransactionService {
+
+  rpc TransactionExists (TransactionExistsRequest) returns (TransactionExistsResponse);
+  rpc TransactionInfo (TransactionInfoRequest) returns (TransactionInfoResponse);
+}
+
+message TransactionExistsRequest {
+  string tx_id = 1;
+}
+
+message TransactionExistsResponse {
+  bool exists = 1;
+}

@@ -1,0 +1,79 @@
+<div *ngIf="isEyePanelOpen$ | async" class="wrapper" role="dialog" aria-labelledby="TopAccessibilityPanel">
+  <p aria-live="assertive" hidden="true">
+    Включена версия сайта для слабовидящих
+  </p>
+  <div class="panel">
+    <h3 class="title">
+      <img src="assets/icons/fontsize-selector.svg" aria-hidden="true">
+      Размер текста
+    </h3>
+    <div class="button-group">
+      <button
+        class="button"
+        [style.fontSize.%]="112.5"
+        (click)="addFontSize50()"
+        [class.active]="bodyClasses.includes(classTokens.Fz50)"
+        aria-label="Увеличить размер шрифта на 50%"
+      >
+        +50%
+      </button>
+      <button
+        class="button"
+        [style.fontSize.%]="150"
+        (click)="addFontSize100()"
+        [class.active]="bodyClasses.includes(classTokens.Fz100)"
+        aria-label="Увеличить размер шрифта на 100%"
+      >
+        +100%
+      </button>
+      <button
+        class="button"
+        (click)="cancelFontSize()"
+        aria-label="Сбросить настройки размера шрифта"
+      >
+        Сбросить
+      </button>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <section class="panel">
+    <h3 class="title">
+      <img src="assets/icons/color-selector.svg" aria-hidden="true">
+      Цвета
+    </h3>
+    <div class="button-group">
+      <button
+        class="button"
+        [class.active]="bodyClasses.includes(classTokens.Grayscale)"
+        (click)="addGrayScale()"
+        aria-label="Включить цветовую палитру: чёрно-белый"
+      >
+        Черно-белый
+      </button>
+      <button
+        class="button"
+        (click)="cancelGrayScale()"
+        aria-label="Сбросить настройки цветовой палитры"
+      >
+        Сбросить
+      </button>
+    </div>
+  </section>
+  <div class="control-panel">
+    <button
+      id="close"
+      class="panel-switcher"
+      (click)="closePanel()">
+      <img src="assets/icons/close.svg" title="Закрыть панель">
+    </button>
+    <button
+      id="close-clear"
+      class="button-link"
+      [class.__active]="isA11y"
+      (click)="toggleState()"
+      [attr.aria-label]="isA11y ? 'Переключить на обычную версию сайта' : 'Переключить на версию сайта для слабовидящих'"
+    >
+      {{isA11y ? 'Обычная версия' : 'Версия для слабовидящих'}}
+    </button>
+  </div>
+</div>

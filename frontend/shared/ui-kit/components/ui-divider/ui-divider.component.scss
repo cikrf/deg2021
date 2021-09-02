@@ -1,0 +1,23 @@
+@import '../../assets/styles/mixin.scss';
+
+:host {
+  display: block;
+  width: 100%;
+  height: 0;
+  border-bottom: var(--border-helper);
+
+  &._solid {
+    border-bottom: var(--border-helper-solid);
+  }
+
+  &._vertical {
+    border-bottom: 0;
+    height: auto;
+    width: 0;
+    border-right: var(--border-helper);
+
+    &._solid {
+      border-right: var(--border-helper-solid);
+    }
+  }
+}

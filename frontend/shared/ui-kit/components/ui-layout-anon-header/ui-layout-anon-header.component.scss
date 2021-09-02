@@ -1,0 +1,18 @@
+@import '../../assets/styles/mixin.scss';
+
+:host {
+  display: block;
+  box-sizing: border-box;
+  padding: var(--semi-md-size) 0 var(--sm-size) 0;
+  width: 100%;
+  text-align: center;
+
+  .anon-header {
+    &__title {
+      @include heading-h3();
+      font-weight: normal;
+      color: var(--text-primary-color);
+    }
+  }
+
+}

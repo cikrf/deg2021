@@ -1,0 +1,17 @@
+syntax = "proto3";
+package wavesenterprise;
+
+option java_multiple_files = true;
+option java_package = "com.wavesenterprise.transaction.protobuf.lease";
+option csharp_namespace = "WavesEnterprise";
+option go_package = "wavesenterprise.com/weproto";
+
+message LeaseCancelTransaction {
+  bytes id = 1;
+  int32 chain_id = 2;
+  bytes sender_public_key = 3;
+  int64 fee = 4;
+  int64 timestamp = 5;
+  bytes lease_id = 6;
+  repeated bytes proofs = 7;
+}

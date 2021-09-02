@@ -1,0 +1,39 @@
+<button
+  *ngIf="!isLink; else buttonLink"
+  [attr.aria-expanded]="ariaExpanded"
+  [attr.aria-controls]="ariaControls"
+  [attr.aria-label]="ariaLabel"
+  [attr.type]="type"
+  [class]="styleClass"
+  [disabled]="disabled || loading"
+  [ngClass]="classNames"
+  (click)="onClick.emit()"
+  [autofocus]="autofocus"
+>
+  <ng-container [ngTemplateOutlet]="label ? labelTpl : content"></ng-container>
+  <svg *ngIf="loading" class="ui-button-preloader" width="24" height="24" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="10" fill="none" stroke="#EEEEEE" stroke-width="4"></circle>
+    <circle cx="12" cy="12" r="10" fill="none" stroke="#1D5DEB" stroke-width="4" stroke-linecap="round"
+            class="ui-button-preloader-ring"></circle>
+  </svg>
+</button>
+
+<ng-template #buttonLink>
+  <a
+    [attr.aria-label]="ariaLabel"
+    [class]="styleClass"
+    [href]="hrefAttr"
+    [routerLink]="link || hrefAttr"
+    [ngClass]="classNames"
+  >
+    <ng-container [ngTemplateOutlet]="label ? labelTpl : content"></ng-container>
+  </a>
+</ng-template>
+
+<ng-template #content>
+  <ng-content></ng-content>
+</ng-template>
+
+<ng-template #labelTpl>
+  <span class="ui-button-label">{{label}}</span>
+</ng-template>

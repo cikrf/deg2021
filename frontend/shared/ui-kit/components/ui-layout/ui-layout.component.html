@@ -1,0 +1,38 @@
+<ng-container *ngIf="{ header: header$ | async } as observables">
+
+  <ui-layout-header [type]="type"></ui-layout-header>
+
+  <main
+    class="ui-layout__content"
+    aria-live="polite"
+    [attr.aria-busy]="(loading$ | async) || undefined"
+  >
+    <ng-container *ngIf="observables.header?.title && observables.header?.isShow">
+      <p
+        *ngIf="loading$ | async else titleTemplate"
+        class="ui-layout__preload"
+        role="status"
+      >Пожалуйста подождите ...</p>
+
+      <ng-template #titleTemplate>
+        <h2 class="ui-layout__title">{{ observables.header.title }}</h2>
+      </ng-template>
+    </ng-container>
+
+    <ng-content></ng-content>
+  </main>
+
+  <!-- todo: доработать?
+  <div *ngIf="isShowUpButton$ | async" (click)="up()" class="ui-layout__up">
+    <ui-icon name="up-button" [size]="64" class="ui-layout__up-img"></ui-icon>
+    <div class="ui-layout__up-text">Наверх</div>
+  </div>-->
+
+  <ng-container *ngIf="afterUpButtonTemplateRef">
+    <ng-template *ngTemplateOutlet="afterUpButtonTemplateRef"></ng-template>
+  </ng-container>
+
+  <footer class="ui-layout__footer">
+    <ui-footer [showSupport]="false"></ui-footer>
+  </footer>
+</ng-container>

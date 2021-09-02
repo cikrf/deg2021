@@ -1,0 +1,116 @@
+<div class="plain-heading-h1">Playground</div>
+
+<div class="plain-heading-h3 mv-sm">Ui timer</div>
+
+<div class="plain-heading-h4 mv-sm">Vertical</div>
+<div class="grid grid-justify-start grid-gap-md pb-lg">
+  <ui-timer
+    [endTime]="endTime"
+    class="w-200">
+    до завершения приема голосов
+  </ui-timer>
+
+  <ui-timer
+    [endTime]="endTime"
+    centered
+    class="w-200">
+    до завершения приема голосов
+  </ui-timer>
+
+  <ui-timer
+    [endTime]="endTime"
+    type="success"
+    class="w-200">
+    до завершения приема голосов
+  </ui-timer>
+</div>
+
+<div class="plain-heading-h4 mv-sm">Vertical 2</div>
+<div class="grid grid-justify-start grid-gap-md pb-lg">
+  <ui-timer
+    [endTime]="endTime"
+    class="w-200">
+    до завершения приема голосов
+  </ui-timer>
+
+  <ui-timer
+    [endTime]="endTime"
+    type="error"
+    centered
+    class="w-200">
+    до завершения приема голосов
+  </ui-timer>
+
+  <ui-timer
+    [endTime]="endTime"
+    type="error"
+    class="w-200">
+    до завершения приема голосов
+  </ui-timer>
+</div>
+
+<div class="plain-heading-h4 mv-sm">Horizontal</div>
+<div class="pb-lg w-600">
+  <ui-timer
+    [endTime]="endTime"
+    alignType="horizontal">
+    до завершения приема голосов
+  </ui-timer>
+</div>
+
+<div class="plain-heading-h4 mv-sm">Horizontal reverse</div>
+<div class="pb-lg w-600">
+  <ui-timer
+    [endTime]="endTime"
+    alignType="horizontal-reverse">
+    до завершения приема голосов
+  </ui-timer>
+</div>
+
+<div class="plain-heading-h4 mv-sm">Loading horizontal</div>
+<div class="pb-lg w-600">
+  <ui-timer
+    [endTime]="endTime"
+    loading
+    alignType="horizontal">
+    до завершения приема голосов
+  </ui-timer>
+</div>
+
+<div class="plain-heading-h4 mv-sm">Loading horizontal reverse</div>
+<div class="pb-lg w-600">
+  <ui-timer
+    [endTime]="endTime"
+    loading
+    alignType="horizontal-reverse">
+    до завершения приема голосов
+  </ui-timer>
+</div>
+
+<div class="plain-heading-h4 mv-sm">Loading vertical</div>
+<div class="pb-lg w-200">
+  <ui-timer
+    [endTime]="endTime"
+    loading>
+    до завершения приема голосов
+  </ui-timer>
+</div>
+
+<div class="plain-heading-h3 mb-sm">Модальные окна</div>
+
+<ui-button (click)="openSelectModal()">Модальное окно выбора</ui-button>
+
+<ui-button (click)="openActivateModal()" class="mt-md">Модальное окно подсказки</ui-button>
+
+<div class="plain-heading-h3 mv-sm">Ui Preloader</div>
+
+<ui-button (click)="togglePreloader()">Toggle preloader</ui-button>
+
+<div *ngIf="{ preloader: preloader$ | async } as observables" class="w-600">
+  <div *uiPreloader="observables.preloader" class="mv-md plain-heading-h1">Preloader {{ uniqueId$ | async }}</div>
+  <div *uiPreloader="observables.preloader" class="mv-md plain-heading-h2">Preloader {{ uniqueId$ | async }}</div>
+  <div *uiPreloader="observables.preloader" class="mv-md plain-heading-h3">Preloader {{ uniqueId$ | async }}</div>
+  <div *uiPreloader="observables.preloader" class="mv-md ">
+    <div>Preloader {{ uniqueId$ | async }}</div>
+  </div>
+</div>

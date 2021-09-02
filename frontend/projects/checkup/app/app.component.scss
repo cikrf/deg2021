@@ -1,0 +1,104 @@
+@import '../../../shared/ui-kit/assets/styles/mixin.scss';
+
+:host {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--lg-size);
+  color: var(--summer-night-color);
+
+  .loading-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 250px;
+    text-align: center;
+
+    &__icon {
+      display: block;
+      margin-bottom: var(--lg-size);
+      animation: spinner 1s ease-in-out infinite;
+    }
+  }
+
+  .checkup-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__image {
+      display: block;
+      margin: 0 auto;
+    }
+
+    &__content {
+      max-width: 740px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+
+      &:not(:last-child),
+      & > :not(:last-child) {
+        margin-bottom: var(--lg-size);
+      }
+    }
+
+    &__text {
+      &.success {
+        font-size: 2rem;
+      }
+    }
+
+    .ui-button {
+      width: 100%;
+
+      @include tablet-and-above() {
+        width: auto;
+      }
+    }
+  }
+}
+
+.tls-alert {
+  border-radius: var(--base-size);
+  margin: 0 0 var(--xlg-size);
+  padding: var(--md-size);
+  background-color: var(--input-color);
+
+  p {
+    margin-bottom: 1em;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      &:before {
+        display: inline-block;
+        margin-right: .4em;
+        content: '\2014';
+      }
+
+      & + li {
+        margin-top: .5em;
+      }
+    }
+  }
+}
+
+.tls-mark {
+  font-size: 1.4rem;
+}
+
+@keyframes spinner {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

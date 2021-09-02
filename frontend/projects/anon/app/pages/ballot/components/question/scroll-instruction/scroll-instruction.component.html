@@ -1,0 +1,21 @@
+<div
+  *ngIf="type === 'scroll'; else max"
+  class="helper-card"
+>
+  <div class="helper-card__text">
+    Пролистайте вниз и ознакомьтесь со всеми представленными вариантами, чтобы Вам стал доступен выбор.
+  </div>
+</div>
+
+
+<ng-template #max>
+  <div class="helper-card">
+    <div class="helper-card__title">
+      Вы уже выбрали максимальное количество кандидатов
+    </div>
+
+    <div class="helper-card__description">
+      Чтобы изменить выбор, Вы должны снять ранее проставленную отметку
+    </div>
+  </div>
+</ng-template>

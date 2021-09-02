@@ -1,0 +1,58 @@
+<ng-container *ngIf="{
+  checked: checked$ | async,
+  status: status$ | async,
+  buttonType: buttonType$ | async,
+  image: image$ | async
+} as observables">
+
+  <ui-card
+    *ngIf="control"
+    [active]="observables.checked"
+    [error]="observables.checked && observables.status === ControlStatus.Invalid"
+  >
+    <div
+      class="vote-card"
+      [ngClass]="{
+        'vote-card_active': isActiveStatus(control.status),
+        'vote-card_checked': observables.checked
+      }"
+    >
+      <app-answer-header
+        [formControl]="control"
+        [maxMarks]="maxMarks"
+        [rejectionReason]="answer.rejectionReason"
+        [unavailable]="answer.disabled"
+        (onDisabledClick)="onDisabledClick()"
+      >
+      </app-answer-header>
+
+      <div class="vote-card__content">
+        <ui-avatar
+          *ngIf="answer.image && observables.image"
+          class="vote-card__content-logo"
+          [src]="observables.image"
+        ></ui-avatar>
+
+        <div
+          [style.min-height]="currentHeight ? currentHeight + 'px' : 'auto'"
+          class="vote-card__content-wrap"
+        >
+          <div class="vote-card__content-title">
+            {{ answer.text }}
+          </div>
+
+          <div
+            #voteCard
+            class="vote-card__content-description"
+            (click)="clickOnDescription()"
+          >
+            {{ answer.description }}
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </ui-card>
+</ng-container>

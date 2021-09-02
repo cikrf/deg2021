@@ -1,0 +1,64 @@
+@import '../mixin.scss';
+
+$sizes: (
+  "xxs": var(--xxs-size),
+  "xs": var(--xs-size),
+  "sm": var(--sm-size),
+  "semi-md": var(--semi-md-size),
+  "md": var(--md-size),
+  "semi-lg": var(--semi-lg-size),
+  "lg": var(--lg-size),
+  "xlg": var(--xlg-size),
+  "semi-xxlg": var(--semi-xxlg-size),
+  "xxlg": var(--xxlg-size),
+  "mega": var(--mega-size),
+  "xl-mega": var(--xl-mega-size),
+  "--xxl-mega": var(--xxl-mega-size),
+);
+
+:root {
+  --base-size: 8px;
+  --xxs-size: calc(var(--base-size) / 4); // 2
+  --xs-size: calc(var(--base-size) / 2); // 4
+  --sm-size: calc(var(--base-size) * 1); // 8
+  --semi-md-size: calc(var(--base-size) * 1.5); // 12
+  --md-size: calc(var(--base-size) * 2); // 16
+  --xmd-size: calc(var(--base-size) * 2.25); // 18
+  --semi-lg-size: calc(var(--base-size) * 2.5); // 20
+  --lg-size: calc(var(--base-size) * 3); // 24
+  --xlg-size: calc(var(--base-size) * 4); // 32
+  --semi-xxlg-size: calc(var(--base-size) * 4.5); // 36
+  --xxlg-size: calc(var(--base-size) * 5); // 40
+  --mega-size: calc(var(--base-size) * 6); // 48
+  --high-mega-size: calc(var(--base-size) * 7); // 56
+  --x-mega-size: calc(var(--base-size) * 7.5); // 60
+  --l-mega-size: calc(var(--base-size) * 8); // 64
+  --xl-mega-size: calc(var(--base-size) * 16); // 128
+  --xxl-mega-size: calc(var(--base-size) * 35); // 280
+
+  // Reverse
+  --xxs-size-reverse: calc(-1 * var(--base-size) / 4); // -2
+  --xs-size-reverse: calc(-1 * var(--base-size) / 2); // -4
+  --sm-size-reverse: calc(-1 * var(--base-size) * 1); // -8
+  --semi-md-size-reverse: calc(-1 * var(--base-size) * 1.5); // -12
+  --md-size-reverse: calc(-1 * var(--base-size) * 2); // -16
+  --semi-lg-size-reverse: calc(-1 * var(--base-size) * 2.5); // -20
+  --lg-size-reverse: calc(-1 * var(--base-size) * 3); // -24
+  --xlg-size-reverse: calc(-1 * var(--base-size) * 4); // -32
+  --l-mega-size-reverse: calc(-1 * var(--base-size) * 8); // -64
+
+  // Content
+  --alert-width: 768px;
+  --content-width: 1054px;
+  --footer-height: 164px;
+  --anon-header-height: 72px;
+  --header-height: 181px;
+
+  @include tablet-and-below {
+    --footer-height: 230px;
+  }
+
+  @include mobile-and-below {
+    --header-height: 250px;
+  }
+}

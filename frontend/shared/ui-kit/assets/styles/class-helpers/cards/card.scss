@@ -1,0 +1,19 @@
+@import '../../mixins/cards.scss';
+
+.layout-card-level {
+  &-0 {
+    @include card-lavel-0();
+  }
+
+  &-1 {
+    @include card-lavel-1();
+  }
+
+  &-2 {
+    @include card-lavel-2();
+  }
+
+  &-3 {
+    @include card-lavel-3();
+  }
+}

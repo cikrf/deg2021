@@ -1,0 +1,513 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "portal": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "",
+      "sourceRoot": "projects/portal",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "allowedCommonJsDependencies": [
+              "gost-crypto",
+              "@wavesenterprise/voting-sign-lib",
+              "@wavesenterprise/rtk-encrypt",
+              "js-sha256",
+              "big-integer",
+              "bn.js",
+              "class-transformer",
+              "validator",
+              "sanitizer"
+            ],
+            "outputPath": "dist/portal",
+            "index": "projects/portal/index.html",
+            "main": "projects/portal/main.ts",
+            "polyfills": "shared/polyfills.ts",
+            "tsConfig": "projects/portal/tsconfig.json",
+            "aot": true,
+            "assets": [
+              "projects/portal/favicon.png",
+              "projects/portal/assets",
+              {
+                "glob": "**/*",
+                "input": "shared/ui-kit/assets/icons",
+                "output": "assets/icons/"
+              },
+              {
+                "glob": "**/*",
+                "input": "shared/mocks",
+                "output": "assets/mocks/"
+              }
+            ],
+            "styles": [
+              "projects/portal/styles.scss"
+            ],
+            "scripts": [
+              {
+                "input": "node_modules/gost-crypto/lib/gostEngineWorker.js",
+                "inject": true,
+                "bundleName": "gostEngineWorker"
+              }
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "shared/ui-kit/assets/styles",
+                "shared/ui-kit/assets/styles/mixins",
+                "shared"
+              ]
+            }
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "namedChunks": true,
+              "extractLicenses": false,
+              "vendorChunk": true,
+              "buildOptimizer": true,
+              "deployUrl": "/elections/",
+              "baseHref": "/elections/",
+              "budgets": [
+                {
+                  "type": "allScript",
+                  "maximumWarning": "100kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "portal:build",
+            "proxyConfig": "projects/portal/proxy.config.json"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "portal:build:production"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-builders/jest:run",
+          "options": {
+            "setupFilesAfterEnv": "./.test/jest.ts"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/portal/**/*.ts",
+              "projects/portal/**/*.html"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": ".test/e2e/portal.protractor.conf.js",
+            "devServerTarget": "portal:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "portal:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "anon": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "",
+      "sourceRoot": "projects/anon",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "allowedCommonJsDependencies": [
+              "gost-crypto",
+              "@wavesenterprise/voting-sign-lib",
+              "@wavesenterprise/rtk-encrypt",
+              "js-sha256",
+              "big-integer",
+              "bn.js",
+              "class-transformer",
+              "validator"
+            ],
+            "outputPath": "dist/anon",
+            "index": "projects/anon/index.html",
+            "main": "projects/anon/main.ts",
+            "polyfills": "shared/polyfills.ts",
+            "tsConfig": "projects/anon/tsconfig.json",
+            "aot": true,
+            "assets": [
+              "projects/anon/favicon.png",
+              "projects/anon/assets",
+              {
+                "glob": "**/*",
+                "input": "shared/ui-kit/assets/icons",
+                "output": "assets/icons/"
+              }
+            ],
+            "styles": [
+              "projects/anon/styles.scss"
+            ],
+            "scripts": [
+              {
+                "input": "node_modules/gost-crypto/lib/gostEngineWorker.js",
+                "inject": true,
+                "bundleName": "gostEngineWorker"
+              }
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "shared/ui-kit/assets/styles",
+                "shared/ui-kit/assets/styles/mixins",
+                "shared"
+              ]
+            }
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": true,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "allScript",
+                  "maximumWarning": "100kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "anon:build",
+            "port": 4201,
+            "proxyConfig": "projects/anon/proxy.config.json"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "anon:build:production"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-builders/jest:run",
+          "options": {
+            "setupFilesAfterEnv": "./.test/jest.ts"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/anon/**/*.ts",
+              "projects/anon/**/*.html"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": ".test/e2e/anon.protractor.conf.js",
+            "devServerTarget": "anon:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "anon:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "anon-ssr": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "",
+      "sourceRoot": "projects/anon",
+      "prefix": "ui",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/anon-ssr",
+            "main": "projects/anon/ssr/server.ts",
+            "tsConfig": "projects/anon/ssr/tsconfig.json",
+            "sourceMap": false,
+            "optimization": false,
+            "outputHashing": "media",
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "shared/ui-kit/assets/styles",
+                "shared/ui-kit/assets/styles/mixins",
+                "shared"
+              ]
+            }
+          },
+          "configurations": {
+            "production": {
+              "sourceMap": true,
+              "optimization": true,
+              "outputHashing": "media"
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "anon:build",
+            "serverTarget": "anon-ssr:build",
+            "port": 4201
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "anon:build:production",
+              "serverTarget": "anon-ssr:build:production"
+            }
+          }
+        }
+      }
+    },
+    "shared": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "",
+      "sourceRoot": "shared/ui-kit",
+      "prefix": "ui",
+      "architect": {
+        "test": {
+          "builder": "@angular-builders/jest:run",
+          "options": {
+            "setupFilesAfterEnv": "./.test/jest.ts"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "shared/ui-kit/**/*.ts",
+              "shared/ui-kit/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "error-pages": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "",
+      "sourceRoot": "projects/error-pages",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "error-pages:browser",
+            "serverTarget": "error-pages:server",
+            "routes": [
+              "/50x",
+              "/404"
+            ]
+          }
+        },
+        "browser": {
+          "builder": "@angular-builders/custom-webpack:browser",
+          "options": {
+            "indexTransform": "projects/error-pages/index-html-transform.ts",
+            "outputPath": "dist/error-pages",
+            "index": "projects/error-pages/index.html",
+            "main": "projects/error-pages/main.ts",
+            "tsConfig": "projects/error-pages/tsconfig.json",
+            "aot": true,
+            "assets": [
+              "projects/error-pages/favicon.ico",
+              "projects/error-pages/assets",
+              {
+                "glob": "**/*",
+                "input": "shared/ui-kit/assets/icons",
+                "output": "assets/icons/"
+              }
+            ],
+            "styles": [
+              "shared/ui-kit/assets/styles/index.scss"
+            ],
+            "scripts": [],
+            "optimization": true,
+            "outputHashing": "all",
+            "sourceMap": false,
+            "namedChunks": false,
+            "extractLicenses": true,
+            "vendorChunk": false,
+            "buildOptimizer": true,
+            "budgets": [
+              {
+                "type": "allScript",
+                "maximumWarning": "100kb"
+              }
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "shared/ui-kit/assets/styles",
+                "shared/ui-kit/assets/styles/mixins",
+                "shared"
+              ]
+            }
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/error-pages/server",
+            "main": "projects/error-pages/ssr/server.ts",
+            "tsConfig": "projects/error-pages/ssr/tsconfig.json",
+            "outputHashing": "media",
+            "sourceMap": false,
+            "optimization": true,
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "shared/ui-kit/assets/styles",
+                "shared/ui-kit/assets/styles/mixins",
+                "shared"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "checkup": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "",
+      "sourceRoot": "projects/checkup",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "allowedCommonJsDependencies": [
+              "gost-crypto",
+              "@wavesenterprise/voting-sign-lib",
+              "@wavesenterprise/rtk-encrypt",
+              "js-sha256",
+              "big-integer",
+              "bn.js",
+              "class-transformer",
+              "validator"
+            ],
+            "outputPath": "dist/checkup",
+            "index": "projects/checkup/index.html",
+            "main": "projects/checkup/main.ts",
+            "polyfills": "shared/polyfills.ts",
+            "tsConfig": "projects/checkup/tsconfig.json",
+            "aot": true,
+            "assets": [
+              "projects/checkup/favicon.png",
+              "projects/checkup/assets",
+              {
+                "glob": "**/*",
+                "input": "shared/ui-kit/assets/icons",
+                "output": "assets/icons/"
+              },
+              {
+                "glob": "**/*",
+                "input": "shared/mocks",
+                "output": "assets/mocks/"
+              }
+            ],
+            "styles": [
+              "projects/checkup/styles.scss"
+            ],
+            "scripts": [
+              {
+                "input": "node_modules/gost-crypto/lib/gostEngineWorker.js",
+                "inject": true,
+                "bundleName": "gostEngineWorker"
+              }
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "shared/ui-kit/assets/styles",
+                "shared/ui-kit/assets/styles/mixins",
+                "shared"
+              ]
+            }
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "namedChunks": true,
+              "extractLicenses": false,
+              "vendorChunk": true,
+              "buildOptimizer": true,
+              "baseHref": "/checkup/",
+              "budgets": [
+                {
+                  "type": "allScript",
+                  "maximumWarning": "100kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "checkup:build",
+            "proxyConfig": "./projects/checkup/proxy.config.json"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "checkup:build:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "portal",
+  "cli": {
+    "analytics": "c5719bdf-056d-4355-a710-cb8e5e9346fc"
+  }
+}

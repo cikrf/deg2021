@@ -1,0 +1,73 @@
+@import '~shared/ui-kit/assets/styles/mixin';
+
+:host {
+  display: block;
+  @include maxContentWidth(true);
+}
+
+.sms-auth-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: var(--xlg-size);
+
+  ui-icon {
+    margin-bottom: var(--base-size);
+
+    @include tablet-and-above {
+      margin-bottom: var(--xlg-size);
+    }
+  }
+
+  &__header {
+    @include heading-h4();
+    margin-bottom: var(--lg-size);
+    font-weight: normal;
+    text-align: center;
+  }
+
+  &__text {
+    @include text-normal();
+    text-align: center;
+    color: var(--summer-night-color);
+    margin-bottom: var(--md-size);
+    position: relative;
+
+    @include tablet-and-above {
+      margin-bottom: var(--xlg-size);
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: -14px;
+      left: calc(50% - 12px);
+      width: var(--lg-size);
+      height: 3px;
+      border-radius: var(--xs-size);
+      background-color: var(--green-sea-color);
+    }
+
+    & > p {
+      margin: 0;
+
+      & + p {
+        margin-top: var(--md-size);
+
+        @include tablet-and-above {
+          margin-top: var(--xlg-size);
+        }
+      }
+    }
+  }
+
+  &__button {
+    width: 100%;
+
+    @include tablet-and-above {
+      width: auto;
+    }
+  }
+}

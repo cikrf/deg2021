@@ -1,0 +1,20 @@
+<ui-a11y></ui-a11y>
+
+<ui-layout>
+  <router-outlet (activate)="onActivate($event)"></router-outlet>
+
+  <router-outlet name="modal"></router-outlet>
+</ui-layout>
+
+<ui-media></ui-media>
+
+<ng-template #logoutRef>
+  <ui-button
+    uiButton="link"
+    [isLink]="true"
+    [label]="'Выход'"
+    [link]="['/', appRoutingEnum.Logout]"
+  ></ui-button>
+</ng-template>
+
+<ng-template #logoutEmptyRef></ng-template>

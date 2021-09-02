@@ -1,0 +1,16 @@
+<div class="mobile-header-rules">
+
+  <div class="mobile-header-rules__sub-title">
+    {{ titles[stepSubject$.value] }}
+  </div>
+  
+  <div class="mobile-header-rules__navigate">
+    <div
+      *ngFor="let step of steps"
+      [class._active]="stepSubject$.value === step"
+      class="mobile-header-rules__navigate-item"
+      (click)="changeStep(step)"
+    ></div>
+  </div>
+
+</div>

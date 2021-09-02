@@ -1,0 +1,11 @@
+syntax = "proto3";
+package wavesenterprise;
+
+option java_package = "com.wavesenterprise.transaction.protobuf";
+option csharp_namespace = "WavesEnterprise";
+option go_package = "wavesenterprise.com/weproto";
+
+message ValidationProof {
+    bytes validator_public_key = 1;
+    bytes signature = 2;
+}

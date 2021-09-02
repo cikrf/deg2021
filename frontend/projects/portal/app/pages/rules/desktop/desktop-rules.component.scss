@@ -1,0 +1,19 @@
+@import 'shared/ui-kit/assets/styles/mixins';
+
+.desktop-rules {
+  display: flex;
+  flex-direction: column;
+
+  &__section {
+    margin-bottom: var(--md-size);
+  }
+
+  &__title {
+    @include cap-h3();
+    margin-bottom: var(--md-size);
+  }
+
+  &__last-section {
+    margin-bottom: var(--xlg-size);
+  }
+}

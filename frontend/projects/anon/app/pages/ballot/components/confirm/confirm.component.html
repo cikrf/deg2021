@@ -1,0 +1,74 @@
+<ui-layout-new
+  [showSupport]="false"
+>
+
+  <!-- Header -->
+  <div layout-header>
+    <ui-layout-header type="anon">
+      <div subheader>
+        <app-steps></app-steps>
+        <app-ballots-left *ngIf="!isSkip"></app-ballots-left>
+        <div
+          *ngIf="isSkip"
+          class="title"
+        >
+          Вы хотите перейти к следующему бюллетеню?
+        </div>
+      </div>
+
+    </ui-layout-header>
+  </div>
+  <div *ngIf="generatedTitle" class="title">
+    {{ generatedTitle }}
+    <div *ngIf="isSkip" class="subtitle">Вы сможете проголосовать до окончания приема бюллетей</div>
+  </div>
+
+  <div
+    class="confirm"
+    *ngIf="{
+      questions: questions$ | async,
+      completed: completed$ | async,
+      hasNext: hasNext$ | async
+    } as outerObservable">
+
+    <!-- Экран после подтверждения выбора -->
+    <ng-container *ngIf="ballot.completed; else notCompleted">
+      <!-- todo сделать переход на ./completed если бюллетень проголосован? -->
+      <div class="confirm__final">
+        <app-final-page
+          [receipt]="receipt$ | async"
+        ></app-final-page>
+      </div>
+
+    </ng-container>
+
+    <!-- Экран подтверждения -->
+    <ng-template #notCompleted>
+
+      <!-- Несколько вопросов в бюллетене -->
+      <ng-container *ngIf="outerObservable.questions.length > 1 && !isSkip; else singleAnswer">
+        <app-confirm-multi-questions
+          (onReceipt)="receipt$.next($event)"
+        ></app-confirm-multi-questions>
+      </ng-container>
+
+      <!-- Один вопрос в бюллетене -->
+      <ng-template #singleAnswer>
+        <app-confirm-single-question
+          (onReceipt)="receipt$.next($event)"
+          [skip]="isSkip"
+        ></app-confirm-single-question>
+      </ng-template>
+
+      <div
+        *ngIf="!ballot.completed"
+        class="header"
+        title
+      >
+        <div class="header__title">
+          {{ ballot.votingName }}
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</ui-layout-new>

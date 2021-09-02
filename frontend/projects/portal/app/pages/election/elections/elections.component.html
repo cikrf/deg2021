@@ -1,0 +1,62 @@
+<ng-container *ngIf="electionList$ | async as electionLists; else loading">
+  <ng-container *ngIf="electionLists.length; else noelections">
+    <ng-container
+      [ngTemplateOutlet]="elections"
+      [ngTemplateOutletContext]="{electionList: electionLists}"
+    ></ng-container>
+  </ng-container>
+</ng-container>
+
+<ng-template #loading>
+  <ui-image-preloader aria-live="assertive" aria-label="Загрузка"></ui-image-preloader>
+</ng-template>
+
+<ng-template #voteButton let-electionList="electionList">
+  <ui-button
+    *ngIf="actualVotings$ | async as actualVotings"
+    [attr.id]="'bottom-vote-button'"
+    [disabled]="actualVotings.length === 0"
+    [label]="'Перейти к голосованию'"
+    (click)="vote()"
+  ></ui-button>
+</ng-template>
+
+<ng-template #noelections>
+  <ui-unavailable
+    hideRepeat
+    isContent
+    [hideMain]="true"
+    [red]="false"
+    [iconName]="uiIconStuff.Warning"
+    title="Нет доступных голосований"
+    description="Голосования сейчас не проводятся или Вы не включены в список участников"
+  >
+    <div class="noelection-content">
+      <div class="noelection-content__line"></div>
+      <div class="noelection-content__description">
+        Для жителей Москвы, подавших заявления на&nbsp;участие в&nbsp;ДЭГ, голосования
+        проводятся на&nbsp;<a href="https://mos.ru/uslugi" target="_blank">mos.ru</a>
+      </div>
+    </div>
+  </ui-unavailable>
+</ng-template>
+
+<ng-template #elections let-electionList="electionList">
+
+  <ol class="card-wrap">
+    <li *ngFor="let election of electionList">
+      <app-voting
+        class="voting__card"
+        [election]="election"
+      ></app-voting>
+    </li>
+  </ol>
+
+  <ng-template
+    [ngTemplateOutlet]="voteButton"
+    [ngTemplateOutletContext]="{electionList: electionList}"
+  ></ng-template>
+
+  <ui-up-button></ui-up-button>
+
+</ng-template>

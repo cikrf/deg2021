@@ -1,0 +1,22 @@
+syntax = "proto3";
+package wavesenterprise;
+
+option java_multiple_files = true;
+option java_package = "com.wavesenterprise.transaction.protobuf.docker";
+option csharp_namespace = "WavesEnterprise";
+option go_package = "wavesenterprise.com/weproto";
+
+import "executable_contract_transaction.proto";
+import "data_entry.proto";
+import "validation_proof.proto";
+
+message ExecutedContractTransaction {
+  bytes id = 1;
+  bytes sender_public_key = 2;
+  ExecutableTransaction tx = 3;
+  repeated DataEntry results = 4;
+  bytes results_hash = 5;
+  repeated ValidationProof validation_proofs = 6;
+  int64 timestamp = 7;
+  repeated bytes proofs = 8;
+}

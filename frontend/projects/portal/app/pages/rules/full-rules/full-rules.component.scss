@@ -1,0 +1,112 @@
+@import 'shared/ui-kit/assets/styles/mixins';
+
+.full-rules {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &__back-link {
+    margin-top: var(--mega-size);
+    margin-bottom: var(--mega-size);
+    color: var(--gosblue-color);
+    @include text-normal();
+    cursor: pointer;
+
+    @include tablet-and-above {
+      display: none;
+    }
+  }
+
+  &__container {
+    margin-bottom: var(--md-size);
+
+    &-title {
+      @include heading-h4();
+      margin-bottom: var(--md-size);
+
+      @include tablet-and-above {
+        margin-bottom: var(--xlg-size);
+      }
+    }
+
+    &-subtitle {
+      @include heading-h6();
+      color: var(--summer-night-color);
+      margin-bottom: var(--md-size);
+
+      @include tablet-and-above {
+        margin-bottom: var(--xlg-size);
+      }
+    }
+
+    &-text {
+      @include text-normal();
+      color: var(--summer-night-color);
+      margin-bottom: var(--md-size);
+
+      @include tablet-and-above {
+        margin-bottom: var(--xlg-size);
+      }
+
+      a {
+        text-decoration: none;
+        color: var(--gosblue-color);
+      }
+    }
+
+    &-paragraph {
+      margin-bottom: var(--md-size);
+
+      @include tablet-and-above {
+        margin-bottom: var(--xlg-size);
+      }
+    }
+
+    &-through {
+      text-decoration: line-through;
+      color: var(--helper-color);
+    }
+  }
+
+  &__helper {
+    display: flex;
+    align-items: flex-start;
+    margin-top: var(--md-size);
+    margin-bottom: var(--xlg-size);
+
+    &-line {
+      width: var(--lg-size);
+      height: 3px;
+      background-color: var(--giallo-brillante-color);
+      margin-right: var(--sm-size);
+      margin-top: var(--sm-size);
+      flex: 1 0 auto;
+    }
+
+    &-text {
+      margin: 0;
+      @include text-normal();
+    }
+  }
+
+  &__up {
+    flex: 0 0 auto;
+    padding-bottom: var(--md-size);
+    cursor: pointer;
+    text-align: center;
+    height: var(--up-button-height);
+    box-sizing: border-box;
+    background-color: var(--white-color);
+
+    &-img {
+      color: var(--gosblue-color);
+      margin: auto;
+    }
+
+    &-text {
+      @include text-hint-strong();
+      color: var(--helper-color);
+    }
+  }
+
+}

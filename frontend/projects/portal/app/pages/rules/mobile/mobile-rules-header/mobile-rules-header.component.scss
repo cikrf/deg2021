@@ -1,0 +1,30 @@
+@import 'shared/ui-kit/assets/styles/mixins';
+
+.mobile-header-rules {
+  &__sub-title {
+    @include cap-h4();
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--xxlg-size);
+  }
+  
+  &__navigate {
+    display: flex;
+    justify-content: center;
+  
+    &-item {
+      width: var(--sm-size);
+      height: var(--sm-size);
+      background: var(--blue-medium);
+      border-radius: var(--semi-md-size);
+      margin-right: var(--sm-size);
+      cursor: pointer;
+    }
+  }
+  
+  ._active {
+    width: var(--xxlg-size);
+    background: var(--gosblue-color);
+  }
+}

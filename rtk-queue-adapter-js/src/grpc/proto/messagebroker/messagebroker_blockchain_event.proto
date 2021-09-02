@@ -1,0 +1,67 @@
+syntax = "proto3";
+package wavesenterprise;
+
+option java_package = "com.wavesenterprise.protobuf.service.messagebroker";
+option csharp_namespace = "WavesEnterprise";
+option go_package = "wavesenterprise.com/weproto";
+
+import "managed/transaction.proto";
+
+message BlockchainEvent {
+  oneof blockchain_event {
+    // Deprecated ErrorEvent error_event = 1;
+    MicroBlockAppended micro_block_appended = 2;
+    BlockAppended block_appended = 3;
+    RollbackCompleted rollback_completed = 4;
+    AppendedBlockHistory appended_block_history = 5;
+  }
+}
+
+message GenericError {}
+
+message BlockSignatureNotFoundError {
+  bytes block_signature = 1;
+}
+
+message MissingRequiredRequestField {}
+
+message MissingAuthorizationMetadata {}
+
+message InvalidApiKey {}
+
+message InvalidToken {}
+
+message MicroBlockAppended {
+  repeated Transaction txs = 1;
+}
+
+message BlockAppended {
+  bytes block_signature = 1;
+  bytes reference = 2;
+  repeated bytes tx_ids = 3;
+  bytes miner_address = 4;
+  int64 height = 5;
+  int32 version = 6;
+  int64 timestamp = 7;
+  int64 fee = 8;
+  int32 block_size = 9;
+  repeated int32 features = 10;
+}
+
+message RollbackCompleted {
+  bytes return_to_block_signature = 1;
+  repeated bytes rollback_tx_ids = 2;
+}
+
+message AppendedBlockHistory {
+  bytes block_signature = 1;
+  bytes reference = 2;
+  repeated Transaction txs = 3;
+  bytes miner_address = 4;
+  int64 height = 5;
+  int32 version = 6;
+  int64 timestamp = 7;
+  int64 fee = 8;
+  int32 block_size = 9;
+  repeated int32 features = 10;
+}

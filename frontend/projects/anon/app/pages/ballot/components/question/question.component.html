@@ -1,0 +1,53 @@
+<ng-container
+    *ngIf="{
+      form: form$ | async,
+      ballot: ballot$ | async
+    } as observables"
+  >
+  <ui-layout-new
+    *ngIf="question$ | async as question"
+    [showSupport]="false"
+  >
+    <!-- Header -->
+    <div layout-header>
+      <ui-layout-header type="anon" [title]="question.fullText" alignLeft>
+        <div subheader>
+          <app-language
+            *ngIf="observables.ballot.hasLanguages"
+            [languages]="observables.ballot.languages"
+            [current]="observables.ballot.lang"
+          ></app-language>
+          <app-steps></app-steps>
+          <app-ballots-left></app-ballots-left>
+        </div>
+      </ui-layout-header>
+    </div>
+
+    <app-answers-list
+      [form]="observables.form"
+      [maxMarks]="observables.ballot?.maxMarks"
+    ></app-answers-list>
+
+    <app-voting-box
+      *ngIf="formEnabled$ | async"
+      [maxMarks]="observables.ballot?.maxMarks"
+      [form]="observables.form"
+      [initialValue]="observables.form.value"
+      (click)="clickOnNowYouCanChoose()"
+      (voted)="confirm()"
+    ></app-voting-box>
+
+    <ui-up-button
+      (onClick)="clickOnScrollTop()"
+    ></ui-up-button>
+
+    <!-- Before footer -->
+    <div layout-before-footer>
+      <div class="skip-ballot" *ngIf="hasNext && !observables.form?.hasChecked">
+        <ui-button type="link" (click)="confirm(true)" class="mb-xs">Следующий бюллетень</ui-button>
+
+        <div class="plain-text-hint text-secondary mt-md">Вы сможете вернуться к этому бюллетеню позже.</div>
+      </div>
+    </div>
+  </ui-layout-new>
+</ng-container>

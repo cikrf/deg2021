@@ -1,0 +1,31 @@
+syntax = "proto3";
+package wavesenterprise;
+
+option java_package = "com.wavesenterprise.protobuf.service.util";
+option csharp_namespace = "WavesEnterprise";
+option go_package = "wavesenterprise.com/weproto";
+
+import "google/protobuf/wrappers.proto";
+
+service ContractStatusService {
+  rpc ContractExecutionStatuses (ContractExecutionRequest) returns (stream ContractExecutionResponse);
+}
+
+message ContractExecutionRequest {
+  bytes tx_id = 1;
+}
+
+message ContractExecutionResponse {
+  bytes sender = 1;
+  bytes tx_id = 2;
+  enum Status {
+    SUCCESS = 0;
+    ERROR = 1;
+    FAILURE = 2;
+  }
+  Status status = 3;
+  google.protobuf.Int32Value  code = 4;
+  string message = 5;
+  int64 timestamp = 6;
+  bytes signature = 7;
+}

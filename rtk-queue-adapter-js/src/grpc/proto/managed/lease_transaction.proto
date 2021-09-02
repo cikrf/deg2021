@@ -1,0 +1,20 @@
+syntax = "proto3";
+package wavesenterprise;
+
+option java_multiple_files = true;
+option java_package = "com.wavesenterprise.transaction.protobuf.lease";
+option csharp_namespace = "WavesEnterprise";
+option go_package = "wavesenterprise.com/weproto";
+
+import "google/protobuf/wrappers.proto";
+
+message LeaseTransaction {
+  bytes id = 1;
+  google.protobuf.BytesValue asset_id = 2;
+  bytes sender_public_key = 3;
+  bytes recipient = 4;
+  int64 amount = 5;
+  int64 fee = 6;
+  int64 timestamp = 7;
+  repeated bytes proofs = 8;
+}

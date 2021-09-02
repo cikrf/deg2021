@@ -1,0 +1,14 @@
+<label class="ui-checkbox">
+  <input
+    type="checkbox"
+    class="ui-checkbox-input g-visibility-hidden"
+    [formControl]="control"
+    [disabled]="unavailable || disabled"
+  >
+  <span [ngClass]="checkboxStyle"></span>
+  <span *ngIf="label; else labelTpl" class="ui-checkbox-label">{{label}}</span>
+</label>
+
+<ng-template #labelTpl>
+  <ng-content></ng-content>
+</ng-template>

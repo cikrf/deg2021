@@ -1,0 +1,11 @@
+{
+  "/api": {
+    "target": "http://portal.dev.deg2021.infra.loc/",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/api/checkup" : "/api/checkup/public"
+    }
+  }
+}

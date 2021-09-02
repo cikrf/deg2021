@@ -1,0 +1,12 @@
+{
+  "/api": {
+    "target": "http://portal.dev.deg2021.infra.loc/",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/landing": {
+    "target": "http://vybory.dev.deg2021.infra.loc/",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

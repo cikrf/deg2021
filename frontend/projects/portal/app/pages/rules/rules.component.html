@@ -1,0 +1,17 @@
+<!--<ng-container *ngIf="mobile$ | async; else desktopTpl">-->
+<!--  <app-mobile-rules></app-mobile-rules>-->
+<!--</ng-container>-->
+
+<!--<ng-template #desktopTpl>-->
+<!--  <app-desktop-rules></app-desktop-rules>-->
+<!--</ng-template>-->
+<!--<ng-container *ngIf="dates$ | async as dates">-->
+<!--  {{}}-->
+<!--</ng-container>-->
+
+<ng-container *ngIf="{rules: rules$ | async} as observables">
+  <app-full-rules [rules]="observables.rules?.rules"></app-full-rules>
+  <app-rules-confirm-form [checkboxes]="observables.rules?.checkBoxes"></app-rules-confirm-form>
+
+  <ui-up-button></ui-up-button>
+</ng-container>

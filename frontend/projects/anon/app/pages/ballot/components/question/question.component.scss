@@ -1,0 +1,65 @@
+@import 'ui-kit/assets/styles/mixin';
+
+.question {
+  &__timer {
+    margin: var(--xxlg-size) 0;
+  }
+
+  &__description {
+    padding: 0 var(--md-size);
+    margin-bottom: var(--xlg-size);
+    color: var(--text-primary);
+    @include heading-h5();
+    font-weight: normal;
+
+    @include mobile-sm-and-above {
+      @include cap-h4;
+      padding: 0;
+    }
+
+    @include mobile-and-above {
+      @include cap-h3();
+      margin-bottom: var(--l-mega-size);
+    }
+  }
+
+  &__up {
+    flex: 0 0 auto;
+    padding-bottom: var(--md-size);
+    cursor: pointer;
+    text-align: center;
+    height: var(--up-button-height);
+    box-sizing: border-box;
+    background-color: var(--white-color);
+
+    &-img {
+      color: var(--gosblue-color);
+      margin: auto;
+    }
+
+    &-text {
+      @include text-hint-strong();
+      color: var(--helper-color);
+    }
+  }
+
+  &__cards-wrap {
+    :last-child {
+      margin-bottom: var(--lg-size);
+    }
+
+    @include tablet-and-above {
+      :last-child {
+        margin-bottom: var(--xlg-size);
+      }
+    }
+  }
+}
+
+.skip-ballot {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: var(--lg-size);
+}

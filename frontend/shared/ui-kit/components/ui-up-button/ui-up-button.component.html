@@ -1,0 +1,11 @@
+<button
+  class="ui-button-up"
+  (click)="clickHandler()"
+>
+  <ui-icon
+    class="ui-button-up__icon"
+    name="up-button"
+    [size]="(isMobile$ | async) ? 40 : 48"
+  ></ui-icon>
+  <span class="ui-button-up__text">Наверх</span>
+</button>

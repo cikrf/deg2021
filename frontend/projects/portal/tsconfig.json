@@ -1,0 +1,19 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/app",
+    "types": []
+  },
+  "files": [
+    "./main.ts",
+    "../../shared/polyfills.ts"
+  ],
+  "include": [
+    "./**/*.d.ts"
+  ],
+  "paths": {
+    "@shared-interceptor/*": [
+      "shared/interceptor/*"
+    ]
+  }
+}

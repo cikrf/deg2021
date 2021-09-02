@@ -1,0 +1,62 @@
+// Для добавления новых размеров нужно добавить в переменную sizes$ свой размер
+
+$types: (
+  "m": "margin",
+  "p": "padding"
+);
+
+
+$directions: (
+  "t": "top",
+  "r": "right",
+  "l": "left",
+  "b": "bottom",
+  "v": "vertical",
+  "h": "horizontal",
+  "a": "all"
+);
+
+$sizes: (
+  "xxs": var(--xxs-size),
+  "xs": var(--xs-size),
+  "sm": var(--sm-size),
+  "semi-md": var(--semi-md-size),
+  "md": var(--md-size),
+  "xmd": var(--xmd-size),
+  "semi-lg": var(--semi-lg-size),
+  "lg": var(--lg-size),
+  "xlg": var(--xlg-size),
+  "semi-xxlg": var(--semi-xxlg-size),
+  "xxlg": var(--xxlg-size),
+  "mega": var(--mega-size),
+  "x-mega": var(--x-mega-size),
+  "l-mega": var(--l-mega-size),
+  "xl-mega": var(--xl-mega-size),
+  "--xxl-mega": var(--xxl-mega-size),
+);
+
+@each $classType, $type in $types {
+  @each $classDirection, $direction in $directions {
+    @each $classSize, $size in $sizes {
+      .#{$classType}#{$classDirection}-#{$classSize} {
+        @if $direction == 'top' or $direction == 'right' or $direction == 'bottom' or $direction == 'left' {
+          #{$type}-#{$direction}: $size!important;
+        }
+
+        @if $direction == 'vertical' {
+          #{$type}-top: $size!important;
+          #{$type}-bottom: $size!important;
+        }
+
+        @if $direction == 'horizontal' {
+          #{$type}-left: $size!important;
+          #{$type}-right: $size!important;
+        }
+
+        @if $direction == 'all' {
+          #{$type}: $size!important;
+        }
+      }
+    }
+  }
+}

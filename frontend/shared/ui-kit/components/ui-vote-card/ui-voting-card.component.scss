@@ -1,0 +1,7 @@
+@import '../../assets/styles/mixin.scss';
+
+.voting__title {
+  @include heading-h4();
+  color: var(--summer-night-color);
+  margin-bottom: var(--lg-size);
+}

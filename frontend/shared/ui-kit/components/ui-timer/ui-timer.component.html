@@ -1,0 +1,55 @@
+<ui-icon
+  *ngIf="!isVertical()"
+  [name]="descriptionIcon"
+  [size]="32"
+  [class.ui-timer__description-icon_loading]="loading"
+  class="ui-timer__description-icon"></ui-icon>
+
+<div class="ui-timer__description">
+  <ng-template *ngTemplateOutlet="isDefault() ? timeWrapper : contentWrapper"></ng-template>
+
+  <ui-divider class="ui-timer__divider" vertical></ui-divider>
+
+  <ng-template *ngTemplateOutlet="isDefault() ? contentWrapper : timeWrapper"></ng-template>
+</div>
+
+<!-- Content block -->
+<ng-template #contentWrapper>
+  <div class="ui-timer__content-wrapper">
+    <div *uiPreloader="loading; lines getLines()"
+      [class.ui-timer__content_loading]="loading"
+      class="ui-timer__content"
+    >
+    <ng-content></ng-content>
+    </div>
+  </div>
+</ng-template>
+
+<!-- Time block -->
+<ng-template #timeWrapper>
+  <ng-container *ngIf="{
+    actualTime: actualTime$ | async,
+    lessMinutes: lessMinutes$ | async
+  } as observable">
+    <div
+      *uiPreloader="loading"
+      [class.ui-timer__time_interval]="startTimeTimestamp !== 0"
+      class="ui-timer__time"
+    >
+      <ng-container *ngIf="!observable.lessMinutes; else lessMinuteText">
+        <ng-container *ngIf="!startTimeTimestamp else intervalWrapper">
+          {{ endTimeTimestamp | uiTimeInterval : observable.actualTime : 'long' }}
+        </ng-container>
+      </ng-container>
+
+      <ng-template #lessMinuteText>
+        Меньше минуты
+      </ng-template>
+
+      <ng-template #intervalWrapper>
+        {{ getIntervalText() }}
+      </ng-template>
+    </div>
+  </ng-container>
+</ng-template>
+

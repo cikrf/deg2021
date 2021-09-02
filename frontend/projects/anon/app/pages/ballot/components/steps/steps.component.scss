@@ -1,0 +1,36 @@
+@import 'ui-kit/assets/styles/mixin';
+
+.steps {
+  display: flex;
+  max-width: var(--content-width);
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--semi-md-size) var(--xlg-size) var(--md-size);
+
+  @include tablet-and-above {
+    padding: var(--semi-md-size) var(--xlg-size) var(--md-size) var(--xlg-size);
+  }
+
+  :last-child {
+    margin-right: 0;
+  }
+}
+
+.step {
+  height: var(--xs-size);
+  border-radius: var(--sm-size);
+  background-color: var(--bg-skylight);
+  margin-right: var(--xs-size);
+  //cursor: pointer;
+  flex: 1 1 100%;
+
+  &_completed {
+    border-radius: var(--semi-md-size);
+    background-color: var(--green-sea-color);
+  }
+
+  &_active {
+    border-radius: var(--semi-md-size);
+    background-color: var(--text-primary-color);
+  }
+}

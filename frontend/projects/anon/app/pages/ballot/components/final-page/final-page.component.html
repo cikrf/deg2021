@@ -1,0 +1,48 @@
+<div class="final-page">
+  <ui-icon
+    class="final-page__icon"
+    [class.final-page__icon_skipped]="allSkipped"
+    [class.final-page__icon_complete]="allCompleted"
+    [name]="iconName"
+    [size]='120'
+  >
+  </ui-icon>
+  <div class="final-page__title">
+    {{ title }}
+  </div>
+  <div *ngIf="description"
+       class="final-page__description">
+    {{ description }}
+  </div>
+
+  <ui-accordion
+    *ngIf="receipt"
+    class="mt-xlg"
+    type="light"
+    [title]="'Информация о транзакции'"
+  >
+    <div class="log">
+      <h3>Идентификатор транзакции</h3>
+      <pre>{{ receipt?.transaction?.id }}</pre>
+      <h3>Квитанция о приеме транзакции</h3>
+      <pre>{{ receipt.signature }}</pre>
+      <h3>Транзакция</h3>
+      <pre>{{ receipt.transaction | json }}</pre>
+    </div>
+  </ui-accordion>
+
+  <div class="final-page__actions">
+    <ui-button
+      *ngIf="finalized"
+      class="final-page__button"
+      [autofocus]="true"
+      [label]="'Вернуться на портал'"
+      (click)="returnToPortal()"
+    ></ui-button>
+    <ui-button
+      *ngIf="!finalized"
+      class="final-page__button"
+      [label]="'Следующий бюллетень'"
+      (click)="gotoNext()"></ui-button>
+  </div>
+</div>

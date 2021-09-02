@@ -1,0 +1,8 @@
+@import 'shared/ui-kit/assets/styles/mixins';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include maxContentWidth();
+}

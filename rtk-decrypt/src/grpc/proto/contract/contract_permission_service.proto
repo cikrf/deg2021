@@ -1,0 +1,46 @@
+syntax = "proto3";
+package wavesenterprise;
+
+option java_multiple_files = true;
+option java_package = "com.wavesenterprise.protobuf.service.contract";
+option csharp_namespace = "WavesEnterprise";
+option go_package = "wavesenterprise.com/weproto";
+
+import "google/protobuf/wrappers.proto";
+
+service PermissionService {
+
+  rpc GetPermissions (PermissionsRequest) returns (PermissionsResponse);
+
+  rpc GetPermissionsForAddresses (AddressesPermissionsRequest) returns (AddressesPermissionsResponse);
+}
+
+message PermissionsRequest {
+  string address = 1;
+  google.protobuf.Int64Value timestamp = 2;
+}
+
+message PermissionsResponse {
+  repeated RoleInfo roles = 1;
+  int64 timestamp = 2;
+}
+
+message RoleInfo {
+  string role = 1;
+  google.protobuf.Int64Value due_timestamp = 2;
+}
+
+message AddressesPermissionsRequest {
+  repeated string addresses = 1;
+  int64 timestamp = 2;
+}
+
+message AddressesPermissionsResponse {
+  repeated RolesForAddressResponse address_to_roles = 1;
+  int64 timestamp = 2;
+}
+
+message RolesForAddressResponse {
+  string address = 1;
+  repeated RoleInfo roles = 2;
+}

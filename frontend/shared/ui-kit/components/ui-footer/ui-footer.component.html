@@ -1,0 +1,16 @@
+<div class="footer__logo-cik">
+  <img src="assets/icons/logo-cik.svg" alt="" aria-hidden="true">
+</div>
+
+<div class="footer__label">
+  <small>Портал дистанционного электронного голосования 2021</small>
+  <a
+    *ngIf="showSupport"
+    class="footer__support"
+    [routerLink]="['/', appRoutingEnum.Support]"
+  >Служба поддержки</a>
+</div>
+
+<div class="footer__logo-msk">
+  <img src="assets/icons/logo-mks.svg" alt="" aria-hidden="true">
+</div>

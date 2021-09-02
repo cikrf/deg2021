@@ -1,0 +1,19 @@
+@import '../../../../../../../../shared/ui-kit/assets/styles/mixin.scss';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.final-page {
+  &__icon {
+    margin-bottom: 8px;
+    color: #AEC5FA;
+  }
+
+  &__title {
+    @include cap-h3();
+    margin-bottom: 48px;
+  }
+}

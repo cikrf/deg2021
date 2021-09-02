@@ -1,0 +1,19 @@
+<div class="confirm__list">
+
+  <div
+    class="confirm__answer"
+    *ngFor="let answer of answers"
+  >
+    <div class="confirm__name">
+      {{ answer.text }}
+    </div>
+
+    <div class="confirm__answer-info">
+      <div class="confirm__answer-description">
+        {{ answer.description }}
+      </div>
+
+    </div>
+  </div>
+
+</div>

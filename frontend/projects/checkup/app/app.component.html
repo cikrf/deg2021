@@ -1,0 +1,68 @@
+<ng-container
+  *ngIf="{
+    success: success$ | async,
+    loading: loading$ | async
+  } as observable"
+>
+
+  <!-- loading -->
+  <ng-container *ngIf="observable.loading; else checkupTpl">
+    <div class="loading-block" aria-busy="true" aria-live="assertive">
+      <img src="assets/icon-spinner.svg" class="loading-block__icon" width="80" height="80">
+      <p>Идет проверка совместимости Вашего устройства</p>
+    </div>
+  </ng-container>
+
+  <ng-template #checkupTpl>
+
+    <div class="checkup-block">
+      <ng-container *ngIf="observable.success; else errorTpl">
+        <div class="checkup-block__content">
+          <img class="checkup-block__image" src="assets/img/success.svg" alt="">
+          <p class="checkup-block__text success">
+            Ваш браузер подходит для участия<br>в&nbsp;дистанционном электронном голосовании на&nbsp;портале
+            <a href="/">vybory.gov.ru</a>
+          </p>
+          <ui-button
+            [uiButton]="'outline'"
+            (click)="goToLanding()"
+          >На главную
+          </ui-button>
+        </div>
+        <div class="tls-wrapper">
+          <div class="tls-alert">
+            <p>Вы&nbsp;можете проголосовать с&nbsp;помощью любого браузера, прошедшего эту проверку.</p>
+            <p>Если вы&nbsp;хотите обеспечить безопасное соединение через зашифрованный протокол ГОСТ TLS,
+              то&nbsp;установите рекомендованное ПО:</p>
+            <ul>
+              <li><a href="#" rel="noreferrer">для мобильных телефонов (Android/iOS)</a></li>
+              <li><a href="#" rel="noreferrer">для настольных компьютеров (Windows/Linux/MacOS)</a></li>
+            </ul>
+          </div>
+          <small class="tls-mark text-secondary">Протокол ГОСТ TLS&nbsp;&mdash; это российский
+            криптографический алгоритм,
+            который обеспечит высокую безопасность голосования и&nbsp;невозможность обнаружения сведений
+            о&nbsp;голосовании путем перехвата пользовательского трафика.</small>
+        </div>
+      </ng-container>
+    </div>
+
+    <ng-template #errorTpl>
+      <div class="checkup-block__content">
+        <img class="checkup-block__image" src="assets/img/error.svg" alt="">
+        <p class="checkup-block__text">
+          К сожалению, ваш браузер не удовлетворяет требованиям для корректной работы портала голосования
+          <a href="/" rel="noreferrer">vybory.gov.ru.</a> Пожалуйста, смените браузер или устройство.
+        </p>
+      </div>
+      <ui-unavailable-browser></ui-unavailable-browser>
+      <ui-button
+        [uiButton]="'outline'"
+        (click)="goToLanding()"
+      >На главную
+      </ui-button>
+    </ng-template>
+
+  </ng-template>
+
+</ng-container>

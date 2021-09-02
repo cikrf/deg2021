@@ -1,0 +1,21 @@
+syntax = "proto3";
+package wavesenterprise;
+
+option java_multiple_files = true;
+option java_package = "com.wavesenterprise.transaction.protobuf";
+option csharp_namespace = "WavesEnterprise";
+option go_package = "wavesenterprise.com/weproto";
+
+import "google/protobuf/wrappers.proto";
+import "op_type.proto";
+
+message RegisterNodeTransaction {
+  bytes id = 1;
+  bytes sender_public_key = 2;
+  bytes target = 3;
+  google.protobuf.StringValue node_name = 4;
+  OpType op_type = 5;
+  int64 timestamp = 6;
+  int64 fee = 7;
+  repeated bytes proofs = 8;
+}

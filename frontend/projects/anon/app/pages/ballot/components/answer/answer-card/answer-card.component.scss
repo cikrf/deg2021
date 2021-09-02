@@ -1,0 +1,116 @@
+@import 'shared/ui-kit/assets/styles/variables';
+@import 'shared/ui-kit/assets/styles/mixin';
+
+:host {
+  display: block;
+  margin-bottom: var(--md-size);
+
+  @include tablet-and-above {
+    margin-bottom: var(--lg-size);
+  }
+
+  &._unavailable {
+    & .vote-card__content-title,
+    & .vote-card__content-description {
+      color: var(--helper-color);
+      text-decoration: line-through;
+    }
+  }
+
+  ui-card {
+    box-shadow: none;
+
+    &._active {
+      box-shadow: none;
+
+      &:before {
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+.vote-card {
+  position: relative;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: var(--semi-md-size) 0;
+  padding-top: var(--xxs-size);
+  border: var(--border-card-base);
+  border-radius: var(--sm-size);
+  background: var(--white-color);
+
+  @include mobile-and-below {
+    height: auto;
+  }
+
+  @media (min-width: $tablet-min) {
+    width: 100%;
+  }
+
+  &_active {
+    border: var(--border-card-active);
+  }
+
+  &_checked {
+    border-color: var(--white-color);
+    box-shadow: var(--shadow-card-helper);
+  }
+
+  &__content {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 var(--xlg-size) var(--lg-size);
+
+    @include tablet-and-above {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+
+    &-wrap {
+      width: 100%;
+      overflow-x: hidden;
+      margin-top: var(--md-size);
+
+      @include tablet-and-above {
+        margin-top: 0;
+      }
+    }
+
+    &-title {
+      @include heading-h6();
+      color: var(--summer-night-color);
+      margin-bottom: var(--sm-size);
+    }
+
+    &-description {
+      @include text-hint();
+      width: 100%;
+      color: var(--summer-night-color);
+      overflow: hidden;
+      white-space: pre-line;
+
+      @include tablet-and-above {
+        @include text-normal();
+      }
+    }
+
+    &-logo {
+      margin: 0 auto var(--md-size);
+
+      @include tablet-and-above {
+        margin: 0 var(--lg-size) 0 0;
+      }
+    }
+  }
+}
+
+.circle-button {
+  position: absolute;
+  bottom: var(--semi-lg-size-reverse);
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+}

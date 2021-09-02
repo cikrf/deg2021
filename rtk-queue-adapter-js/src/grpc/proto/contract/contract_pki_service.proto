@@ -1,0 +1,45 @@
+syntax = "proto3";
+package wavesenterprise;
+
+option java_multiple_files = true;
+option java_package = "com.wavesenterprise.protobuf.service.contract";
+option csharp_namespace = "WavesEnterprise";
+option go_package = "wavesenterprise.com/weproto";
+
+import "google/protobuf/wrappers.proto";
+
+service PkiService {
+
+  rpc Sign (PkiSignRequest) returns (PkiSignResponse);
+
+  rpc Verify (PkiVerifyRequest) returns (PkiVerifyResponse);
+}
+
+enum PkiSignatureType {
+  UNKNOWN = 0;
+  CADES_BES = 1;
+  CADES_X_LONG_TYPE_1 = 2;
+  CADES_T = 3;
+}
+
+message PkiSignRequest {
+  bytes input_data = 1;
+  string keystore_alias = 2;
+  google.protobuf.StringValue password = 3;
+  PkiSignatureType sig_type = 4;
+}
+
+message PkiSignResponse {
+  bytes signature = 1;
+}
+
+message PkiVerifyRequest {
+  bytes input_data = 1;
+  bytes signature = 2;
+  PkiSignatureType sig_type = 3;
+  repeated string extended_key_usage_list = 4;
+}
+
+message PkiVerifyResponse {
+  bool status = 1;
+}

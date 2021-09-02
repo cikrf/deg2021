@@ -1,0 +1,30 @@
+@import 'shared/ui-kit/assets/styles/mixin.scss';
+
+.timer {
+  margin-top: var(--xxlg-size);
+  margin-bottom: var(--md-size);
+  text-align: center;
+
+  &__title {
+    @include cap-h4();
+    color: var(--summer-night-color);
+
+    &--danger {
+      color: var(--tela-rossa-color);
+    }
+  }
+
+  &__content {
+    @include cap-h4();
+    color: var(--summer-night-color);
+
+    &--danger {
+      color: var(--tela-rossa-color);
+    }
+  }
+
+  &__footer {
+    @include text-hint();
+    color: var(--helper-color);
+  }
+}

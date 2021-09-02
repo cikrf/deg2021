@@ -1,0 +1,47 @@
+<div class="support-input">
+  <label class="support-input__label" [htmlFor]="getTransformedLabel">
+    {{ label }}
+  </label>
+  <div class="support-input__wrapper" *ngIf="!codeInput; else code">
+    <ng-container [ngSwitch]="type">
+      <ng-container *ngSwitchCase="inputTyprEnum.Text">
+        <input
+          [autofocus]="autofocus"
+          [id]="getTransformedLabel"
+          [formControl]="form"
+          [maxlength]="maxLength"
+          [placeholder]="placeholder"
+          [class._input-value]="form.value || !!(inputData$ | async)"
+        >
+      </ng-container>
+      <ng-container *ngSwitchCase="inputTyprEnum.Textarea">
+        <textarea
+          rows="3"
+          [autofocus]="autofocus"
+          [id]="getTransformedLabel"
+          [formControl]="form"
+          [placeholder]="placeholder"
+        >
+        </textarea>
+      </ng-container>
+    </ng-container>
+  </div>
+
+  <ng-template #code>
+    <input
+      class="sms-input"
+      [autofocus]="autofocus"
+      [class.sms-auth__input_error]="error"
+      [formControl]="form"
+      [maxlength]="maxLength"
+      [placeholder]="placeholder"
+      [id]="getTransformedLabel"
+      type="text"
+      inputmode="numeric"
+      autocomplete="one-time-code"
+      placeholder="000000"
+      pattern="[0-9]*"
+      (input)="validate($event)"
+    >
+  </ng-template>
+</div>

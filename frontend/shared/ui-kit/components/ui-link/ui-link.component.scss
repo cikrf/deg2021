@@ -1,0 +1,29 @@
+@import 'ui-kit/assets/styles/mixin';
+
+.ui-link {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--md-size) var(--lg-size);
+  border: var(--border-card-active);
+  box-sizing: border-box;
+  border-radius: var(--semi-md-size);
+  cursor: pointer;
+
+  &__content {
+    &-title {
+      @include text-normal();
+      margin-bottom: var(--sm-size);
+      color: var(--gosblue-color);
+    }
+
+    &-description {
+      @include text-hint();
+      color: var(--helper-color);
+    }
+  }
+
+  &__icon {
+    align-self: center;
+    color: var(--gosblue-color);
+  }
+}

@@ -1,0 +1,19 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--base-size) var(--md-size) var(--xs-size);
+
+  & > ui-button {
+    height: auto;
+    padding: 0;
+
+    ::ng-deep .active {
+      color: var(--text-secondary-color) !important;
+    }
+
+    & + ui-button {
+      margin-left: var(--md-size);
+    }
+  }
+}

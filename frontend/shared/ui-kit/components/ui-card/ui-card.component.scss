@@ -1,0 +1,46 @@
+@import '../../assets/styles/mixin.scss';
+
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--sm-size);
+  box-shadow: var(--shadow-level-2);
+  background-color: var(--white-color);
+  transition: 0.3s;
+  position: relative;
+
+  &:before {
+    transition: 0.3s;
+    content: '';
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 0 2px transparent;
+    position: absolute;
+    border-radius: 12px;
+  }
+
+  &._active {
+    box-shadow: var(--shadow-level-3);
+
+    &:before {
+      box-shadow: 0 0 0 2px var(--gosblue-color);
+    }
+  }
+
+  &._error {
+    box-shadow: var(--shadow-level-2);
+
+    &:before {
+      box-shadow: 0 0 0 2px var(--tela-rossa-color);
+    }
+  }
+
+  &._disabled {
+    box-shadow: var(--shadow-level-2);
+
+    &:before {
+      box-shadow: 0 0 0 2px var(--disabled-color);
+    }
+  }
+}

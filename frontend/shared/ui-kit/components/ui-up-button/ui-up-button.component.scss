@@ -1,0 +1,39 @@
+@import 'ui-kit/assets/styles/mixin';
+
+:host {
+  display: block;
+  margin-top: var(--xlg-size);
+
+  @include tablet-and-above() {
+    margin-top: var(--l-mega-size);
+  }
+}
+
+.ui-button-up {
+  box-shadow: none;
+  border: none;
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  background-color: var(--white-color);
+  text-align: center;
+  cursor: pointer;
+  appearance: none;
+  speak: none;
+
+  &:focus {
+    --xs-size: .4rem;
+    outline: solid var(--xs-size) var(--blue-focus);
+    outline-offset: var(--sm-size);
+  }
+
+  &__icon {
+    margin: auto;
+    color: var(--gosblue-color);
+  }
+
+  &__text {
+    color: var(--helper-color);
+    @include text-hint-strong();
+  }
+}

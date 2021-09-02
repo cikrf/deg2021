@@ -1,0 +1,30 @@
+@import '../../../../../shared/ui-kit/assets/styles/mixin.scss';
+
+:host {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.error {
+  text-align: center;
+
+  &__title {
+    @include text-normal();
+    margin-bottom: var(--mega-size);
+    margin-top: var(--md-size);
+  }
+
+  &__links {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+
+  &__link {
+    @include text-normal();
+    color: var(--gosblue-color);
+    text-decoration: none;
+  }
+
+  //&__wrapper {
+  //}
+}

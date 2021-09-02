@@ -1,0 +1,32 @@
+<ng-container
+  *ngIf="{
+    invalid: invalid$ | async,
+    formValue: formValue$ | async,
+    answersCount: answersCount$ | async
+  } as observable"
+>
+  <div class="checkbox-helper">
+
+    <div class="checkbox-helper__text-wrap">
+      <div class="checkbox-helper__text-wrap-button">
+        <ui-button
+          [disabled]="!observable.answersCount"
+          [uiButton]="getButtonType(observable.invalid, maxMarks, observable.answersCount)"
+          [label]="'Проголосовать'"
+          (click)="voted(!observable.answersCount)"
+        ></ui-button>
+      </div>
+
+      <div
+        *ngIf="observable.answersCount !== maxMarks"
+        class="checkbox-helper__text-wrap-title"
+      >
+        Теперь вы можете выбрать
+        <ng-container *ngIf="maxMarks === 1">одного кандидата</ng-container>
+        <ng-container *ngIf="maxMarks > 1">от одного до
+          {{ numbers[maxMarks] }}
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</ng-container>

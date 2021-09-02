@@ -1,0 +1,17 @@
+<div class="ui-switch">
+  <ui-icon
+    name="base-ball"
+    [size]="iconSize"
+    [ngClass]="{
+      'icon-active-color' : !active && !nativeDisabled,
+      'icon-white-color' : active || nativeDisabled
+    }"
+  >
+  </ui-icon>
+</div>
+<div
+  class="ui-switch__label"
+  [ngClass]="{'text-helper' : nativeDisabled}"
+>
+  {{ getLabel() }}
+</div>

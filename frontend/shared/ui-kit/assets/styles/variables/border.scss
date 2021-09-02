@@ -1,0 +1,22 @@
+:root {
+  --border-size-base: 1px;
+  --border-size-button: calc(var(--border-size-base) * 2);
+
+  --border-link: var(--xxs-size) solid var(--gosblue-color);
+  --border-inherit: var(--xxs-size) solid rgba(255, 255, 255, 0);
+  --border-disabled: dotted var(--telegrey-scuro-color);
+  --border-helper: var(--border-size-base) dashed var(--helper-color);
+  --border-helper-solid: var(--border-size-base) solid var(--helper-color);
+  --border-error: var(--xxs-size) solid var(--tela-rossa-color);
+  --border-transparent: var(--xxs-size) solid transparent;
+  --border-dashed: var(--border-size-base) dashed var(--helper-color);
+  --border-control-dashed: var(--xxs-size) dashed var(--telegrey-scuro-color);
+  --border-card-base: var(--border-size-base) solid var(--button-disabled-color);
+  --border-card-active: var(--border-size-base) solid var(--blue-medium);
+  --border-instruction: var(--border-size-base) solid var(--gosblue-color);
+  --border-input: var(--border-size-base) solid var(--line-hard-color);
+  --border-blue-light: var(--xxs-size) solid var(--active-item-color);
+
+  --border-radius-sm: var(--sm-size);
+  --border-radius-modal: 12px;
+}

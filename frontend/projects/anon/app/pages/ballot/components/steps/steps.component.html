@@ -1,0 +1,9 @@
+<div *ngIf="ballots$ | async as ballots" class="steps">
+  <div
+    *ngFor="let step of (ballots.length | uiRepeatArray); let index = index"
+    [class.step_active]="isActive(index)"
+    [class.step_completed]="isCompleted(index)"
+    (click)="navigateToBallot(index)"
+    class="step">
+  </div>
+</div>

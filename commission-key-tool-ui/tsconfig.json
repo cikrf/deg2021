@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",
+    "lib": [
+      "dom",
+      "esnext"
+    ],
+    "declaration": false,
+    "declarationMap": false,
+    "jsx": "react",
+    "strict": true,
+    "pretty": true,
+    "sourceMap": false,
+    "outDir": "src/dist",
+    /* Module Resolution Options */
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "noImplicitAny": false,
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules"
+      }
+    ]
+  },
+  "exclude": [
+    "test",
+    "release",
+    "src/main.prod.js",
+    "src/renderer.prod.js",
+    "src/dist",
+    ".erb/dll"
+  ]
+}

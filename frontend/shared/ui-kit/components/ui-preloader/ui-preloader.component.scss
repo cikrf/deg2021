@@ -1,0 +1,44 @@
+:host {
+  display: block;
+  border-radius: 12px;
+  background-color: var(--placeholder-color);
+  position: relative;
+  overflow: hidden;
+
+  &._primary {
+    background-color: var(--preloader-icon-color);
+  }
+
+  &:after {
+    content: '';
+    overflow: hidden;
+    display: block;
+    width: 400px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background: -webkit-gradient(linear,left top,right top,from(rgba(255,255,255,0)),color-stop(45%,rgba(255,255,255,.5)),color-stop(55%,rgba(255,255,255,.5)),to(rgba(255,255,255,0)));
+    background: linear-gradient(to right,rgba(255,255,255,0) 0,rgba(255,255,255,.5) 45%,rgba(255,255,255,.5) 55%,rgba(255,255,255,0) 100%);
+    -webkit-animation-name: preloader-animate;
+    animation-name: preloader-animate;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-delay: 50ms;
+    animation-delay: 50ms;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+  }
+}
+
+
+@-webkit-keyframes preloader-animate {
+  0% {
+      left: -400px
+  }
+
+  100% {
+      left: 100%
+  }
+}

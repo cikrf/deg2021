@@ -1,0 +1,105 @@
+syntax = "proto3";
+package wavesenterprise;
+
+option java_multiple_files = true;
+option java_package = "com.wavesenterprise.protobuf.service.contract";
+option csharp_namespace = "WavesEnterprise";
+option go_package = "wavesenterprise.com/weproto";
+
+import "google/protobuf/wrappers.proto";
+import "data_entry.proto";
+
+service ContractService {
+
+  rpc Connect (ConnectionRequest) returns (stream ContractTransactionResponse);
+
+  rpc CommitExecutionSuccess (ExecutionSuccessRequest) returns (CommitExecutionResponse);
+
+  rpc CommitExecutionError (ExecutionErrorRequest) returns (CommitExecutionResponse);
+
+  rpc GetContractKeys (ContractKeysRequest) returns (ContractKeysResponse);
+
+  rpc GetContractKey (ContractKeyRequest) returns (ContractKeyResponse);
+}
+
+message ConnectionRequest {
+  string connection_id = 1;
+  int32 async_factor = 2;
+}
+
+message ContractTransactionResponse {
+  ContractTransaction transaction = 1;
+  string auth_token = 2;
+}
+
+message ContractTransaction {
+  string id = 1;
+  int32 type = 2;
+  string sender = 3;
+  string sender_public_key = 4;
+  string contract_id = 5;
+  repeated DataEntry params = 6;
+  int64 fee = 7;
+  int32 version = 8;
+  bytes proofs = 9;
+  int64 timestamp = 10;
+  AssetId fee_asset_id = 11;
+
+  oneof data {
+    CreateContractTransactionData create_data = 20;
+    CallContractTransactionData call_data = 21;
+  }
+}
+
+message CreateContractTransactionData {
+  string image = 1;
+  string image_hash = 2;
+  string contract_name = 3;
+}
+
+message CallContractTransactionData {
+  int32 contract_version = 1;
+}
+
+message ExecutionSuccessRequest {
+  string tx_id = 1;
+  repeated DataEntry results = 2;
+}
+
+message ExecutionErrorRequest {
+  string tx_id = 1;
+  string message = 2;
+  int32 code = 3;
+}
+
+message CommitExecutionResponse {
+}
+
+message ContractKeysRequest {
+  string contract_id = 1;
+  google.protobuf.Int32Value limit = 2;
+  google.protobuf.Int32Value offset = 3;
+  google.protobuf.StringValue matches = 4;
+  KeysFilter keys_filter = 5;
+}
+
+message KeysFilter {
+  repeated string keys = 1;
+}
+
+message ContractKeysResponse {
+  repeated DataEntry entries = 1;
+}
+
+message ContractKeyRequest {
+  string contract_id = 1;
+  string key = 2;
+}
+
+message ContractKeyResponse {
+  DataEntry entry = 1;
+}
+
+message AssetId {
+  string value = 1;
+}

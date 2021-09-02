@@ -1,0 +1,38 @@
+@import '../../variables/sizes.scss';
+
+$types: (
+  "w": "width",
+  "min-w": "min-width",
+  "max-w": "max-width",
+  "h": "height",
+  "min-h": "min-height",
+  "max-h": "max-height"
+);
+
+$sizes: (
+  "auto": auto,
+  "fit": fit-content,
+  "10-p": 10%,
+  "25-p": 25%,
+  "50-p": 50%,
+  "75-p": 75%,
+  "100-p": 100%,
+  "4": 4px,
+  "32": 32px,
+  "64": 64px,
+  "100": 100px,
+  "120": 120px,
+  "200": 200px,
+  "280": 280px,
+  "300": 300px,
+  "500": 500px,
+  "600": 600px,
+);
+
+@each $classType, $type in $types {
+  @each $classSize, $size in $sizes {
+    .#{$classType}-#{$classSize} {
+      #{$type}: $size!important;
+    }
+  }
+}

@@ -1,0 +1,109 @@
+@import '~shared/ui-kit/assets/styles/mixin';
+
+:host {
+  display: block;
+  @include maxContentWidth(true);
+  text-align: center;
+
+  @include mobile-and-below {
+    height: 100%;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    padding: var(--md-size) 0;
+    align-items: center;
+  }
+
+  .ui-unavailable {
+    &__logo {
+      color: var(--confirm-completed-color);
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: var(--lg-size);
+
+      &_red {
+        color: var(--error-highlight-color);
+      }
+    }
+
+    &__title {
+      @include h3();
+      color: var(--summer-night-color);
+      margin-top: 0;
+      margin-bottom: var(--md-size);
+    }
+
+    &__container {
+      @include maxContentWidth();
+
+      @include mobile-and-below {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+
+    &__description {
+      @include text-normal();
+      color: var(--summer-night-color);
+      margin-bottom: var(--lg-size);
+    }
+
+    &__content {
+      margin-top: var(--xlg-size);
+      margin-bottom: var(--xlg-size);
+
+      @include tablet-and-above() {
+        margin-top: var(--lg-size);
+        margin-bottom: var(--lg-size);
+      }
+
+      &--with-spinner {
+        margin: 0;
+      }
+    }
+
+    &__link {
+      text-decoration: none;
+      width: 222px;
+
+      @include mobile-only {
+        width: 100%;
+      }
+    }
+
+    &__main {
+      width: 222px;
+
+      @include mobile-only {
+        width: 100%;
+      }
+    }
+
+    &__repeat {
+      width: 222px;
+
+      @include mobile-only {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
+
+.spinner {
+  animation: spinner 1s ease-in-out infinite;
+}
+
+@keyframes spinner {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

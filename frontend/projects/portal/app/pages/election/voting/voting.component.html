@@ -1,0 +1,64 @@
+<div class="voters-card" *ngIf="{electionState: electionState$ | async} as observable">
+  <ui-voters-card>
+
+    <h3 class="voters-card__name">
+      {{ election.name }}
+    </h3>
+
+    <ng-container *ngIf="observable.electionState === ElectionState.NotIssued">
+      <ng-container *ngIf="isAllVotingsStarted(); else notStarted">
+        <p class="voters-card__date">
+          Выдача бюллетеней завершится {{election.endDateTime | date : 'dd.MM.yyyy в HH:mm'}} по МСК
+        </p>
+      </ng-container>
+      <ng-template #notStarted>
+        <p class="voters-card__date voters-card__date--warning">
+          Голосование начнется {{election.startDateTime | date : 'dd.MM.yyyy в HH:mm'}} по МСК
+        </p>
+      </ng-template>
+    </ng-container>
+
+  </ui-voters-card>
+
+  <ng-container>
+
+    <div [class]="'voters-card__count ' + observable.electionState">
+      <div class="voters-card__ballots">
+        {{ footerCardText$ | async }}
+      </div>
+
+      <div
+        [ngSwitch]="observable.electionState"
+        [class]="'voters-card__count' + observable.electionState"
+      >
+
+        <ng-container *ngSwitchCase="ElectionState.Issued">
+          <span class="voters-card__issued-text">
+            Вам уже был предоставлен доступ к&nbsp;бюллетеням дистанционного электронного голосования.
+            Если Вы&nbsp;еще не&nbsp;проголосовали, перейдите к&nbsp;бюллетеням
+            <span *ngIf="endTimeWithTimeout$ | async as endTimeWithTimeout" class="voters-card__issued-time">
+              до {{endTimeWithTimeout | date : 'dd.MM.yyyy в HH:mm'}} по МСК
+            </span>
+          </span>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="ElectionState.IssuedNotThisDevice">
+          <span class="voters-card__danger-text">
+            Доступ к&nbsp;бюллетеням дистанционного электронного голосования был получен в&nbsp;другом
+            браузере или на&nbsp;другом устройстве. Вернитесь на&nbsp;устройство, на&nbsp;котором впервые
+            получили бюллетени и&nbsp;продолжите процесс с&nbsp;него.
+          </span>
+        </ng-container>
+
+      </div>
+
+      <a
+        *ngIf="observable.electionState !== ElectionState.NotIssued && showCleanup"
+        href="javascript:void(0)"
+        (click)="cleanup()"
+      >Удалить бюллетени
+      </a>
+    </div>
+
+  </ng-container>
+</div>

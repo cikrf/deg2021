@@ -1,0 +1,71 @@
+@import '../../assets/styles/mixin.scss';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--white-color);
+}
+
+ui-layout-header {
+  flex: 0 0 auto;
+}
+
+.ui-layout {
+  &__preload {
+    margin: auto;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    max-width: var(--content-width);
+    width: 100%;
+    margin: 0 auto;
+    padding: var(--l-mega-size) var(--xlg-size);
+    background-color: var(--white-color);
+
+    @include mobile-and-below {
+      display: flex;
+      flex-direction: column;
+
+      &::ng-deep > ng-component {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 100%;
+      }
+    }
+  }
+
+  &__footer {
+    flex: 0 0 auto;
+  }
+
+  &__up {
+    flex: 0 0 auto;
+    padding-bottom: var(--md-size);
+    cursor: pointer;
+    text-align: center;
+    height: var(--up-button-height);
+    box-sizing: border-box;
+    background-color: var(--white-color);
+
+    &-img {
+      color: var(--gosblue-color);
+      margin: auto;
+    }
+
+    &-text {
+      @include text-hint-strong();
+      color: var(--helper-color);
+    }
+  }
+
+  &__title {
+    @include heading-h3();
+    margin-bottom: var(--lg-size);
+    color: var(--summer-night-color);
+    text-align: center;
+  }
+}

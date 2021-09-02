@@ -1,0 +1,117 @@
+@import '../../../../../../../shared/ui-kit/assets/styles/mixin.scss';
+
+:host {
+  display: block;
+}
+
+.final-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+
+  &__page-header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: var(--content-width);
+    margin: 0 auto var(--xxlg-size);
+  }
+
+  &__steps {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 var(--xlg-size);
+  }
+
+  &__step {
+    height: 4px;
+    border-radius: 8px;
+    background-color: var(--bg-skylight);
+    cursor: pointer;
+
+    &_completed {
+      border-radius: 12px;
+      background-color: var(--green-sea-color);
+    }
+
+    &_active {
+      border-radius: 12px;
+      background-color: var(--text-primary-color);
+    }
+  }
+
+  &__timer {
+    margin-top: var(--md-size);
+    text-align: center;
+  }
+
+  &__icon {
+    margin-bottom: var(--base-size);
+    color: var(--line-hard-color);
+
+    &_complete {
+      color: var(--green-sea-color);
+    }
+
+    &_skipped {
+      color: var(--error-highlight-color);
+    }
+  }
+
+  &__title {
+    @include cap-h3();
+    margin-bottom: var(--base-size);
+  }
+
+  &__description {
+    @include text-normal();
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin-top: var(--x-mega-size);
+    margin-bottom: var(--xlg-size);
+  }
+
+  &__button {
+    width: 100%;
+
+    &:not(:last-child) {
+      margin-bottom: var(--xlg-size);
+    }
+  }
+
+  &__small-header {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: var(--lg-size);
+    width: 300px;
+
+    &:last-child {
+      margin-bottom: var(--mega-size);
+    }
+
+    .final-page__icon {
+      min-height: var(--x-mega-size);
+      min-width: var(--x-mega-size);
+    }
+
+    .final-page__small-header-description {
+      display: flex;
+      flex-direction: column;
+      margin-left: var(--xlg-size);
+
+      .final-page__title {
+        margin-bottom: var(--xs-size);
+      }
+
+      .final-page__description {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/app",
+    "types": [],
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "paths": {
+      "@models/*": [
+        "shared/models/*"
+      ],
+      "@modules/*": [
+        "shared/modules/*"
+      ],
+      "@utils/*": [
+        "shared/utils/*"
+      ],
+      "@ui/*": [
+        "shared/ui-kit/*"
+      ],
+      "@services/*": [
+        "shared/services/*"
+      ],
+      "@state/*": [
+        "projects/anon/app/state/*"
+      ],
+      "@helpers/*": [
+        "shared/helpers/*"
+      ],
+      "@interfaces/*": [
+        "shared/interfaces/*"
+      ],
+      "@enums/*": [
+        "shared/enums/*"
+      ],
+      "@shared/*": [
+        "shared/*"
+      ],
+      "@shared/helpers/*": [
+        "shared/helpers/*"
+      ],
+      "@shared/interceptor/*": [
+        "shared/interceptor/*"
+      ]
+    }
+  },
+  "files": [
+    "./main.ts",
+    "../../shared/polyfills.ts"
+  ],
+  "include": [
+    "./**/*.d.ts"
+  ]
+}

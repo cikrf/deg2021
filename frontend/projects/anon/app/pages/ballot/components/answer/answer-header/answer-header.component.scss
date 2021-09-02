@@ -1,0 +1,87 @@
+@import 'shared/ui-kit/assets/styles/variables';
+@import 'shared/ui-kit/assets/styles/mixin.scss';
+
+:host {
+  display: block;
+  padding: var(--md-size) var(--xlg-size);
+
+  ::ng-deep .ui-checkbox-label {
+    &--unavailable {
+      flex: 0 0 var(--md-size);
+      width: var(--md-size);
+      margin-right: calc(var(--md-size) * (-1));
+      text-align: right;
+    }
+  }
+
+  .answer-header {
+    &__label {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      user-select: none;
+
+      h3 {
+        margin: 0 auto 0 0;
+        font-size: 1.8rem;
+        font-weight: inherit;
+      }
+    }
+
+    &__action {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: var(--md-size);
+      @include text-normal;
+      user-select: none;
+      color: var(--summer-night-color);
+
+      &:empty {
+        display: none;
+      }
+
+      .answer-header__candidates {
+        @include heading-h6();
+        color: var(--gosblue-color);
+        margin-right: var(--md-size);
+      }
+    }
+  }
+
+
+  &._selected {
+    border-radius: var(--base-size) var(--base-size) 0 0;
+
+    .answer-header__label {
+      @include heading-h5;
+      color: var(--summer-night-color);
+    }
+
+    &._dark {
+      background-color: var(--dark);
+
+      .answer-header__label,
+      .answer-header__action {
+        color: var(--white-color);
+      }
+    }
+  }
+
+  @media (max-width: $mobile-max) {
+    .answer-header__action {
+      flex-direction: column;
+      align-items: stretch;
+      margin-top: var(--lg-size);
+
+      & > :first-child {
+        margin-bottom: var(--base-size);
+      }
+
+      & > :last-child {
+        width: 100%;
+      }
+    }
+  }
+}

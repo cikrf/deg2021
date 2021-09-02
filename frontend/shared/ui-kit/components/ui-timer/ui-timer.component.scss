@@ -1,0 +1,182 @@
+@import '../../assets/styles/mixin.scss';
+
+:host {
+  display: flex;
+  justify-content: center;
+
+  &._horizontal, &._horizontal-reverse {
+    display: block;
+  }
+
+  &._centered {
+    text-align: center;
+
+    .ui-timer__description {
+      align-items: center;
+    }
+  }
+
+  @include tablet-and-above {
+    &._horizontal, &._horizontal-reverse {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      min-width: 400px;
+
+      .ui-timer__time {
+        margin-bottom: 0;
+        @include heading-h5();
+        color: var(--summer-night-color);
+      }
+
+      .ui-timer__description {
+        @include text-hint-strong();
+        color: var(--helper-color);
+        flex-direction: row;
+        align-items: center;
+        margin-left: var(--semi-md-size);
+        flex: 1;
+        gap: var(--lg-size);
+      }
+
+      .ui-timer__divider {
+        display: block;
+        align-self: stretch;
+      }
+    }
+
+    &._horizontal {
+      .ui-timer__time {
+        flex: 1;
+      }
+
+      .ui-timer__content {
+        min-width: 140px;
+      }
+    }
+
+    &._horizontal-reverse {
+      .ui-timer__description {
+        flex-direction: row;
+      }
+
+      .ui-timer__time {
+        white-space: initial;
+        margin-bottom: 0;
+
+        @include mobile-only {
+          @include heading-h6();
+          margin-left: 0;
+        }
+      }
+
+      .ui-timer__content-wrapper {
+        flex: 1;
+        max-width: 315px;
+      }
+
+      .ui-timer__content {
+        border-right: none;
+        padding-right: 0;
+        margin-right: 0;
+        flex: 1;
+
+        @include mobile-only {
+          @include text-hint-strong();
+          max-width: 140px;
+          padding-left: var(--semi-lg-size);
+        }
+      }
+    }
+  }
+
+  &._success {
+    .ui-timer {
+      &__time {
+        color: var(--green-sea-color);
+      }
+    }
+  }
+
+  &._error {
+    .ui-timer {
+      &__time {
+        color: var(--gosred-color);
+      }
+    }
+  }
+
+  &.content_success {
+    .ui-timer__content {
+      color: var(--green-sea-color);
+    }
+
+    .ui-timer__description-icon {
+      color: var(--green-sea-color);
+    }
+  }
+
+  .ui-timer {
+    &__time {
+      @include text-normal();
+      color: var(--text-secondary-color);
+      box-sizing: border-box;
+      min-width: 140px;
+
+      &_interval {
+        white-space: pre-line;
+      }
+    }
+
+    &__description {
+      @include text-normal();
+      color: var(--text-secondary-color);
+      display: flex;
+      flex-direction: column;
+      margin-right: var(--sm-size);
+      box-sizing: border-box;
+      min-width: 140px;
+
+      &-icon {
+        &_loading {
+          color: var(--preloader-icon-color);
+        }
+      }
+    }
+
+    &__divider {
+      display: none;
+    }
+
+    &__content {
+      &_loading {
+        line-height: 1.4rem;
+      }
+    }
+
+    &__content-wrapper {
+      max-width: 315px;
+      min-width: 160px;
+      width: 100%;
+    }
+  }
+
+  @include mobile-and-below {
+    display: flex;
+
+    .ui-timer {
+      &__description {
+        display: flex;
+        margin-left: var(--sm-size);
+      }
+
+      &__time {
+        margin-top: 5px;
+        margin-bottom: var(--xs-size);
+        padding-bottom: var(--xs-size);
+        // Снизу отступ убрал в вертикальном режиме, если что, вернуть
+        // border-bottom: var(--border-helper);
+      }
+    }
+  }
+}

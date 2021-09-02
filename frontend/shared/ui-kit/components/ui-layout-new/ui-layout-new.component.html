@@ -1,0 +1,25 @@
+<ng-content select="[layout-header]"></ng-content>
+
+<main class="ui-layout__content">
+  <ng-container *ngIf="title">
+    <p
+      *ngIf="loading else titleTemplate"
+      class="ui-layout__preload"
+      aria-busy="true"
+      aria-live="assertive"
+    >Пожалуйста подождите ...
+    </p>
+
+    <ng-template #titleTemplate>
+      <h2 class="ui-layout__title">{{ title }}</h2>
+    </ng-template>
+  </ng-container>
+
+  <ng-content></ng-content>
+
+  <ng-content select="[layout-before-footer]"></ng-content>
+</main>
+
+<footer class="ui-layout__footer">
+  <ui-footer [showSupport]="showSupport"></ui-footer>
+</footer>

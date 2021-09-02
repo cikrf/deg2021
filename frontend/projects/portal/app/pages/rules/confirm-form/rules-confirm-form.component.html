@@ -1,0 +1,29 @@
+<form
+  *ngIf="checkboxes$ | async as checkboxes"
+  [formGroup]="form"
+  (ngSubmit)="confirmRules()"
+>
+  <ng-container *ngFor="let checkbox of form.controls; let i = index">
+    <div
+      class="form-row"
+      [ngClass]="{
+        'mb-md': i === 0,
+        'mb-lg': i !== 0
+      }"
+    >
+      <ui-checkbox
+        [formControlName]="i"
+        [label]="checkboxes[i]"
+      ></ui-checkbox>
+    </div>
+  </ng-container>
+
+  <ui-button
+    *ngIf="{isButtonShown: buttonShown$ | async} as observable"
+    type="submit"
+    [ariaLabel]="observable.isButtonShown ? '' : 'Необходимо принять все условия, чтобы продолжить голосование'"
+    [disabled]="!observable.isButtonShown"
+    [label]="'Подтвердить'"
+  ></ui-button>
+
+</form>

@@ -1,0 +1,43 @@
+@import '../../../../../../shared/ui-kit/assets/styles/mixin.scss';
+
+.key-generation {
+  &__icon {
+    color: var(--tela-rossa-color);
+  }
+
+  &__action_mobile {
+    display: block;
+    margin-top: var(--sm-size);
+
+    @include tablet-and-above() {
+      display: none;
+    }
+  }
+
+  &__possible-reasons {
+    .key-generation__header-secondary,
+    .key-generation__content-secondary {
+      display: none;
+      margin-bottom: var(--sm-size);
+
+      @include tablet-and-above() {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    &.displayed {
+      .key-generation__header-secondary,
+      .key-generation__content-secondary {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  &__content-secondary {
+    flex-direction: column;
+  }
+}
+

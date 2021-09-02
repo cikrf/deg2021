@@ -1,0 +1,60 @@
+image: ${REGISTRY}/it/docker:19.03.1
+
+services:
+  - name: ${REGISTRY}/it/docker:19.03.1-dind
+    alias: docker
+
+variables:
+  DOCKER_HOST: tcp://docker:2375
+  DOCKER_TLS_CERTDIR: ""
+
+stages:
+  - test
+  - build
+  - release
+
+## Tests
+.test: &test
+  image: ${REGISTRY}/it/hseeberger/scala-sbt:11.0.6_1.3.10_2.12.10
+  tags:
+    - wavesenterprise
+
+unit tests:
+  <<: *test
+  script:
+    - sbt test
+  artifacts:
+    reports:
+      junit:
+        - target/test-reports/*.xml
+
+assembly:
+  stage: build
+  image: ${REGISTRY}/it/hseeberger/scala-sbt:11.0.6_1.3.10_2.12.10
+  script:
+    - sbt assembly
+  artifacts:
+    paths:
+      - target/scala-2.12/we-voting-contract.jar
+    expire_in: 1 week
+  tags:
+    - wavesenterprise
+
+build_image:
+  stage: release
+  script:
+    - docker login -u "${REGISTRY_USER}" -p "${REGISTRY_PASSWORD}" "${REGISTRY}"
+    # Pull latest image for using cache
+    - docker pull "${REGISTRY}/${REGISTRY_PROJECT}/${CI_PROJECT_NAME}:latest" || true
+    # Add file versions.json
+    - cat Dockerfile | sed "s/\${REGISTRY}/${REGISTRY}/g" | docker build --cache-from "${REGISTRY}/${REGISTRY_PROJECT}/${CI_PROJECT_NAME}:latest" -t "${REGISTRY}/${REGISTRY_PROJECT}/${CI_PROJECT_NAME}:${CI_COMMIT_REF_NAME}" -t "${REGISTRY}/${REGISTRY_PROJECT}/${CI_PROJECT_NAME}:latest" -f - .
+    # Push images
+    - docker push "${REGISTRY}/${REGISTRY_PROJECT}/${CI_PROJECT_NAME}:${CI_COMMIT_REF_NAME}"
+    - docker push "${REGISTRY}/${REGISTRY_PROJECT}/${CI_PROJECT_NAME}:latest"
+    - "docker inspect --format='{{.Id}}' ${REGISTRY}/${REGISTRY_PROJECT}/${CI_PROJECT_NAME}:${CI_COMMIT_REF_NAME} | awk '{print \"ImageHash: \" substr($0,8)}'"
+  dependencies:
+    - assembly
+  only:
+    - tags
+  tags:
+    - wavesenterprise

@@ -1,0 +1,220 @@
+@import '../../../../../../../shared/ui-kit/assets/styles/mixin.scss';
+
+:host {
+  margin: 0 auto;
+
+  .title {
+    @include heading-h3();
+    display: block;
+    color: var(--summer-night-color);
+    margin-bottom: var(--md-size);
+    text-align: center;
+
+    .subtitle {
+      @include text-normal();
+      display: block;
+    }
+  }
+
+  .header {
+    padding: 0 var(--xlg-size) var(--mega-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+
+    @include desktop-and-above() {
+      padding: var(--l-mega-size);
+      padding-top: 0;
+      max-width: 768px;
+      margin: 0 auto;
+    }
+
+    &__image {
+      color: var(--gosblue-color);
+      cursor: pointer;
+      margin-right: var(--md-size);
+    }
+
+    &__title {
+      color: var(--primary-color);
+      @include cap-h3();
+      text-align: center;
+    }
+  }
+
+  .confirm {
+    width: 100%;
+
+    &__icon_completed {
+      margin: 0 auto;
+      color: var(--confirm-completed-color);
+
+      @include mobile-only {
+        width: 80px !important;
+        height: 80px !important;
+      }
+    }
+
+    &__label {
+
+      .confirm__complete {
+        margin: var(--md-size) auto var(--l-mega-size);
+        text-align: center;
+
+        & > :first-child {
+          @include heading-h3();
+        }
+
+        & > :not(:last-child) {
+          margin-bottom: var(--md-size);
+        }
+
+        @include mobile-only {
+          margin-bottom: var(--xlg-size);
+
+          & > :first-child {
+            @include heading-h4();
+          }
+        }
+      }
+
+      .confirm__short {
+        margin-bottom: var(--md-size);
+
+        @include tablet-and-above {
+          margin-bottom: var(--lg-size);
+        }
+
+        &-name {
+          color: var(--helper-color);
+          @include heading-h5();
+
+          @include tablet-and-above {
+            @include heading-h4();
+          }
+        }
+
+        &-text {
+          color: var(--summer-night-color);
+          @include heading-h5();
+        }
+      }
+
+      .confirm__agreement {
+        margin-bottom: var(--lg-size);
+        color: var(--summer-night-color);
+        white-space: normal;
+        @include text-normal()
+      }
+
+      @include mobile-only {
+        .confirm__agreement {
+          margin-bottom: var(--md-size);
+        }
+      }
+    }
+
+    &__list {
+      align-self: stretch;
+    }
+
+    &__answer {
+      background-color: var(--white-color);
+      margin-bottom: var(--lg-size);
+
+      @include desktop-and-above {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      @include mobile-only {
+        margin-left: var(--xlg-size-reverse);
+        margin-right: var(--xlg-size-reverse);
+        padding: 0 var(--xlg-size);
+      }
+
+      &-info {
+        @include desktop-and-above {
+          display: flex;
+        }
+
+        .confirm__answer-logo {
+          display: flex;
+          justify-content: center;
+          margin-bottom: var(--md-size);
+
+          @include desktop-and-above {
+            display: inline-flex;
+            margin-right: var(--xlg-size);;
+            margin-bottom: 0;
+          }
+        }
+
+        .confirm__answer-description {
+          @include text-normal();
+          color: var(--summer-night-color);
+          white-space: pre-line;
+
+          @include desktop-and-above {
+            display: inline-flex;
+          }
+        }
+      }
+    }
+
+    &__name {
+      margin-bottom: var(--base-size);
+      @include heading-h5();
+      font-weight: normal;
+      display: flex;
+      justify-content: flex-start;
+
+      @include mobile-sm-and-above {
+        @include heading-h4();
+        font-weight: normal;
+      }
+
+      @include tablet-and-above {
+        @include heading-h3;
+        font-weight: normal;
+      }
+
+      @include desktop-and-above {
+        width: 100%;
+        justify-content: flex-start;
+      }
+    }
+
+    @include tablet-and-below {
+      width: 100%;
+    }
+
+    &__final {
+      margin-top: var(--xxlg-size);
+    }
+  }
+}
+
+.confirm__controls {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--lg-size);
+
+  & > :first-child {
+    margin-right: var(--md-size);
+  }
+
+  @include mobile-only {
+    flex-direction: column;
+
+    & > :first-child {
+      margin-right: var(--md-size);
+      margin-bottom: var(--md-size);
+    }
+
+    & > :nth-child(1n) {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+<div class="voting__title">
+  {{ title }}
+</div>
+
+<div class="grid w-100-p mb-mega">
+  <ui-timer
+    [endTime]="endDate?.getTime()"
+    alignType="horizontal"
+  >
+    {{ timerLabel }}
+  </ui-timer>
+</div>

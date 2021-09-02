@@ -1,0 +1,21 @@
+<ui-base-modal>
+  <div class="max-checked">
+    <div>
+      <div class="max-checked__title">
+        Вы выбрали доступное количество вариантов
+      </div>
+
+      <div class="max-checked__text-helper">
+        Если вы хотите изменить выбор, снимите необходмое количество флажков с выбранных кандидатов и выберите снова.
+      </div>
+    </div>
+
+    <div class="grid grid-justify-center w-100-p">
+      <ui-button
+        uiButton="outline"
+        [label]="'Продолжить'"
+        (click)="start()"
+      ></ui-button>
+    </div>
+  </div>
+</ui-base-modal>

@@ -1,0 +1,74 @@
+syntax = "proto3";
+package wavesenterprise;
+
+option java_multiple_files = true;
+option java_package = "com.wavesenterprise.protobuf.service.contract";
+option csharp_namespace = "WavesEnterprise";
+option go_package = "wavesenterprise.com/weproto";
+
+service PrivacyService {
+
+  rpc GetPolicyRecipients (PolicyRecipientsRequest) returns (PolicyRecipientsResponse);
+
+  rpc GetPolicyOwners (PolicyOwnersRequest) returns (PolicyOwnersResponse);
+
+  rpc GetPolicyHashes (PolicyHashesRequest) returns (PolicyHashesResponse);
+
+  rpc GetPolicyItemData (PolicyItemDataRequest) returns (PolicyItemDataResponse);
+
+  rpc GetPolicyItemInfo (PolicyItemInfoRequest) returns (PolicyItemInfoResponse);
+}
+
+message PolicyRecipientsRequest {
+  string policy_id = 1;
+}
+
+message PolicyRecipientsResponse {
+  repeated string recipients = 1;
+}
+
+message PolicyOwnersRequest {
+  string policy_id = 1;
+}
+
+message PolicyOwnersResponse {
+  repeated string owners = 1;
+}
+
+message PolicyHashesRequest {
+  string policy_id = 1;
+}
+
+message PolicyHashesResponse {
+  repeated string hashes = 1;
+}
+
+message PolicyItemDataRequest {
+  string policy_id = 1;
+  string item_hash = 2;
+}
+
+message PolicyItemDataResponse {
+  string data = 1;
+}
+
+message PolicyItemInfoRequest {
+  string policy_id = 1;
+  string item_hash = 2;
+}
+
+message PolicyItemInfoResponse {
+  string sender = 1;
+  string policy_id = 2;
+  string type = 3;
+  PolicyItemFileInfo info = 4;
+  string hash = 5;
+}
+
+message PolicyItemFileInfo {
+  string filename = 1;
+  int32 size = 2;
+  int64 timestamp = 3;
+  string author = 4;
+  string comment = 5;
+}

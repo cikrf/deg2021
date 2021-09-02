@@ -1,0 +1,23 @@
+<ng-container
+  [ngTemplateOutlet]="lang"
+  [ngTemplateOutletContext]="{language: defaultLanguage}"
+></ng-container>
+
+<ng-container
+  *ngFor="let language of languages"
+>
+  <ng-container
+    [ngTemplateOutlet]="lang"
+    [ngTemplateOutletContext]="{language: language}"
+  ></ng-container>
+</ng-container>
+
+
+<ng-template #lang let-language="language">
+  <ui-button
+    class="language-selector__item"
+    uiButton="link"
+    [styleClass]="language.code === current ? 'active' : undefined"
+    (click)="change(language)"
+  >{{ language.name }}</ui-button>
+</ng-template>

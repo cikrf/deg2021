@@ -1,0 +1,38 @@
+.container {
+  position: relative;
+  background-color: #fff;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  padding: 0 12px;
+  cursor: pointer;
+}
+
+.headerText {
+  color: #404040;
+  letter-spacing: 0.0012em;
+  user-select: none;
+}
+
+.headerIcon {
+  margin-right: 8px;
+  transform: rotate(0);
+  transition: transform .15s linear;
+
+  .opened & {
+    transform: rotate(90deg);
+  }
+}
+
+.body {
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: height .15s ease;
+}
+
+.content {
+  padding: 32px 20px;
+}

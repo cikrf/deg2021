@@ -1,0 +1,63 @@
+@import 'shared/ui-kit/assets/styles/mixin.scss';
+
+.voters-card {
+  &__name {
+    margin: 0;
+    @include cap-h4();
+
+    @include desktop-and-above {
+      @include h3;
+    }
+  }
+
+  &__ballots {
+    margin-bottom: var(--sm-size);
+  }
+
+  &__count {
+    padding: var(--md-size) var(--lg-size);
+    background-color: var(--input-color);
+    border-radius: 0 0 var(--sm-size) var(--sm-size);
+
+    @include desktop-and-above {
+      @include h6;
+    }
+
+    :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__date {
+    margin: var(--sm-size) 0 0;
+    font-size: 70%;
+    line-height: 215%;
+    text-transform: uppercase;
+
+    &--warning {
+      color: var(--tela-rossa-color);
+    }
+  }
+
+  &__issued-text {
+    @include text-normal();
+    color: var(--summer-night-color);
+  }
+
+  &__issued-time {
+    white-space: nowrap;
+  }
+
+  &__danger-text {
+    @include text-hint();
+    color: var(--tela-rossa-color);
+  }
+
+  .issued {
+    background-color: var(--green-light-color);
+  }
+
+  .issued-not-this-device {
+    background-color: var(--red-light-color);
+  }
+}

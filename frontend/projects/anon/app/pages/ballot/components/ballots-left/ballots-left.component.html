@@ -1,0 +1,24 @@
+<ng-container
+  *ngIf="{
+    leftBallotsText: leftBallotsText$ | async,
+    hideTimer: hideTimer$ | async,
+    plannedEndDateTime: plannedEndDateTime$ | async
+  } as observables"
+>
+  <div *ngIf="observables.leftBallotsText.length"
+       class="left"
+  >
+    <div class="left__title">
+      {{ observables.leftBallotsText }}
+    </div>
+
+    <ui-timer
+      *ngIf="!observables.hideTimer"
+      (onHideTimer)="hideTimer()"
+      [endTime]="observables.plannedEndDateTime"
+      centered
+    >
+      до завершения приема голосов
+    </ui-timer>
+  </div>
+</ng-container>

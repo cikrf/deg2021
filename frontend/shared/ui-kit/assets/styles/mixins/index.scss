@@ -1,0 +1,17 @@
+@import './cards.scss';
+@import './heading.scss';
+@import './media.scss';
+@import './typography.scss';
+@import './visibility';
+
+@mixin maxContentWidth($popup: false) {
+  max-width: var(--alert-width);
+  width: 100%;
+
+  @if($popup == true) {
+    margin: auto;
+  } @else {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

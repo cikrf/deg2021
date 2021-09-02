@@ -1,0 +1,54 @@
+<div class="confirm__label">
+
+  <ui-icon
+    class="confirm__icon_completed"
+    name="base-ok"
+    [size]='120'
+  >
+  </ui-icon>
+
+  <div class="confirm__complete">
+    <div *ngIf="hasNext; else completed">
+      Вы можете продолжить голосование по оставшимся бюллетеням.
+    </div>
+
+    <ng-template #completed>
+      <div>
+        Вы проголосовали по всем доступным бюллетеням.
+      </div>
+      <div class="plain-text-normal">
+        Спасибо за участие в электронном дистанционном голосовании!
+      </div>
+    </ng-template>
+
+  </div>
+
+  <div class="confirm__controls">
+    <ng-container *ngIf="hasNext">
+      <ui-button
+        *ngIf="false"
+        uiButton="outline"
+        [label]="'К списку бюллетеней'"
+        (click)="gotoList()"
+      ></ui-button>
+      <ui-button
+        [label]="'Следующий бюллетень'"
+        (click)="gotoNext()"
+      ></ui-button>
+    </ng-container>
+
+    <ui-button
+      *ngIf="!hasNext"
+      uiButton="outline"
+      [label]="'На главную'"
+      (click)="gotoMain()"
+    ></ui-button>
+    <ui-button
+      *ngIf="!hasNext"
+      uiButton="outline"
+      [label]="'Наблюдение и статистика'"
+      (click)="goToStatistic()"
+    ></ui-button>
+  </div>
+
+</div>

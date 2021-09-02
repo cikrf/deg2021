@@ -1,0 +1,10 @@
+@import 'shared/ui-kit/assets/styles/mixins';
+
+.rules-step-one {
+  @include text-normal();
+
+  a {
+    text-decoration: none;
+    color: var(--gosblue-color);
+  }
+}

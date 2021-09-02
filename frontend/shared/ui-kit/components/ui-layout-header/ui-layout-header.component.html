@@ -1,0 +1,77 @@
+<ng-container
+  *ngIf="{header: header$ | async} as observable"
+>
+  <ng-container *ngIf="type === 'anon'; else portalHeader">
+    <ui-layout-anon-header></ui-layout-anon-header>
+
+    <ng-container *ngIf="subheaderTemplateRef">
+      <ng-template *ngTemplateOutlet="subheaderTemplateRef"></ng-template>
+    </ng-container>
+
+    <ng-content select="[subheader]"></ng-content>
+  </ng-container>
+
+  <ng-template #portalHeader>
+    <header class="host-layout-header"
+            [class.host-layout-header-service]="isServicePage(observable.header?.pageType)">
+      <div class="ui-layout-header">
+        <div class="ui-layout-header__content">
+          <a [routerLink]="[appRoutingEnum.Election]" class="ui-layout-header__logo">
+            <img src="assets/icons/deg_logo.svg" alt="">
+
+            <h1 class="ui-layout-header__header-title g-visibility-hidden">
+              Дистанционное электронное голосование
+            </h1>
+          </a>
+        </div>
+
+        <nav class="ui-layout-header__toolbar">
+          <ui-button
+            id="TopAccessibilityPanel"
+            [uiButton]="'link'"
+            [label]="'Версия сайта для слабовидящих'"
+            (click)="openEyePanel()"
+          ></ui-button>
+
+          <div
+            *ngIf="(subheaderTemplateRef && !observable.header?.pageType) else enterTemplate"
+            class="ui-layout-header__entrance"
+          >
+            <ng-template *ngTemplateOutlet="subheaderTemplateRef"></ng-template>
+          </div>
+
+          <ng-template #enterTemplate>
+            <a class="ui-layout-header__entrance" [routerLink]="[appRoutingEnum.Election]">Войти</a>
+          </ng-template>
+        </nav>
+
+        <ng-container *ngIf="observable.header?.pageType">
+
+        </ng-container>
+      </div>
+    </header>
+  </ng-template>
+
+  <ng-container
+    *ngIf="observable.header?.isShow || title"
+  >
+
+    <div class="header-meta-icon" *ngIf="observable.header?.link">
+      <div class="header-meta__image" (click)="navigation(observable.header?.link)">
+        <ui-icon name="classic-arrow-left" size="40"></ui-icon>
+      </div>
+    </div>
+
+    <div class="header-meta" *ngIf="!observable.header?.link && observable.header?.subtitle || title">
+      <div class="header-meta__title">
+        {{ observable.header?.subtitle || title }}
+      </div>
+    </div>
+
+  </ng-container>
+
+  <ng-content select="[title]"></ng-content>
+
+
+</ng-container>
+

@@ -1,0 +1,137 @@
+<ng-container
+  *ngIf="{
+    timer: timer$ | async,
+    error: error$ | async,
+    sendTo: sendTo$ | async,
+    isMobile: isMobile$ | async,
+    disabled: disabledButton$ | async,
+    disabledInput: disabledInput$ | async,
+    formStatus: form.statusChanges | async,
+    type: authenticationType$ | async,
+    authentication: authentication$ | async,
+    loading: loading$ | async
+  } as observable"
+>
+  <form
+    *ngIf="observable.authentication"
+    class="sms-auth"
+    [formGroup]="form"
+  >
+
+    <p>{{ observable.authentication.confirmation }} {{ observable?.sendTo }}</p>
+
+    <ui-accordion
+      type="light"
+      [ariaId]="'smsNotAvailable'"
+      [title]="observable.authentication.noAccessTitle"
+    >
+      {{ observable.authentication.noAccess }}
+      <a href="https://lk.gosuslugi.ru/settings/account" target="_blank">
+        в&nbsp;вашем профиле на&nbsp;портале Госуслуг
+      </a> и&nbsp;вернитесь сюда, выполнив повторный вход
+    </ui-accordion>
+
+    <div
+      class="sms-auth__code-wrap"
+      [class.sms-auth__code-wrap--error]="observable.error"
+    >
+      <input
+        #inputRef
+        formControlName="code"
+        class="sms-auth__input"
+        [autofocus]="observable.disabledInput ? false : undefined"
+        [class.sms-auth__input_error]="observable.error"
+        [class.sms-auth__input_disabled]="observable.disabledInput"
+        [maxlength]="maxLengthCode"
+        [disabled]="observable.disabledInput"
+        type="text"
+        inputmode="numeric"
+        placeholder="000000"
+        title="Введите код из смс"
+        autocomplete="one-time-code"
+        pattern="[0-9]*"
+        (keydown.enter)="!observable.disabled && sendCode()"
+        (keypress)="validate($event)"
+        (input)="blurWithMaxLengthOnMobile($event, observable.isMobile)"
+        (focus)="checkDisabledInput(observable.disabledInput)"
+      />
+
+      <span
+        *ngIf="!isError(observable.timer, !!observable.error); else errorText"
+        class="sms-auth__timer"
+        [attr.aria-live]="observable?.timer && observable?.timer%10 === 0 ? 'assertive' : 'off'"
+        [attr.aria-hidden]="observable?.timer && observable?.timer%10 === 0 ? undefined : true"
+        role="timer"
+      >Код действителен еще {{ observable?.timer }}&nbsp;{{ observable?.timer | gasNotation: ['секунду', 'секунды', 'секунд'] }}
+      </span>
+
+    </div>
+
+    <ng-template #errorText>
+      <span
+        *ngIf="observable.error"
+        aria-live="assertive"
+        role="alert"
+        class="sms-auth__error-text"
+      >
+        <ng-container *ngIf="observable.timer; else noTimer">
+          {{ observable.error }}
+        </ng-container>
+
+        <ng-template #noTimer>
+          Не совпадает код подтверждения. Запросите новый.
+        </ng-template>
+      </span>
+
+      <span
+        *ngIf="!observable.timer && !observable.error"
+        class="sms-auth__error-text sms-auth__error-text_normal"
+        aria-live="assertive"
+        role="alert"
+      >
+        Срок ввода кода истек. Запросите новый код
+      </span>
+
+    </ng-template>
+
+    <ui-accordion
+      class="mb-xxlg"
+      type="light"
+      [ariaId]="'smsNotDelivered'"
+      [title]="'Код не приходит?'"
+    >
+      {{ observable.authentication.codeNotCome }}&nbsp;&mdash;
+      <a [routerLink]="['/', appRoutingEnum.Support, {message: 'Мне не приходит СМС сообщение'}]">
+        обратитесь в&nbsp;техническую поддержку
+      </a>
+    </ui-accordion>
+
+    <ui-button
+      *ngIf="!isError(observable.timer, !!observable.error); else repeatButton"
+      type="submit"
+      [disabled]="observable.disabled"
+      [label]="'Отправить'"
+      [loading]="observable.loading"
+      (click)="!observable.disabled && sendCode()"
+    ></ui-button>
+    <ng-template #repeatButton>
+      <ui-button
+        type="submit"
+        [attr.aria-hidden]="observable.timer && observable.timer%10 === 0 ? undefined : true"
+        [attr.aria-live]="observable.timer && observable.timer%10 === 0 ? 'assertive' : 'off'"
+        [attr.role]="'timer'"
+        [disabled]="observable.timer"
+        [loading]="observable.loading"
+        (click)="!observable.timer && refreshCode()"
+      >
+        <ng-container *ngIf="observable.timer">
+          Запросить&nbsp;код&nbsp;через {{ observable.timer }}&nbsp;{{observable.timer | gasNotation: ['секунду', 'секунды', 'секунд']}}
+        </ng-container>
+        <ng-container *ngIf="!observable.timer">
+          Запросить новый код
+        </ng-container>
+      </ui-button>
+    </ng-template>
+
+  </form>
+</ng-container>

@@ -1,0 +1,71 @@
+{
+  "data": [
+    {
+      "id": "8570caf8-4500-11eb-b378-0242ac130002",
+      "type": "election",
+      "name": "Какая то кампания голосовабельная",
+      "externalId": "182763871263_123",
+      "level": "",
+      "startDateTime": "2020-12-25 00:00",
+      "endDateTime": "2020-12-26 00:00",
+      "votings": [
+        {
+          "id": "8570caf8-4500-11eb-b378-0242ac130001",
+          "type": "",
+          "name": "Голосование по такому то округу",
+          "externalId": "182763871263_123_1",
+          "districtNumber": 0,
+          "status": "IN_PROCESS",
+          "contractId": "8570caf8-4500-11eb-b378-0242ac130002",
+          "plannedStartDateTime": "2020-12-25 00:00",
+          "plannedEndDateTime": "2020-12-26 00:00",
+          "factStartDateTime": "2020-12-25 00:00",
+          "factEndDateTime": "2020-12-26 00:00",
+          "ballotIssued": true,
+          "hasActiveVotingRight": true
+        },
+        {
+          "id": "ae94a0f8-4500-11eb-b378-0242ac130003",
+          "type": "",
+          "name": "Голосование по какому то еще округу",
+          "externalId": "182763871263_123_2",
+          "districtNumber": 0,
+          "status": "IN_PROCESS",
+          "contractId": "8570caf8-4500-11eb-b378-0242ac130003",
+          "plannedStartDateTime": "2020-12-25 00:00",
+          "plannedEndDateTime": "2020-12-26 00:00",
+          "factStartDateTime": "2020-12-25 00:00",
+          "factEndDateTime": "2020-12-26 00:00",
+          "ballotIssued": true,
+          "hasActiveVotingRight": true
+        }
+      ]
+    },
+    {
+      "id": "ae948e42-4500-11eb-b378-0242ac130002",
+      "type": "referendum",
+      "name": "Какая то кампания референдумная",
+      "externalId": "182763871263_124",
+      "level": "",
+      "startDateTime": "2020-12-25 00:00",
+      "endDateTime": "2020-12-26 00:00",
+      "votings": [
+        {
+          "id": "8570caf8-4500-11eb-b378-0242ac130002",
+          "type": "",
+          "name": "Референдное голсоование по всей стране судя по всему",
+          "externalId": "182763871263_123_3",
+          "districtNumber": 0,
+          "status": "IN_PROCESS",
+          "contractId": "8570caf8-4500-11eb-b378-0242ac130002",
+          "plannedStartDateTime": "2020-12-25 00:00",
+          "plannedEndDateTime": "2020-12-26 00:00",
+          "factStartDateTime": "2020-12-25 00:00",
+          "factEndDateTime": "2020-12-26 00:00",
+          "ballotIssued": true,
+          "hasActiveVotingRight": true
+        }
+      ]
+    }
+  ]
+}
