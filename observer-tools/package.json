@@ -1,0 +1,62 @@
+{
+  "name": "observer-tool",
+  "version": "0.1.0",
+  "description": "",
+  "author": "",
+  "private": true,
+  "license": "UNLICENSED",
+  "main": "bin/index.js",
+  "bin": {
+    "run": "./dist/index.js"
+  },
+  "scripts": {
+    "start": "node dist/index.js",
+    "build": "tsc",
+    "build:check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@wavesenterprise/crypto-gost-js": "^2.1.0-RC1",
+    "@wavesenterprise/rtk-encrypt": "^1.2.2-RC1",
+    "@wavesenterprise/transactions-factory": "^1.4.0",
+    "big-integer": "^1.6.48",
+    "bn.js": "^4.12.0",
+    "bs58": "^4.0.1",
+    "chalk": "^4.1.2",
+    "elliptic": "^6.5.4",
+    "ffi-napi": "^4.0.3",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
+    "ref-array-di": "^1.2.2",
+    "ref-napi": "^3.0.3",
+    "rimraf": "^3.0.2",
+    "secp256k1": "^4.0.2",
+    "worker-farm": "^1.7.0",
+    "yargs": "^17.1.1",
+    "yauzl": "^2.10.0"
+  },
+  "devDependencies": {
+    "@types/bn.js": "^5.1.0",
+    "@types/bs58": "^4.0.1",
+    "@types/elliptic": "^6.4.13",
+    "@types/ffi-napi": "^4.0.4",
+    "@types/glob": "^7.1.4",
+    "@types/lodash": "^4.14.171",
+    "@types/node": "^14.14.36",
+    "@types/ref-napi": "^3.0.4",
+    "@types/rimraf": "^3.0.2",
+    "@types/secp256k1": "^4.0.3",
+    "@types/yargs": "^17.0.2",
+    "@types/yauzl": "^2.9.2",
+    "@typescript-eslint/eslint-plugin": "^4.19.0",
+    "@typescript-eslint/parser": "^4.19.0",
+    "eslint": "^7.22.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "glob": "^7.1.7",
+    "prettier": "^2.2.1",
+    "ts-loader": "^8.0.18",
+    "ts-node": "^9.1.1",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^4.2.3"
+  }
+}
